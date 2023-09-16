@@ -1,8 +1,37 @@
-# React + Vite
+# UniFinder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**UniFinder** is a web application that helps users discover information about various amenities and services in the local area around your university campus. Whether you're a freshman looking for the best places to eat or a first-year student in search of nearby hostels, UniFinder provides you with a single platform to access essential information.
 
-Currently, two official plugins are available:
+## Table of Contents
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+- Discover nearby restaurants, hostels, mess halls, shops, and more.
+- Explore detailed information and descriptions for each establishment.
+- Easily locate and access services in the university's vicinity.
+- Conveniently categorized sections for various amenities.
+- [Future Feature]: User reviews and ratings for added convenience.
+
+## Getting Started
+
+Follow these instructions to get UniFinder up and running on your local machine.
+
+### Prerequisites
+
+- Node.js and npm (Node Package Manager) installed.
+- A modern web browser.
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/UniFinder.git
