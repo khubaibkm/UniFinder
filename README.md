@@ -1,6 +1,6 @@
 # UniFinder
 
-**UniFinder** is a web application that helps users discover information about various amenities and services in the local area around your university campus. Whether you're a freshman looking for the best places to eat or a first-year student in search of nearby hostels, UniFinder provides you with a single platform to access essential information.
+**UniFinder** is a web application that helps users discover information about various amenities and services in the local area around Integral university campus. Whether you're a freshman looking for the best places to eat or a first-year student in search of nearby hostels, UniFinder provides you with a single platform to access essential information.
 
 ## Table of Contents
 - [Features](#features)
@@ -13,7 +13,7 @@
 
 ## Features
 
-- Discover nearby restaurants, hostels, mess halls, restaurants, shops, and more.
+- Discover nearby restaurants, hostels, mess halls, shops, and more.
 - Explore detailed information and descriptions for each establishment.
 - Easily locate and access services in the university's vicinity.
 - Conveniently categorized sections for various amenities.
@@ -33,7 +33,7 @@ Follow these instructions to get UniFinder up and running on your local machine.
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/UniFinder.git
+   git clone https://github.com/khubaibkm/UniFinder.git
 
 2. Navigate to the project directory:
    ```bash
@@ -57,7 +57,10 @@ The app should now be running on http://localhost:3000.
 
 ## Contributing
 
-- We welcome contributions from the community. If you'd like to contribute to UniFinder, please follow our Contributing Guidelines.
+- We welcome contributions from the community. If you'd like to contribute to UniFinder, please follow our Contributing Guidelines as follows:
+  1. Fork the Repository.
+  2. After making changes, make a pull request.
+  3. After your request got accepted, you will be counted as a contributor to UniFinder.
 
 ## Acknowledgments
 
