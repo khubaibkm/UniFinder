@@ -2,6 +2,9 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import Button from '@mui/material/Button';
+import DrawerAppBar from "./components/nav";
+
 
 function App() {
   const [count, setCount] = useState(0);
@@ -9,6 +12,8 @@ function App() {
   return (
     <>
       <div>
+        <DrawerAppBar />
+        
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -18,8 +23,8 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 2)}>Add</button>
-        <button onClick={() => setCount((count) => count - 2)}>Subtract</button>
+        <Button variant="contained" onClick={() => setCount((count) => count + 2)}>Add</Button>
+        <Button variant="contained"  onClick={() => setCount((count) => count - 2)}>Subtract</Button>
         <br />
         <br />
         count is {count}
