@@ -9,19 +9,29 @@ export const Page1 = () => {
       </h1>
       <div id="mypic">
         <a href="#">
-          <div className="icon-name">
+          <div className="icon-container">
             <img src="src/assets/icons/living.png" alt="living" />
+            <p>Living</p>
           </div>
         </a>
 
         <a href="#">
-          <img src="src/assets/icons/food.png" alt="Food" />
+         <div className="icon-container">
+          <img src="src/assets/icons/food.png" alt="food" />
+          <p>Food</p>
+          </div>
         </a>
         <a href="#">
+          <div className="icon-container">
           <img src="src/assets/icons/shopping.png" alt="shopping" />
+          <p>Shopping</p>
+          </div>
         </a>
-        <a href="#">
+        <a className="emer" href="#">
+          <div className="icon-container">
           <img src="src/assets/icons/emergency.png" alt="emergency" />
+          <p>Emergency</p>
+          </div>
         </a>
       </div>
       <div id="arr">

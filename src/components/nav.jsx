@@ -70,7 +70,7 @@ function DrawerAppBar(props) {
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff', fontWeight: "400", marginRight: "25px"}}>
+              <Button key={item} sx={{ color: '#fff', fontWeight: "400", marginRight: "25px"}} className='nav-button'>
                 {item}
               </Button>
             ))}

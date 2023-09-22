@@ -7,6 +7,7 @@
   font-family: "Montserrat", sans-serif !important;
 }
 
+
 .logo-white {
   width: 200px;
   margin: 15px 0 10px 0;
@@ -27,6 +28,7 @@ h1 {
 
 h4 {
   font-weight: 300;
+  margin-top: -40px;
   margin-bottom: 20px;
   letter-spacing: 3px;
 }
@@ -34,16 +36,178 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  margin-top: 10vh;
+  margin-top: 15vh;
 }
+
 #mypic a {
   background-color: white;
   border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  display: block; /* Make anchor elements block-level */
 }
+
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #mypic img {
-  padding: 1vw;
-  height: 9.2vh;
+  width: 100px; 
+  height: 100px;
+  padding: 25px;
 }
+
+#mypic p{
+  font-size: 23px;
+  font-weight: 400;
+  margin-top: 15px;
+}
+
 .icon-name {
   margin-top: 5px;
+}
+
+
+/* -------------------------------------- */
+/* tablet */
+@media (max-width: 800px){
+
+  #page1{
+    padding: 40px;
+  }
+  h1 {
+    font-size: 40px !important;
+  }
+  
+  h4 {
+    font-size: 14px;
+    margin-top: -30px;
+  }
+  
+  #mypic a {
+    width: 80px;
+    height: 80px;
+  }
+
+  #mypic img {
+    width: 80px; 
+    height: 80px;
+    padding: 20px;
+  }
+  
+  #mypic p{
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 15px;
+  }
+}
+
+
+
+@media (max-width: 600px) {
+
+  #page1{
+    padding: 20px !important;
+  }
+
+  h1 {
+    font-size: 35px !important;
+  }
+  
+  h4 {
+    font-size: 12px;
+    font-weight: 300;
+    margin-top: -100px;
+  }
+
+  #mypic {
+    flex-direction: column; 
+    align-items: center;
+    margin-top: -20px;
+  }
+
+  #mypic a {
+    width: 80px; 
+    height: 80px;
+    margin-top: 70px;
+  }
+
+  #mypic img {
+    width: 80px; 
+    height: 80px;
+    padding: 22px;
+  }
+
+  #mypic p {
+    font-size: 18px;
+  }
+  #mypic p{
+    font-size: 16px;
+    font-weight: 400;
+    margin-top:8px;
+  }
+}
+
+
+@media (max-width: 380px){
+  #page1{
+    height: 100vh !important;
+    padding: 12px;
+  }
+
+  h1 {
+    font-size: 28px !important;
+    line-height: 1.5;
+  }
+  
+  h4 {
+    font-size: 10px;
+    font-weight: 300;
+    margin-top: -120px;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+  }
+
+  #mypic {
+    flex-direction: column; 
+    align-items: center;
+    margin-top: -20px;
+  }
+
+  #mypic a {
+    width: 60px; 
+    height: 60px;
+    margin-top: 70px;
+  }
+
+  #mypic img {
+    width: 60px; 
+    height: 60px;
+    padding: 15px;
+  }
+
+  #mypic p{
+    font-size: 14px;
+    font-weight: 400;
+    margin-top:8px;
+  }
+}
+
+@media (max-height: 650px){
+    .emer{
+      display: none !important;
+    }
+}
+
+
+@media (min-width: 700px) and (max-width: 1000px){
+    .nav-button{
+      font-size: 10px !important;
+      margin-right: 4px !important;
+    }
 }
