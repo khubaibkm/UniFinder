@@ -16,7 +16,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-const drawerWidth = 240;
+const drawerWidth = 260;
 const navItems = ['HOME', 'CATEGORIES', 'REVIEWS', 'ABOUT US', 'CONTACT US'];
 
 function DrawerAppBar(props) {
@@ -28,15 +28,16 @@ function DrawerAppBar(props) {
   };
   
     const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'right' }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center'}}>
+      
       <Typography variant="h6" sx={{ my: 2 }}>
-        <img className='logo-white' src="src/assets/logo_white.png" alt="" />
+        <img className='logo-black' src="src/assets/logo_black.png" alt="" />
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'right' }}>
+          <ListItemButton sx={{ textAlign: 'center', color:'black'}}>
               <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
@@ -55,16 +56,17 @@ function DrawerAppBar(props) {
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            edge="start"
+            edge="end"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ ml: 'auto', display: { sm: 'none' }}}
           >
+          <img className='logo-white' src="src/assets/logo_white.png" alt="" />
             <MenuIcon />
           </IconButton>
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }}}
           >
             <img className='logo-white' src="src/assets/logo_white.png" alt="" />
           </Typography>
@@ -78,7 +80,7 @@ function DrawerAppBar(props) {
         </Toolbar>
       </AppBar>
       <nav>
-        <Drawer
+        <Drawer 
           container={container}
           variant="temporary"
           open={mobileOpen}

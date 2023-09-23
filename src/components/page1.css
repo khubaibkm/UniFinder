@@ -3,7 +3,6 @@
 * {
   margin: 0;
   padding: 0;
-  color: white;
   font-family: "Montserrat", sans-serif !important;
 }
 
@@ -12,6 +11,9 @@
   width: 200px;
   margin: 15px 0 10px 0;
 }
+.logo-black {
+  width: 200px;
+}
 
 #page1 {
   height: 100vh;
@@ -19,6 +21,7 @@
   text-align: center;
   margin-top: 130px;
   padding: 20px;
+  color: white;
 }
 
 h1 {
@@ -66,6 +69,7 @@ h4 {
   font-size: 23px;
   font-weight: 400;
   margin-top: 15px;
+  color: white;
 }
 
 .icon-name {
@@ -114,6 +118,12 @@ h4 {
   #page1{
     padding: 20px !important;
   }
+  
+  .logo-white{
+    width: 150px;
+    margin-right: 150px;
+    margin-left: -50px;
+  }
 
   h1 {
     font-size: 35px !important;
@@ -159,7 +169,10 @@ h4 {
     height: 100vh !important;
     padding: 12px;
   }
-
+  .logo-white{
+    margin-right: 120px;
+    margin-left: -50px;
+  }
   h1 {
     font-size: 28px !important;
     line-height: 1.5;
@@ -195,6 +208,13 @@ h4 {
     font-size: 14px;
     font-weight: 400;
     margin-top:8px;
+  }
+}
+
+@media (max-width: 360px){
+  .logo-white{
+    margin-right: 90px;
+    margin-left: -50px;
   }
 }
 
