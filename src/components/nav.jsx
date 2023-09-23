@@ -68,7 +68,7 @@ function DrawerAppBar(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }}}
           >
-            <img className='logo-white' src="src/assets/logo_white.png" alt="" />
+            <img className='logo-white' src="/logo_white.png" alt="" />
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
