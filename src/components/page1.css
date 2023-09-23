@@ -43,13 +43,13 @@ h4 {
 }
 
 #mypic a {
-  /* background-color: white;
-  border-radius: 50%;
+  background-color: white;
+  border-radius: 60%;
   width: 100px;
   height: 100px;
   text-align: center;
   text-decoration: none;
-  color: black; */
+  color: black;
   display: block; /* Make anchor elements block-level */
 }
 
