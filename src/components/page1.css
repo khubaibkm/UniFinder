@@ -47,8 +47,8 @@ h4 {
   border-radius: 50%;
   width: 100px;
   height: 100px;
-  text-align: center;
-  text-decoration: none;
+  /* text-align: center;
+  text-decoration: none; */
   color: black;
   display: block; /* Make anchor elements block-level */
 }
