@@ -31,7 +31,7 @@ function DrawerAppBar(props) {
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center'}}>
       
       <Typography variant="h6" sx={{ my: 2 }}>
-        <img className='logo-black' src="src/assets/logo_black.png" alt="" />
+        <img className='logo-black' src="/logo_black.png" alt="" />
       </Typography>
       <Divider />
       <List>
@@ -60,7 +60,7 @@ function DrawerAppBar(props) {
             onClick={handleDrawerToggle}
             sx={{ ml: 'auto', display: { sm: 'none' }}}
           >
-          <img className='logo-white' src="src/assets/logo_white.png" alt="" />
+          <img className='logo-white' src="/logo_white.png" alt="" />
             <MenuIcon />
           </IconButton>
           <Typography
