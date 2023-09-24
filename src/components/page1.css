@@ -122,6 +122,13 @@ h4 {
     height: 120vh !important;
     padding: 20px !important;
   }
+
+  .logo-white{
+    margin-left: -400px !important;
+  }
+  .navicon{
+    margin-left: 280px !important;
+  }
   
   .logo-white{
     width: 150px;
@@ -166,15 +173,27 @@ h4 {
   }
 }
 
+@media (max-width: 450px){
+  .logo-white{
+    margin-left: -340px !important;
+  }
+  .navicon{
+    margin-left: 260px !important;
+  }
+}
 
-@media (max-width: 380px){
+@media (max-width: 400px){
   #page1{
     padding: 12px;
   }
   .logo-white{
-    margin-right: 120px;
-    margin-left: -50px;
+    margin-left: -300px !important;
   }
+
+  .navicon{
+    margin-left: 220px !important;
+  }
+
   h1 {
     font-size: 28px !important;
     line-height: 1.5;
@@ -208,8 +227,11 @@ h4 {
 
 @media (max-width: 360px){
   .logo-white{
-    margin-right: 90px;
-    margin-left: -50px;
+    margin-left: -260px !important;
+  }
+
+  .navicon{
+    margin-left: 180px !important;
   }
 }
 

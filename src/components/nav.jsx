@@ -53,15 +53,15 @@ function DrawerAppBar(props) {
       <CssBaseline />
       <AppBar component="nav" sx={{backgroundColor: "black"}}>
         <Toolbar sx={{ padding: "0 5rem 0 5rem !important" }}>
-          <IconButton
+          <IconButton className='navicon'
             color="inherit"
             aria-label="open drawer"
             edge="end"
             onClick={handleDrawerToggle}
             sx={{ ml: 'auto', display: { sm: 'none' }}}
           >
-          <img className='logo-white' src="/logo_white.png" alt="" />
             <MenuIcon />
+          <img className='logo-white' src="/logo_white.png" alt="" />
           </IconButton>
           <Typography
             variant="h6"
