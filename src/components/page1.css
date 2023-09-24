@@ -6,7 +6,6 @@
   font-family: "Montserrat", sans-serif !important;
 }
 
-
 .logo-white {
   width: 200px;
   margin: 15px 0 10px 0;
@@ -40,6 +39,10 @@ h4 {
   align-items: center;
   justify-content: space-evenly;
   margin-top: 15vh;
+}
+
+#mypic{
+  user-select: none;
 }
 
 #mypic a {
@@ -141,6 +144,8 @@ h4 {
     align-items: center;
     margin-top: -40px;
   }
+
+
 
   #mypic a {
     width: 70px; 

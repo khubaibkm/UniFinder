@@ -1,4 +1,22 @@
+*::selection{
+  color: black;
+  background-color: white;
+}
 
+body::-webkit-scrollbar{
+  display: block;
+  width: 5px;
+  background-color: black;
+}
+
+body::-webkit-scrollbar-thumb{
+  background-color: white;
+  border-radius: 50px;
+}
+
+body{
+  overflow-x: hidden;
+}
 
 h1 {
   font-size: 3.2em;
