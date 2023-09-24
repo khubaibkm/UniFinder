@@ -126,38 +126,35 @@ h4 {
   }
 
   h1 {
-    font-size: 35px !important;
+    font-size: 32px !important;
   }
   
   h4 {
     font-size: 12px;
     font-weight: 300;
-    margin-top: -100px;
+    margin-top: -110px;
   }
 
   #mypic {
     flex-direction: column; 
     align-items: center;
-    margin-top: -20px;
+    margin-top: -40px;
   }
 
   #mypic a {
-    width: 80px; 
-    height: 80px;
+    width: 70px; 
+    height: 70px;
     margin-top: 70px;
   }
 
   #mypic img {
-    width: 80px; 
-    height: 80px;
-    padding: 22px;
+    width: 70px; 
+    height: 70px;
+    padding: 20px;
   }
 
-  #mypic p {
-    font-size: 18px;
-  }
   #mypic p{
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 400;
     margin-top:8px;
   }
@@ -186,16 +183,10 @@ h4 {
     letter-spacing: 3px;
   }
 
-  #mypic {
-    flex-direction: column; 
-    align-items: center;
-    margin-top: -20px;
-  }
 
   #mypic a {
     width: 60px; 
     height: 60px;
-    margin-top: 70px;
   }
 
   #mypic img {
@@ -207,7 +198,6 @@ h4 {
   #mypic p{
     font-size: 14px;
     font-weight: 400;
-    margin-top:8px;
   }
 }
 
