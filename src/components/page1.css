@@ -116,6 +116,7 @@ h4 {
 @media (max-width: 600px) {
 
   #page1{
+    height: 120vh !important;
     padding: 20px !important;
   }
   
@@ -163,7 +164,6 @@ h4 {
 
 @media (max-width: 380px){
   #page1{
-    height: 100vh !important;
     padding: 12px;
   }
   .logo-white{
