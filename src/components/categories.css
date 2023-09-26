@@ -123,6 +123,7 @@
         width: 60px; 
         height: 60px;
         padding: 16px;
+        margin-bottom: 8px;
     }
     
   }
@@ -175,12 +176,21 @@
     }
 
     .catItem{
-        font-size: 10px !important;
-        padding: 42px 30px 42px 30px !important;
+        font-size: 11px !important;
+        padding: 39px 18px 39px 18px !important;
       }
+
+    .labelEmer{
+        position: relative;
+        right: 8px;
+    }
+    .labelShop{
+        position: relative;
+        right: 5px;
+    }
       .catItem div{
-        width: 40px;
-        height: 40px;
+        width: 45px;
+        height: 45px;
     }
     
     .catItem div{
@@ -188,10 +198,9 @@
     }
 
     .catItem img{
-        width: 40px; 
-        height: 40px;
+        width: 45px; 
+        height: 45px;
         padding: 10px;
-        margin-right: 15px;
     }
     
     .catItem .catItemContent {

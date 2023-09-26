@@ -62,12 +62,12 @@ export default function VerticalTabs() {
         } />
         <Tab className="catItem" label={
           <div className='catItemContent'>
-            <img src="icons/shopping.png" alt="Shopping"/><span>Shopping</span>
+            <img src="icons/shopping.png" alt="Shopping"/><span className='labelShop'>Shopping</span>
           </div>
         } />
         <Tab className="catItem" label={
           <div className='catItemContent'>
-            <img src="icons/emergency.png" alt="Emergency"/><span>Emergency</span>
+            <img src="icons/emergency.png" alt="Emergency"/><span className='labelEmer'>Emergency</span>
           </div>
         } />
       </Tabs>
