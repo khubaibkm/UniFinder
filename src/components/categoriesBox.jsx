@@ -73,15 +73,27 @@ export default function VerticalTabs() {
       </Tabs>
       <TabPanel className="catContent" value={value} index={0}>
       <h3>Living</h3>
+      {/* <div className='catdiv'>
+        <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, animi.</h2><br /><br />
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim unde, a animi ad id eveniet, at dolorem velit tempore quibusdam ipsum quisquam ea tenetur exercitationem ab molestiae ullam fuga. Ad.</p></div> */}
       </TabPanel>
       <TabPanel className="catContent" value={value} index={1}>
       <h3>Food</h3>
+      {/* <div className='catdiv'>
+        <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, animi.</h2><br /><br />
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim unde, a animi ad id eveniet, at dolorem velit tempore quibusdam ipsum quisquam ea tenetur exercitationem ab molestiae ullam fuga. Ad.</p></div> */}
       </TabPanel>
       <TabPanel className="catContent" value={value} index={2}>
       <h3>Shopping</h3>
+      {/* <div className='catdiv'>
+        <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, animi.</h2><br /><br />
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim unde, a animi ad id eveniet, at dolorem velit tempore quibusdam ipsum quisquam ea tenetur exercitationem ab molestiae ullam fuga. Ad.</p></div> */}
       </TabPanel>
       <TabPanel className="catContent" value={value} index={3}>
       <h3>Emergency</h3>
+      {/* <div className='catdiv'>
+        <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, animi.</h2><br /><br />
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim unde, a animi ad id eveniet, at dolorem velit tempore quibusdam ipsum quisquam ea tenetur exercitationem ab molestiae ullam fuga. Ad.</p></div> */}
       </TabPanel>
     </Box>
   );
