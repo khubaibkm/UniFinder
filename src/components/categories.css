@@ -26,8 +26,10 @@
     text-transform: none !important;
     text-align: left !important;
     padding: 35px 120px 35px 120px !important;
+    border-radius: 10px 0 0 10px !important;
+    transition: background-color 0.3s ease;
   }
-
+  
 
   .catItem .catItemContent {
     display: flex;
@@ -61,19 +63,17 @@
     color: white
   }
 
+  h3{
+    font-size: 30px;
+    font-weight: 700;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
+  .catItem:hover{
+    background-color: #4A566C;
+  }
+  .catItem:focus{
+    background-color: #4A566C;
+  }
 
 
 
@@ -110,6 +110,10 @@
         height: 400px !important;
     }
 
+    h3{
+        font-size: 24px;
+        font-weight: 500;
+    }
     .catItem{
         font-size: 16px !important;
         padding: 20px 100px 20px 100px !important;

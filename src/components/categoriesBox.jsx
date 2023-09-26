@@ -72,16 +72,16 @@ export default function VerticalTabs() {
         } />
       </Tabs>
       <TabPanel className="catContent" value={value} index={0}>
-        Item One
+      <h3>Living</h3>
       </TabPanel>
       <TabPanel className="catContent" value={value} index={1}>
-        Item Two
+      <h3>Food</h3>
       </TabPanel>
       <TabPanel className="catContent" value={value} index={2}>
-        Item Three
+      <h3>Shopping</h3>
       </TabPanel>
       <TabPanel className="catContent" value={value} index={3}>
-        Item Four
+      <h3>Emergency</h3>
       </TabPanel>
     </Box>
   );
