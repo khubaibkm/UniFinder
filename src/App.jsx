@@ -7,7 +7,7 @@ import { Categories } from "./components/categories";
 function App() {
   return (
     <>
-    <ScrollToTop smooth style={{borderRadius:'50%', padding:'20px 42px 40px 16px' }}/>
+    <ScrollToTop className="scrollToTop" smooth style={{borderRadius:'50%', padding:'20px 42px 40px 16px' }}/>
       <div className="app">
         <DrawerAppBar/>
         <Page1/>

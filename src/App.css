@@ -7,3 +7,9 @@
 }
 
 
+
+@media (max-width: 600px){
+    .scrollToTop{
+        padding: 12px 32px 30px 7px !important;
+    }
+}
