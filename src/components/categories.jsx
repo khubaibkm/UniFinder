@@ -1,4 +1,5 @@
 import "./categories.css";
+import TabPanel from "./categoriesBox"
 
 export const Categories = () => {
   return (
@@ -7,6 +8,7 @@ export const Categories = () => {
         Popular Categories
       </h1>
         <h4 className="subheading">CHECK THEM OUT</h4>
+        <TabPanel/>
     </div>
   );
 };
