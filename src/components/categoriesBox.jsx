@@ -40,7 +40,7 @@ export default function VerticalTabs() {
   };
 
   return (
-    <Box
+    <Box className="box"
       sx={{ borderRadius:'10px', flexGrow: 1, bgcolor: '#212529', display: 'flex', height: 600, width: 1200, margin:'auto' }}
     >
       <Tabs
@@ -71,16 +71,16 @@ export default function VerticalTabs() {
           </div>
         } />
       </Tabs>
-      <TabPanel value={value} index={0}>
+      <TabPanel className="catContent" value={value} index={0}>
         Item One
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      <TabPanel className="catContent" value={value} index={1}>
         Item Two
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      <TabPanel className="catContent" value={value} index={2}>
         Item Three
       </TabPanel>
-      <TabPanel value={value} index={3}>
+      <TabPanel className="catContent" value={value} index={3}>
         Item Four
       </TabPanel>
     </Box>
