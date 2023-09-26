@@ -26,8 +26,15 @@
     text-transform: none !important;
     text-align: left !important;
     padding: 35px 120px 35px 120px !important;
-    border-radius: 10px 0 0 10px !important;
     transition: background-color 0.3s ease;
+  }
+
+  .catItem1{
+    border-radius: 10px 0 0 0 !important;
+  }
+
+  .catItem4{
+    border-radius: 0 0 0 10px !important;
   }
   
 
@@ -68,12 +75,14 @@
     font-weight: 700;
   }
 
+
   .catItem:hover{
-    background-color: #4A566C;
+    background-color: #303846;
   }
   .catItem:focus{
     background-color: #4A566C;
   }
+
 
   .catdiv{
     width: 28rem;

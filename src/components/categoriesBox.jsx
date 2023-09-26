@@ -50,7 +50,7 @@ export default function VerticalTabs() {
         // aria-label="Vertical tabs example"
         sx={{bgcolor:'transparent', borderRight: 1, borderColor: 'divider' }}
       >
-        <Tab className="catItem" label={
+        <Tab className="catItem  catItem1" label={
           <div className='catItemContent'>
             <img src="icons/living.png" alt="Living"/><span>Living</span>
           </div>
@@ -65,7 +65,7 @@ export default function VerticalTabs() {
             <img src="icons/shopping.png" alt="Shopping"/><span className='labelShop'>Shopping</span>
           </div>
         } />
-        <Tab className="catItem" label={
+        <Tab className="catItem catItem4" label={
           <div className='catItemContent'>
             <img src="icons/emergency.png" alt="Emergency"/><span className='labelEmer'>Emergency</span>
           </div>
