@@ -173,7 +173,9 @@
         width: 280px !important;
         height: 500px !important;
     }
-
+    h3{
+        font-size: 18px;
+    }
     .heading{
         font-size: 26px !important;
         margin-top: -220px !important;
