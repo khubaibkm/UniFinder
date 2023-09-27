@@ -10,8 +10,9 @@ function App() {
   return (
     <>
       <div className="app">
-        <DrawerAppBar/><Page1/>
-      </div> 
+        <DrawerAppBar />
+        <Page1 />
+      </div>
     </>
   );
 }
