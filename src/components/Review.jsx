@@ -94,7 +94,11 @@ export default function Review() {
 
               {/* Second Column */}
               <Grid item xs={2} style={{ maxWidth: "100px" }}>
-                <img src="Vector 2.png" alt="Image" style={{ width: "55px" }} />
+                <img
+                  src="public/Vector 2.png"
+                  alt="Image"
+                  style={{ width: "55px" }}
+                />
               </Grid>
 
               {/* Third Column */}
