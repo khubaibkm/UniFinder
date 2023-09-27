@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+
+#category {
+  width: 100%;
+  text-align: center;
+  padding: 1.5rem 5rem;
+  color: white;
+}
+h2 {
+  font-size: 35px !important;
+  line-height: 1.5;
+  color: black;
+}
+h6 {
+  font-weight: 100;
+  color: #8d99af;
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+}
+.carousel {
+  padding: 4rem 5rem;
+  /* height:160vh; */
+}
+.carousel-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+.css-17zdts0-MuiPaper-root-MuiCard-root {
+  box-shadow: none !important;
+}
+.carousel-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+  /* Negative margin to offset the individual item margins */
+}
+.carousel-item {
+  flex: 1;
+  /* Ensure equal distribution of items in a row */
+  min-width: calc(50% - 30px);
+  margin: 15px;
+  /* Adjust min-width for smaller screens  */
+}
+
+.carousel-item-content {
+  color: white;
+  /* Style the content inside each carousel item */
+}
+
+/* Add responsive CSS as needed for different screen sizes */
+@media (max-width: 600px) {
+  #category {
+    width: 100%;
+    text-align: center;
+    padding: 0rem 1rem;
+    color: white;
+  }
+  h2 {
+    font-size: 25px;
+  }
+  .MuiTypography-root {
+    font-size: 25px !important;
+    width: 300px !important;
+  }
+  .MuiGrid-root img {
+    display: none;
+  }
+}
+
+/* slider */
+.App {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.slick-slide > div {
+  margin: 0 10px;
+}
+.slick-list {
+  margin: 0 -10px;
+}
+
+.Card {
+  /* background: #4a566c; */
+  background-color: #212529;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 324px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.card-top h1 {
+  font-size: 0.9rem;
+}
+
+.card-mid {
+  padding: 1rem 1.4rem 1.4rem 1.4rem;
+}
+
+.category {
+  position: relative;
+}
+.category::before {
+  content: "";
+  background: rgb(255, 61, 61);
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.card-top img {
+  margin: 2rem 1rem 1rem 1.5rem;
+  width: 4rem;
+  border-radius: 50%;
+}
+.card-top h1 {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.card-top p {
+  padding-top: 5px;
+  font-size: 0.8rem;
+  color: #40f4be;
+}
