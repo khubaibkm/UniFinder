@@ -10,26 +10,26 @@ export const Page1 = () => {
       <div id="mypic">
         <a href="#">
           <div className="icon-container">
-            <img src="src/assets/icons/living.png" alt="living" />
+            <img src="/icons/living.png" alt="living" />
             <p>Living</p>
           </div>
         </a>
 
         <a href="#">
          <div className="icon-container">
-          <img src="src/assets/icons/food.png" alt="food" />
+          <img src="/icons/food.png" alt="food" />
           <p>Food</p>
           </div>
         </a>
         <a href="#">
           <div className="icon-container">
-          <img src="src/assets/icons/shopping.png" alt="shopping" />
+          <img src="/icons/shopping.png" alt="shopping" />
           <p>Shopping</p>
           </div>
         </a>
         <a className="emer" href="#">
           <div className="icon-container">
-          <img src="src/assets/icons/emergency.png" alt="emergency" />
+          <img src="/icons/emergency.png" alt="emergency" />
           <p>Emergency</p>
           </div>
         </a>

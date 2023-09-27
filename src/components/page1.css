@@ -15,7 +15,7 @@
 }
 
 #page1 {
-  height: 100vh;
+  height: 80vh;
   width: 100%;
   text-align: center;
   margin-top: 130px;
@@ -41,9 +41,13 @@ h6 {
   margin-top: 15vh;
 }
 
+#mypic {
+  user-select: none;
+}
+
 #mypic a {
   background-color: white;
-  border-radius: 60%;
+  border-radius: 50%;
   width: 100px;
   height: 100px;
   text-align: center;
@@ -120,19 +124,19 @@ h6 {
   }
 
   h1 {
-    font-size: 35px !important;
+    font-size: 32px !important;
   }
 
   h4 {
     font-size: 12px;
     font-weight: 300;
-    margin-top: -100px;
+    margin-top: -110px;
   }
 
   #mypic {
     flex-direction: column;
     align-items: center;
-    margin-top: -20px;
+    margin-top: -40px;
   }
 
   #mypic a {
@@ -166,6 +170,7 @@ h6 {
     margin-right: 120px;
     margin-left: -50px;
   }
+
   h1 {
     font-size: 28px !important;
     line-height: 1.5;
@@ -188,7 +193,6 @@ h6 {
   #mypic a {
     width: 60px;
     height: 60px;
-    margin-top: 70px;
   }
 
   #mypic img {

@@ -1,9 +1,15 @@
 .app{
     height: 100vh;
-    background-image: url('src/assets/map image.webp');
+    background-image: url('/map image.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 
+
+@media (max-width: 600px){
+    .scrollToTop{
+        padding: 12px 32px 30px 7px !important;
+    }
+}

@@ -31,7 +31,7 @@ function DrawerAppBar(props) {
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center'}}>
       
       <Typography variant="h6" sx={{ my: 2 }}>
-        <img className='logo-black' src="src/assets/logo_black.png" alt="" />
+        <img className='logo-black' src="/logo_black.png" alt="" />
       </Typography>
       <Divider />
       <List>
@@ -51,24 +51,24 @@ function DrawerAppBar(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar component="nav" sx={{backgroundColor: "transparent"}}>
+      <AppBar component="nav" sx={{backgroundColor: "black"}}>
         <Toolbar sx={{ padding: "0 5rem 0 5rem !important" }}>
-          <IconButton
+          <IconButton className='navicon'
             color="inherit"
             aria-label="open drawer"
             edge="end"
             onClick={handleDrawerToggle}
             sx={{ ml: 'auto', display: { sm: 'none' }}}
           >
-          <img className='logo-white' src="src/assets/logo_white.png" alt="" />
             <MenuIcon />
+          <img className='logo-white' src="/logo_white.png" alt="" />
           </IconButton>
           <Typography
             variant="h6"
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }}}
           >
-            <img className='logo-white' src="src/assets/logo_white.png" alt="" />
+            <img className='logo-white' src="/logo_white.png" alt="" />
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
