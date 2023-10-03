@@ -21,7 +21,6 @@ h6 {
 }
 .carousel {
   padding: 4rem 5rem;
-  /* height:160vh; */
 }
 .carousel-container {
   width: 100%;
@@ -40,10 +39,8 @@ h6 {
 }
 .carousel-item {
   flex: 1;
-  /* Ensure equal distribution of items in a row */
   min-width: calc(50% - 30px);
   margin: 15px;
-  /* Adjust min-width for smaller screens  */
 }
 
 .carousel-item-content {
@@ -63,11 +60,15 @@ h6 {
     font-size: 25px;
   }
   .MuiTypography-root {
-    font-size: 25px !important;
+    /* font-size: 25px !important; */
     width: 300px !important;
+    margin-left: 2rem !important;
   }
   .MuiGrid-root img {
     display: none;
+  }
+  .carousel {
+    padding: 4rem 0rem;
   }
 }
 
