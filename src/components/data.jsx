@@ -5,7 +5,7 @@ export const dataReview = [
     position: "Web Developer",
     about:
       "The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.",
-    proImg: "image-colton.jpg",
+    proImg: "public/image-colton.jpg",
   },
 
   {
@@ -14,7 +14,7 @@ export const dataReview = [
     position: "Web Developer",
     about:
       "The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.",
-    proImg: "image-colton.jpg",
+    proImg: "public/image-colton.jpg",
   },
 
   {
@@ -23,7 +23,7 @@ export const dataReview = [
     position: "Web Developer",
     about:
       "The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.The menu at Restaurant Name offers a diverse range of dishes, ensuring there's something for everyone. ",
-    proImg: "image-colton.jpg",
+    proImg: "public/image-colton.jpg",
   },
 
   {
@@ -32,7 +32,7 @@ export const dataReview = [
     position: "Web Developer",
     about:
       " The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.",
-    proImg: "image-colton.jpg",
+    proImg: "public/image-colton.jpg",
   },
   {
     id: 5,
@@ -40,7 +40,7 @@ export const dataReview = [
     position: "Web Developer",
     about:
       " The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.",
-    proImg: "image-colton.jpg",
+    proImg: "public/image-colton.jpg",
   },
   {
     id: 6,
@@ -48,7 +48,7 @@ export const dataReview = [
     position: "Web Developer",
     about:
       " The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.",
-    proImg: "image-colton.jpg",
+    proImg: "public/image-colton.jpg",
   },
   {
     id: 7,
@@ -56,6 +56,6 @@ export const dataReview = [
     position: "Web Developer",
     about:
       "The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.",
-    proImg: "image-colton.jpg",
+    proImg: "public/image-colton.jpg",
   },
 ];
