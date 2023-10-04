@@ -1,10 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Montserrat", sans-serif !important;
-}
 
 .logo-white {
   width: 200px;
@@ -23,12 +16,12 @@
   color: white;
 }
 
-h2 {
+h1 {
   font-size: 50px !important;
   line-height: 1.5;
 }
 
-h6 {
+h4 {
   font-weight: 300;
   margin-top: -40px;
   margin-bottom: 20px;
@@ -41,7 +34,7 @@ h6 {
   margin-top: 15vh;
 }
 
-#mypic {
+#mypic{
   user-select: none;
 }
 
@@ -63,12 +56,12 @@ h6 {
 }
 
 #mypic img {
-  width: 100px;
+  width: 100px; 
   height: 100px;
   padding: 25px;
 }
 
-#mypic p {
+#mypic p{
   font-size: 23px;
   font-weight: 400;
   margin-top: 15px;
@@ -79,45 +72,58 @@ h6 {
   margin-top: 5px;
 }
 
+
 /* -------------------------------------- */
 /* tablet */
-@media (max-width: 800px) {
-  #page1 {
+@media (max-width: 800px){
+
+  #page1{
     padding: 40px;
   }
   h1 {
     font-size: 40px !important;
   }
-
+  
   h4 {
     font-size: 14px;
     margin-top: -30px;
   }
-
+  
   #mypic a {
     width: 80px;
     height: 80px;
   }
 
   #mypic img {
-    width: 80px;
+    width: 80px; 
     height: 80px;
     padding: 20px;
   }
-
-  #mypic p {
+  
+  #mypic p{
     font-size: 18px;
     font-weight: 400;
     margin-top: 15px;
   }
 }
 
+
+
 @media (max-width: 600px) {
-  #page1 {
+
+  #page1{
+    height: 120vh !important;
     padding: 20px !important;
   }
 
-  .logo-white {
+  .logo-white{
+    margin-left: -400px !important;
+  }
+  .navicon{
+    margin-left: 280px !important;
+  }
+  
+  .logo-white{
     width: 150px;
     margin-right: 150px;
     margin-left: -50px;
@@ -126,7 +132,7 @@ h6 {
   h1 {
     font-size: 32px !important;
   }
-
+  
   h4 {
     font-size: 12px;
     font-weight: 300;
@@ -134,48 +140,58 @@ h6 {
   }
 
   #mypic {
-    flex-direction: column;
+    flex-direction: column; 
     align-items: center;
     margin-top: -40px;
   }
 
+
+
   #mypic a {
-    width: 80px;
-    height: 80px;
+    width: 70px; 
+    height: 70px;
     margin-top: 70px;
   }
 
   #mypic img {
-    width: 80px;
-    height: 80px;
-    padding: 22px;
+    width: 70px; 
+    height: 70px;
+    padding: 20px;
   }
 
-  #mypic p {
-    font-size: 18px;
-  }
-  #mypic p {
-    font-size: 16px;
+  #mypic p{
+    font-size: 15px;
     font-weight: 400;
-    margin-top: 8px;
+    margin-top:8px;
   }
 }
 
-@media (max-width: 380px) {
-  #page1 {
-    height: 100vh !important;
+@media (max-width: 450px){
+  .logo-white{
+    margin-left: -340px !important;
+  }
+  .navicon{
+    margin-left: 260px !important;
+  }
+}
+
+@media (max-width: 400px){
+  #page1{
     padding: 12px;
   }
-  .logo-white {
-    margin-right: 120px;
-    margin-left: -50px;
+  .logo-white{
+    margin-left: -300px !important;
+  }
+
+  .navicon{
+    margin-left: 220px !important;
   }
 
   h1 {
     font-size: 28px !important;
     line-height: 1.5;
   }
-
+  
   h4 {
     font-size: 10px;
     font-weight: 300;
@@ -184,46 +200,44 @@ h6 {
     letter-spacing: 3px;
   }
 
-  #mypic {
-    flex-direction: column;
-    align-items: center;
-    margin-top: -20px;
-  }
 
   #mypic a {
-    width: 60px;
+    width: 60px; 
     height: 60px;
   }
 
   #mypic img {
-    width: 60px;
+    width: 60px; 
     height: 60px;
     padding: 15px;
   }
 
-  #mypic p {
+  #mypic p{
     font-size: 14px;
     font-weight: 400;
-    margin-top: 8px;
   }
 }
 
-@media (max-width: 360px) {
-  .logo-white {
-    margin-right: 90px;
-    margin-left: -50px;
+@media (max-width: 360px){
+  .logo-white{
+    margin-left: -260px !important;
+  }
+
+  .navicon{
+    margin-left: 180px !important;
   }
 }
 
-@media (max-height: 650px) {
-  .emer {
-    display: none !important;
-  }
+@media (max-height: 650px){
+    .emer{
+      display: none !important;
+    }
 }
 
-@media (min-width: 700px) and (max-width: 1000px) {
-  .nav-button {
-    font-size: 10px !important;
-    margin-right: 4px !important;
-  }
+
+@media (min-width: 700px) and (max-width: 1000px){
+    .nav-button{
+      font-size: 10px !important;
+      margin-right: 4px !important;
+    }
 }
