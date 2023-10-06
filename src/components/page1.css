@@ -228,7 +228,7 @@ h4 {
   }
 }
 
-@media (max-height: 650px){
+@media (max-height: 715px){
     .emer{
       display: none !important;
     }
