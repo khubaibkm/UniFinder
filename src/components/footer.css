@@ -12,7 +12,7 @@ li {
   list-style-type: none;
 }
 footer {
-  background-image: url("map image.jpg");
+  background-image: url("/map image.jpg");
   color: white;
 }
 .footer_info {
