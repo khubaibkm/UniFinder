@@ -112,10 +112,12 @@ h4 {
 @media (max-width: 600px) {
 
   #page1{
-    height: 120vh !important;
+    height: 100vh !important;
     padding: 20px !important;
   }
-
+  .nav-button{
+    color: black !important;
+  }
   .logo-white{
     margin-left: -400px !important;
   }

@@ -17,7 +17,6 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Link } from 'react-scroll'; 
 
-
 const drawerWidth = 260;
 const navItems = ['HOME', 'CATEGORIES', 'REVIEWS', 'ABOUT US', 'CONTACT US'];
 
@@ -28,10 +27,29 @@ function DrawerAppBar(props) {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-  
-    const drawer = (
+
+  const container = window !== undefined ? () => window().document.body : undefined;
+
+  const getNavLink = (item) => (
+    <Link
+      key={item}
+      to={item.toLowerCase()} 
+      spy={true}
+      smooth={true}
+      duration={500}
+      offset={-200}
+    >
+      <Button
+        sx={{ color: 'white', fontWeight: '400', marginRight: '25px', fontSize: '15px' }}
+        className='nav-button'
+      >
+        {item}
+      </Button>
+    </Link>
+  );
+
+  const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center'}}>
-      
       <Typography variant="h6" sx={{ my: 2 }}>
         <img className='logo-black' src="/logo_black.png" alt="" />
       </Typography>
@@ -39,16 +57,14 @@ function DrawerAppBar(props) {
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
-          <ListItemButton sx={{ textAlign: 'center', color:'black'}}>
-          <ListItemText primary={item} />
+            <ListItemButton sx={{ textAlign: 'center', color:'black'}}>
+              <ListItemText primary={getNavLink(item)} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
     </Box>
   );
-
-  const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -63,7 +79,7 @@ function DrawerAppBar(props) {
             sx={{ ml: 'auto', display: { sm: 'none' }}}
           >
             <MenuIcon />
-          <img className='logo-white' src="/logo_white.png" alt="" />
+            <img className='logo-white' src="/logo_white.png" alt="" />
           </IconButton>
           <Typography
             variant="h6"
@@ -73,23 +89,7 @@ function DrawerAppBar(props) {
             <img className='logo-white' src="/logo_white.png" alt="" />
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <Link
-                key={item}
-                to={item.toLowerCase()} // Use the item's text as the target (section id)
-                spy={true}
-                smooth={true}
-                duration={500}
-                offset={-200}
-              >
-                <Button
-                  sx={{ color: '#fff', fontWeight: '400', marginRight: '25px' }}
-                  className='nav-button'
-                >
-                  {item}
-                </Button>
-              </Link>
-            ))}
+            {navItems.map((item) => getNavLink(item))}
           </Box>
         </Toolbar>
       </AppBar>

@@ -184,7 +184,9 @@ h3{
 
 @media (max-width: 600px){
   #categories{
-      height: 70vh;
+      height: 100vh;
+      position: relative;
+      top: 100px;
   }
   .box{
       width: 280px !important;
