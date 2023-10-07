@@ -1,15 +1,18 @@
-.app{
-    height: 100vh;
-    background-image: url('/map image.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+.app {
+  height: 100vh;
+  background-image: url("/map image.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-
-
-@media (max-width: 600px){
-    .scrollToTop{
-        padding: 12px 32px 30px 7px !important;
-    }
+@media (max-width: 600px) {
+  .scrollToTop {
+    padding: 12px 32px 30px 7px !important;
+  }
+}
+@media (max-width: 376px) {
+  .app {
+    padding-top: 20px;
+  }
 }

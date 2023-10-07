@@ -1,0 +1,78 @@
+img {
+  width: 300px;
+  padding-bottom: 20px;
+}
+a {
+  text-decoration: none;
+  transition: 0.5s;
+  color: white;
+}
+ul,
+li {
+  list-style-type: none;
+}
+footer {
+  background-image: url("map image.jpg");
+  color: white;
+}
+.footer_info {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  padding: 50px 0;
+}
+.footer_info .footer_width {
+  padding: 0 60px;
+}
+
+.footer_info h2 {
+  margin-bottom: 20px;
+}
+.about,
+.Contact {
+  width: 40%;
+}
+.link ul li a {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+.Contact ul li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.Contact ul li span {
+  margin-right: 15px;
+}
+.copy-right {
+  padding: 15px 0;
+  text-align: center;
+}
+@media screen and (max-width: 992px) {
+  .about,
+  .Contact {
+    width: 35px;
+  }
+  .link {
+    width: 30%;
+  }
+  .footer_info .footer_width {
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about,
+  .Contact,
+  .link {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .footer_info {
+    flex-direction: column;
+  }
+  .footer_info .footer_width {
+    padding: 0 20px;
+  }
+}
