@@ -15,6 +15,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { Link } from 'react-scroll'; 
+
 
 const drawerWidth = 260;
 const navItems = ['HOME', 'CATEGORIES', 'REVIEWS', 'ABOUT US', 'CONTACT US'];
@@ -38,7 +40,7 @@ function DrawerAppBar(props) {
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
           <ListItemButton sx={{ textAlign: 'center', color:'black'}}>
-              <ListItemText primary={item} />
+          <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -72,9 +74,20 @@ function DrawerAppBar(props) {
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff', fontWeight: "400", marginRight: "25px"}} className='nav-button'>
-                {item}
-              </Button>
+              <Link
+                key={item}
+                to={item.toLowerCase()} // Use the item's text as the target (section id)
+                spy={true}
+                smooth={true}
+                duration={600}
+              >
+                <Button
+                  sx={{ color: '#fff', fontWeight: '400', marginRight: '25px' }}
+                  className='nav-button'
+                >
+                  {item}
+                </Button>
+              </Link>
             ))}
           </Box>
         </Toolbar>

@@ -11,9 +11,15 @@ function App() {
     <ScrollToTop className="scrollToTop" smooth style={{borderRadius:'50%', padding:'20px 42px 40px 16px' }}/>
       <div className="app">
         <DrawerAppBar/>
+        <div id="home">
         <Page1/>
+        </div>
+        <div id="categories">
         <Categories/>
-        <Review/>
+        </div>
+        <div id="reviews">
+          <Review/>
+        </div>
       </div> 
     </>
   );
