@@ -1,178 +1,173 @@
 #category {
+  width: 100%;
+  text-align: center;
+  padding: 0rem 5rem;
+}
+.carousel {
+  margin-top: 80px;
+  height: 120vh;
+}
+h2 {
+  font-size: 35px !important;
+  line-height: 1.5;
+  color: black;
+}
+h6 {
+  font-weight: 400;
+  color: #8d99af;
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+}
+
+.grid2 {
+  font-weight: 600 !important;
+}
+.carousel {
+  padding: 4rem 5rem;
+}
+.carousel-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.css-17zdts0-MuiPaper-root-MuiCard-root {
+  box-shadow: none !important;
+}
+.carousel-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+.carousel-item {
+  flex: 1;
+  min-width: calc(50% - 30px);
+  margin: 15px;
+}
+
+/* slider */
+.App {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.slick-slide > div {
+  margin: 0 10px;
+}
+.slick-list {
+  margin: 0 -10px;
+}
+
+.Card {
+  background: #212529;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 324px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.card-mid {
+  padding: 1rem 1.4rem 1.4rem 1.4rem;
+}
+.card-mid p {
+  font-size: 0.8rem !important;
+}
+
+.category {
+  position: relative;
+}
+.category::before {
+  content: "";
+  background: rgb(255, 61, 61);
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.card-top img {
+  margin: 2rem 1rem 1rem 1.5rem;
+  width: 4rem;
+  border-radius: 50%;
+}
+.card-top h1 {
+  margin-top: 1rem;
+  font-size: 1.2rem !important;
+  font-weight: 600;
+}
+.card-top p {
+  padding-top: 5px;
+  font-size: 0.8rem;
+  color: #40f4be;
+}
+
+/* ---------------------------------------------------------------------- */
+@media (max-width: 376px) {
+  .carousel {
+    margin-top: 50px !important;
+    height: 150vh !important;
+  }
+}
+
+@media (max-width: 600px) {
+  #category {
     width: 100%;
     text-align: center;
-    padding: 0rem 5rem;
+    padding: 0rem 1rem;
   }
   .carousel {
-    margin-top: 80px;
-    height: 120vh;
+    margin-top: -80px;
+    height: 115vh;
+  }
+  .cardMain {
+    width: 80% !important;
   }
   h2 {
-    font-size: 35px !important;
-    line-height: 1.5;
-    color: black;
+    font-size: 30px !important;
   }
-  h6 {
-    font-weight: 400;
-    color: #8d99af;
-    text-transform: uppercase;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    letter-spacing: 3px;
+  .reviewContent {
+    text-align: center;
   }
-
-  .grid2{
-    font-weight: 600 !important;
+  .MuiGrid-root img {
+    display: none;
   }
   .carousel {
-    padding: 4rem 5rem;
+    padding: 4rem 0rem;
   }
-  .carousel-container {
+  .grid1 {
+    font-size: 22px !important;
+    padding: 0 14px;
+  }
+  .grid2 {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    padding: 0 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  .MuiGrid-root img {
+    display: none;
+  }
+  .cardMain {
     width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 20px;
   }
-  
-  .css-17zdts0-MuiPaper-root-MuiCard-root {
-    box-shadow: none !important;
-  }
-  .carousel-row {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -15px;
-  }
-  .carousel-item {
-    flex: 1;
-    min-width: calc(50% - 30px);
-    margin: 15px;
-  }
-  
-  
-  /* slider */
-  .App {
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 30px;
-  }
-  
-  .slick-slide > div {
-    margin: 0 10px;
-  }
-  .slick-list {
-    margin: 0 -10px;
-  }
-  
-  .Card {
-    background: #212529;
-    border-radius: 10px;
-    overflow: hidden;
-    height: 324px;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .card-mid {
-    padding: 1rem 1.4rem 1.4rem 1.4rem;
-  }
-  .card-mid p {
-    font-size: 0.8rem !important;
-  }
-  
-  .category {
-    position: relative;
-  }
-  .category::before {
-    content: "";
-    background: rgb(255, 61, 61);
-    position: absolute;
-    top: calc(100% + 10px);
-    left: 0;
-    right: 0;
-    height: 2px;
-  }
-  
-  .card-top {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .card-top img {
-    margin: 2rem 1rem 1rem 1.5rem;
-    width: 4rem;
-    border-radius: 50%;
-  }
-  .card-top h1 {
-    margin-top: 1rem;
-    font-size: 1.2rem !important;
-    font-weight: 600;
-  }
-  .card-top p {
-    padding-top: 5px;
-    font-size: 0.8rem;
-    color: #40f4be;
-  }
+}
 
-
-
-  /* ---------------------------------------------------------------------- */
-  @media (max-width: 350px){
-    .carousel {
-      margin-top: 50px !important;
-
-    }
+@media (min-width: 1550px) {
+  .carousel {
+    margin-top: 200px;
+    /* height: 140vh; */
   }
-
-  @media (max-width: 600px) {
-    #category {
-      width: 100%;
-      text-align: center;
-      padding: 0rem 1rem;
-    }
-    .carousel {
-      margin-top: -80px;
-
-    }
-    .cardMain{
-      width: 80% !important;
-    }
-    h2 {
-      font-size: 30px !important;
-    }
-    .reviewContent {
-      text-align: center;
-    }
-    .MuiGrid-root img {
-      display: none;
-    }
-    .carousel {
-      padding: 4rem 0rem;
-    }
-    .grid1{
-      font-size: 22px !important;
-      padding: 0 14px;
-    }
-    .grid2{
-      font-size: 14px !important;
-      font-weight: 500 !important;
-      padding: 0 14px;
-    }
-
-  }
-  
-
-  @media (max-width: 900px){
-    .MuiGrid-root img {
-      display: none;
-    }
-    .cardMain{
-      width: 100%;
-    }
-  }
-
-  @media (min-width: 1550px){
-    .carousel {
-      margin-top: 200px;
-      /* height: 140vh; */
-    }
-  }
+}
