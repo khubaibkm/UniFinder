@@ -37,6 +37,7 @@ h6 {
 .css-17zdts0-MuiPaper-root-MuiCard-root {
   box-shadow: none !important;
 }
+
 .carousel-row {
   display: flex;
   flex-wrap: wrap;
@@ -113,13 +114,18 @@ h6 {
 }
 
 /* ---------------------------------------------------------------------- */
-@media (max-width: 376px) {
+
+@media (max-width: 341px) {
   .carousel {
     margin-top: 50px !important;
-    height: 150vh !important;
+    height: 180vh !important;
   }
 }
-
+@media (max-width: 394px) {
+  .carousel {
+    height: 145vh !important;
+  }
+}
 @media (max-width: 600px) {
   #category {
     width: 100%;
@@ -162,6 +168,9 @@ h6 {
   }
   .cardMain {
     width: 100%;
+  }
+  .carousel {
+    height: 105vh;
   }
 }
 
