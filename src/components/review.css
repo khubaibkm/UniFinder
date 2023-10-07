@@ -4,8 +4,9 @@
   padding: 0rem 5rem;
 }
 .carousel {
-  margin-top: 80px;
-  height: 120vh;
+  height: 100vh;
+  position: relative;
+  bottom: 120px;
 }
 h2 {
   font-size: 35px !important;
@@ -115,16 +116,16 @@ h6 {
 
 /* ---------------------------------------------------------------------- */
 
-@media (max-width: 341px) {
-  .carousel {
-    margin-top: 50px !important;
-    height: 180vh !important;
-  }
-}
 @media (max-width: 394px) {
   .carousel {
-    height: 145vh !important;
+    margin-top: 50px !important;
   }
+}
+@media (max-width: 341px) {
+  .carousel {
+    margin-top: 220px !important;
+  }
+  
 }
 @media (max-width: 600px) {
   #category {
@@ -133,7 +134,7 @@ h6 {
     padding: 0rem 1rem;
   }
   .carousel {
-    margin-top: -80px;
+    margin-top: 0px;
     height: 115vh;
   }
   .cardMain {
@@ -178,5 +179,12 @@ h6 {
   .carousel {
     margin-top: 200px;
     /* height: 140vh; */
+  }
+}
+
+
+@media (max-height: 800px) {
+  .carousel {
+    height: 120vh;
   }
 }

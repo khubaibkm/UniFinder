@@ -79,7 +79,8 @@ function DrawerAppBar(props) {
                 to={item.toLowerCase()} // Use the item's text as the target (section id)
                 spy={true}
                 smooth={true}
-                duration={600}
+                duration={500}
+                offset={-200}
               >
                 <Button
                   sx={{ color: '#fff', fontWeight: '400', marginRight: '25px' }}
