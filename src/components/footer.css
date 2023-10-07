@@ -49,6 +49,9 @@ footer {
   padding: 15px 0;
   text-align: center;
 }
+
+/* -------------------------------------------------------- */
+
 @media screen and (max-width: 992px) {
   .about,
   .Contact {
@@ -74,5 +77,15 @@ footer {
   }
   .footer_info .footer_width {
     padding: 0 20px;
+  }
+}
+
+@media screen and (max-height: 700px) {
+
+  .footer_info {
+    margin-top: 220px;
+  }
+  .logo{
+    width: 220px;
   }
 }

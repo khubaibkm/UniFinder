@@ -5,7 +5,7 @@ export default function Footer() {
     <footer>
       <div className="footer_info">
         <div className="footer_width about">
-          <img src="/logo_white.png" alt="logo" />
+          <img className="logo" src="/logo_white.png" alt="logo" />
           <p style={{ lineHeight: 1.5 }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
