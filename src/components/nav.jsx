@@ -29,6 +29,9 @@ function DrawerAppBar(props) {
   };
 
   const container = window !== undefined ? () => window().document.body : undefined;
+  const closeDrawer = () => {
+    setMobileOpen(false);
+  };
 
   const getNavLink = (item) => (
     <Link
@@ -38,6 +41,7 @@ function DrawerAppBar(props) {
       smooth={true}
       duration={500}
       offset={-200}
+      onClick={closeDrawer}
     >
       <Button
         sx={{ color: 'white', fontWeight: '400', marginRight: '25px', fontSize: '15px' }}
