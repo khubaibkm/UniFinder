@@ -1,7 +1,7 @@
 export const ReviewData = [
     {
       id: 1,
-      name: "Asif Siddiqui",
+      name: "Khubaib Ahmad",
       position: "Web Developer",
       about:
         "The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.",
@@ -10,7 +10,7 @@ export const ReviewData = [
   
     {
       id: 2,
-      name: "Khubaib Ahmad",
+      name: "Asif Siddiqui",
       position: "Web Developer",
       about:
         "The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.",

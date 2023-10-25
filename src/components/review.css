@@ -35,7 +35,7 @@ h6 {
   padding: 20px;
 }
 
-.css-17zdts0-MuiPaper-root-MuiCard-root {
+.MuiPaper-root {
   box-shadow: none !important;
 }
 
@@ -58,7 +58,7 @@ h6 {
 }
 
 .slick-slide > div {
-  margin: 0 10px;
+  margin: 0 20px;
 }
 .slick-list {
   margin: 0 -10px;
@@ -101,6 +101,7 @@ h6 {
 .card-top img {
   margin: 2rem 1rem 1rem 1.5rem;
   width: 4rem;
+  padding: 0px;
   border-radius: 50%;
 }
 .card-top h1 {
