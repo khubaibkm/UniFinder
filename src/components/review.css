@@ -125,7 +125,6 @@ h6 {
   .carousel {
     margin-top: 220px !important;
   }
-  
 }
 @media (max-width: 600px) {
   #category {
@@ -181,7 +180,6 @@ h6 {
     /* height: 140vh; */
   }
 }
-
 
 @media (max-height: 800px) {
   .carousel {
