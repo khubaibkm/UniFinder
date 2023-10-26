@@ -1,0 +1,10 @@
+.listings {
+  width: 100%;
+  height: 40vh;
+  background-image: url("map image.jpg");
+  color: white;
+}
+.list {
+  padding-top: 15vh;
+  padding-left: 5vw;
+}
