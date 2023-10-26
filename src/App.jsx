@@ -6,6 +6,7 @@ import { Categories } from "./components/categories";
 import Review from "./components/review";
 import Footer from "./components/footer";
 // import Living from "./components/Living_components/living";
+
 function App() {
   return (
     <>
