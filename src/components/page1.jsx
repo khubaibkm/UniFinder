@@ -1,5 +1,4 @@
 import "./page1.css";
-
 export const Page1 = () => {
   return (
     <div id="page1">

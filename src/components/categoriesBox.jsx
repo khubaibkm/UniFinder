@@ -1,4 +1,5 @@
 import * as React from 'react';
+// import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -7,7 +8,6 @@ import Box from '@mui/material/Box';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -34,7 +34,6 @@ TabPanel.propTypes = {
 
 export default function VerticalTabs() {
   const [value, setValue] = React.useState(0);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -72,28 +71,46 @@ export default function VerticalTabs() {
         } />
       </Tabs>
       <TabPanel className="catContent" value={value} index={0}>
-      <h3>Living</h3>
-      {/* <div className='catdiv'>
-        <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, animi.</h2><br /><br />
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim unde, a animi ad id eveniet, at dolorem velit tempore quibusdam ipsum quisquam ea tenetur exercitationem ab molestiae ullam fuga. Ad.</p></div> */}
+      <h3>One of the most Trending Livings Right now!</h3>
+      <div className='catdiv'>
+        <div className="text-container">
+        <p>Paras Boys Hostel is a fully furnished hostel for boys where each room is designed for double occupancy with separate single beds. Additionally, there are separate cupboards, personal bathroom in each room, free WIFI, free Gym and many more Facilites.
+        </p>
+        <button className="catbtn">Explore More</button>
+
+        </div>
+        <img className='catImg' src="/images/living/paras.JPG" alt="" />
+        </div>
       </TabPanel>
       <TabPanel className="catContent" value={value} index={1}>
-      <h3>Food</h3>
-      {/* <div className='catdiv'>
-        <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, animi.</h2><br /><br />
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim unde, a animi ad id eveniet, at dolorem velit tempore quibusdam ipsum quisquam ea tenetur exercitationem ab molestiae ullam fuga. Ad.</p></div> */}
+      <h3>Top Famous Restaurants category is here</h3>
+      <div className='catdiv'>
+      <div className="text-container">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim unde, a animi ad id eveniet, at dolorem velit tempore quibusdam ipsum quisquam ea tenetur exercitationem ab molestiae ullam fuga. Ad.</p>
+        <button className="catbtn">Explore More</button>
+        </div>
+        <img className='catImg' src="https://templatemo.com/templates/templatemo_564_plot_listing/assets/images/tabs-image-01.jpg" alt="" />
+        </div>
       </TabPanel>
       <TabPanel className="catContent" value={value} index={2}>
-      <h3>Shopping</h3>
-      {/* <div className='catdiv'>
-        <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, animi.</h2><br /><br />
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim unde, a animi ad id eveniet, at dolorem velit tempore quibusdam ipsum quisquam ea tenetur exercitationem ab molestiae ullam fuga. Ad.</p></div> */}
+      <h3>One of the Trending Shopping List!</h3>
+      <div className='catdiv'>
+      <div className="text-container">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim unde, a animi ad id eveniet, at dolorem velit tempore quibusdam ipsum quisquam ea tenetur exercitationem ab molestiae ullam fuga. Ad.</p>
+        <button className="catbtn">Explore More</button>
+        </div>
+        <img className='catImg' src="https://templatemo.com/templates/templatemo_564_plot_listing/assets/images/tabs-image-01.jpg" alt="" />
+        </div>
       </TabPanel>
       <TabPanel className="catContent" value={value} index={3}>
-      <h3>Emergency</h3>
-      {/* <div className='catdiv'>
-        <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, animi.</h2><br /><br />
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim unde, a animi ad id eveniet, at dolorem velit tempore quibusdam ipsum quisquam ea tenetur exercitationem ab molestiae ullam fuga. Ad.</p></div> */}
+      <h3>Check Out Emergency and Safety Choices!</h3>
+      <div className='catdiv'>
+      <div className="text-container">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim unde, a animi ad id eveniet, at dolorem velit tempore quibusdam ipsum quisquam ea tenetur exercitationem ab molestiae ullam fuga. Ad.</p>
+        <button className="catbtn">Explore More</button>
+        </div>
+        <img className='catImg' src="https://templatemo.com/templates/templatemo_564_plot_listing/assets/images/tabs-image-01.jpg" alt="" />
+        </div>
       </TabPanel>
     </Box>
   );
