@@ -6,7 +6,6 @@ import { Categories } from "./components/categories";
 import Review from "./components/review";
 import Footer from "./components/footer";
 // import Living from "./components/Living_components/living";
-
 function App() {
   return (
     <>
@@ -28,7 +27,7 @@ function App() {
         </div>
         {/* <div id="about us">
 
-        </div> */}
+          </div> */}
         <div id="contact us">
           <Footer />
         </div>

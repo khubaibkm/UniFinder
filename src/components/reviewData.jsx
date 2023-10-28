@@ -2,7 +2,7 @@ export const ReviewData = [
     {
       id: 1,
       name: "Khubaib Ahmad",
-      position: "Web Developer",
+      position: "Front-end Developer",
       about:
         "The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.",
       proImg: "image-colton.jpg",
@@ -19,8 +19,8 @@ export const ReviewData = [
   
     {
       id: 3,
-      name: "Asif Siddiqui",
-      position: "Web Developer",
+      name: "Junaid Ali Anwar",
+      position: "Coder",
       about:
         "The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.The menu at Restaurant Name offers a diverse range of dishes, ensuring there's something for everyone. ",
       proImg: "image-colton.jpg",
@@ -28,32 +28,32 @@ export const ReviewData = [
   
     {
       id: 4,
-      name: "Asif Siddiqui",
-      position: "Web Developer",
+      name: "Mohd. Atif",
+      position: "React Developer",
       about:
         " The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.",
       proImg: "image-colton.jpg",
     },
     {
       id: 5,
-      name: "Asif Siddiqui",
-      position: "Web Developer",
+      name: "Mohd. Farhan",
+      position: "React Developer",
       about:
         " The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.",
       proImg: "image-colton.jpg",
     },
     {
       id: 6,
-      name: "Asif Siddiqui",
-      position: "Web Developer",
+      name: "Mustufa Khan",
+      position: "Arm Wrestler",
       about:
         " The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.",
       proImg: "image-colton.jpg",
     },
     {
       id: 7,
-      name: "Asif Siddiqui",
-      position: "Web Developer",
+      name: "Mohd. Arish Siddiqui",
+      position: "Devops",
       about:
         "The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.The menu at [Restaurant Name] offers a diverse range of dishes, ensuring there's something for everyone.",
       proImg: "image-colton.jpg",

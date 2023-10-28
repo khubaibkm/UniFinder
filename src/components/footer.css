@@ -52,20 +52,7 @@ footer {
 
 /* -------------------------------------------------------- */
 
-@media screen and (max-width: 992px) {
-  .about,
-  .Contact {
-    width: 35px;
-  }
-  .link {
-    width: 30%;
-  }
-  .footer_info .footer_width {
-    padding: 0 20px;
-  }
-}
-
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 1100px) {
   .about,
   .Contact,
   .link {
@@ -76,9 +63,9 @@ footer {
     flex-direction: column;
   }
   .footer_info .footer_width {
-    padding: 0 20px;
-  }
+    padding: 0 20px;}
 }
+
 @media screen and (max-width: 600px){
   .logo{
     width: 220px;

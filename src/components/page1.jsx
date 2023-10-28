@@ -1,5 +1,5 @@
 import "./page1.css";
-// import { Link } from "react-router-dom";
+
 export const Page1 = () => {
   return (
     <div id="page1">

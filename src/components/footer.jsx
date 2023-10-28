@@ -7,10 +7,7 @@ export default function Footer() {
         <div className="footer_width about">
           <img className="logo" src="/logo_white.png" alt="logo" />
           <p style={{ lineHeight: 1.5 }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in repreh
+          UniFinder is a web application that helps users discover information about various amenities and services in the local area around Integral university campus. Whether you're a freshman looking for the best places to eat or a first-year student in search of nearby hostels, UniFinder provides you with a single platform to access essential information.
           </p>
         </div>
 
