@@ -1,9 +1,8 @@
 import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import DrawerAppBar from "./components/nav";
 import ScrollToTop from "react-scroll-to-top";
-import { Page1 } from "./components/page1";
-import { Categories } from "./components/categories";
-import Review from "./components/review";
+import Home from "./pages/home/home";
 import Footer from "./components/footer";
 // import Living from "./components/Living_components/living";
 function App() {
@@ -16,21 +15,12 @@ function App() {
       />
       <div className="app">
         <DrawerAppBar />
-        <div id="home">
-          <Page1 />
-        </div>
-        <div id="categories">
-          <Categories />
-        </div>
-        <div id="reviews">
-          <Review />
-        </div>
-        {/* <div id="about us">
-
-          </div> */}
+        <Router>
+        <Home />
         <div id="contact us">
           <Footer />
         </div>
+        </Router>
       </div>
     </>
   );
