@@ -1,5 +1,6 @@
 import * as React from 'react';
 import "./page1.css"
+import { scroller } from 'react-scroll';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -41,11 +42,13 @@ function DrawerAppBar(props) {
   };
 
   const scrollToId = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      closeDrawer();
-    }
+    scroller.scrollTo(id, {
+      duration: 500,
+      delay: 100,
+      smooth: true,
+      offset: -200, 
+    });
+    closeDrawer();
   };
 
   const getNavLink = (item) => {
@@ -57,7 +60,7 @@ function DrawerAppBar(props) {
           spy={true}
           smooth={true}
           duration={500}
-          offset={-200}
+          offset={-100}
           onClick={closeDrawer}
         >
           <Button
