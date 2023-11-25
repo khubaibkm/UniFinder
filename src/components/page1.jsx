@@ -1,4 +1,5 @@
 import "./page1.css";
+import { Link } from "react-router-dom";
 
 export const Page1 = () => {
   return (
@@ -8,31 +9,36 @@ export const Page1 = () => {
         Discover the Best Nearby Places & <br /> Things
       </h1>
       <div id="mypic">
-        <a href="#">
+        <Link to="living">
+
           <div className="icon-container">
             <img src="/icons/living.png" alt="living" />
             <p>Living</p>
           </div>
-        </a>
-
-        <a href="#">
+        </Link>
+        <Link to="food">
+      
           <div className="icon-container">
             <img src="/icons/food.png" alt="food" />
             <p>Food</p>
           </div>
-        </a>
-        <a href="#">
+        
+        </Link>
+        <Link to="shopping">
+      
           <div className="icon-container">
             <img src="/icons/shopping.png" alt="shopping" />
             <p>Shopping</p>
           </div>
-        </a>
-        <a className="emer" href="#">
+        
+        </Link>
+        <Link to="emergency" className="emer">
           <div className="icon-container">
             <img src="/icons/emergency.png" alt="emergency" />
             <p>Emergency</p>
           </div>
-        </a>
+        
+        </Link>
       </div>
       <div id="arr">
         <a href="#page2">

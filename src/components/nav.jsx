@@ -15,10 +15,16 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { Link } from 'react-scroll'; 
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 260;
-const navItems = ['HOME', 'CATEGORIES', 'REVIEWS', 'ABOUT US', 'CONTACT US'];
+const navItems = [
+  { text: 'HOME', link: '/' },
+  { text: 'CATEGORIES', link: '#categories' },
+  { text: 'REVIEWS', link: '#reviews' },
+  { text: 'ABOUT US', link: '/aboutus' },
+  { text: 'CONTACT US', link: '#contact us' },
+];
 
 function DrawerAppBar(props) {
   const { window } = props;
@@ -29,39 +35,67 @@ function DrawerAppBar(props) {
   };
 
   const container = window !== undefined ? () => window().document.body : undefined;
+
   const closeDrawer = () => {
     setMobileOpen(false);
   };
 
-  const getNavLink = (item) => (
-    <Link
-      key={item}
-      to={item.toLowerCase()} 
-      spy={true}
-      smooth={true}
-      duration={500}
-      offset={-200}
-      onClick={closeDrawer}
-    >
-      <Button
-        sx={{ color: 'white', fontWeight: '400', marginRight: '25px', fontSize: '15px' }}
-        className='nav-button'
-      >
-        {item}
-      </Button>
-    </Link>
-  );
+  const scrollToId = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      closeDrawer();
+    }
+  };
+
+  const getNavLink = (item) => {
+    if (item.text === 'HOME' || item.text === 'ABOUT US') {
+      return (
+        <Link
+          key={item.text}
+          to={item.link.toLowerCase()}
+          spy={true}
+          smooth={true}
+          duration={500}
+          offset={-200}
+          onClick={closeDrawer}
+        >
+          <Button
+            sx={{ color: 'white', fontWeight: '400', marginRight: '25px', fontSize: '15px' }}
+            className='nav-button'
+          >
+            {item.text}
+          </Button>
+        </Link>
+      );
+    } else {
+      return (
+        <Button
+          key={item.text}
+          onClick={() => scrollToId(item.link.slice(1))}
+          sx={{ color: 'white', fontWeight: '400', marginRight: '25px', fontSize: '15px' }}
+          className='nav-button'
+        >
+          {item.text}
+        </Button>
+      );
+    }
+  };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center'}}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        <img className='logo-black' src="/logo_black.png" alt="" />
+        <Link to="/">
+          <a>
+            <img className='logo-black' src="/logo_black.png" alt="" />
+          </a>
+        </Link>
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center', color:'black'}}>
+          <ListItem key={item.text} disablePadding>
+            <ListItemButton sx={{ textAlign: 'center', color: 'black' }}>
               <ListItemText primary={getNavLink(item)} />
             </ListItemButton>
           </ListItem>
@@ -73,14 +107,14 @@ function DrawerAppBar(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar component="nav" sx={{backgroundColor: "black"}}>
+      <AppBar component="nav" sx={{ backgroundColor: "black" }}>
         <Toolbar sx={{ padding: "0 5rem 0 5rem !important" }}>
           <IconButton className='navicon'
             color="inherit"
             aria-label="open drawer"
             edge="end"
             onClick={handleDrawerToggle}
-            sx={{ ml: 'auto', display: { sm: 'none' }}}
+            sx={{ ml: 'auto', display: { sm: 'none' } }}
           >
             <MenuIcon />
             <img className='logo-white' src="/logo_white.png" alt="" />
@@ -88,7 +122,7 @@ function DrawerAppBar(props) {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }}}
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
             <img className='logo-white' src="/logo_white.png" alt="" />
           </Typography>
@@ -98,7 +132,7 @@ function DrawerAppBar(props) {
         </Toolbar>
       </AppBar>
       <nav>
-        <Drawer 
+        <Drawer
           container={container}
           variant="temporary"
           open={mobileOpen}

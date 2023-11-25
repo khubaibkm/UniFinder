@@ -14,11 +14,7 @@ const Home = () => {
         </div>
         <div id="reviews">
           <Review />
-        </div>
-        {/* <div id="about us">
-
-          </div> */}
-      
+        </div>  
     </div>
   )
 }

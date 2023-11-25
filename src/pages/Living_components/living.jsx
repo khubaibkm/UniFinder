@@ -1,9 +1,7 @@
 import "./living.css";
-import { BrowserRouter as Router, Routes } from "react-router-dom";
 export default function Living() {
   return (
-      <Router>
-        <Routes>
+      
         <div className="listings">
       <div className="list">
         <p style={{ marginBottom: "13px", fontSize: "13px" }}>
@@ -15,7 +13,6 @@ export default function Living() {
         </p>
       </div>
     </div>
-        </Routes>
-      </Router>
-  );
+        
+        );
 }
