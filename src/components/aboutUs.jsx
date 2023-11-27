@@ -1,7 +1,7 @@
 import React from 'react'
 import "./aboutUs.css"
-import { useEffect } from 'react';
 import DrawerAppBarCat from './navCat';
+import { useEffect } from 'react';
 
 const AboutUs = () => {
   useEffect(() => {
