@@ -20,14 +20,14 @@ import { Link } from 'react-router-dom';
 
 const drawerWidth = 260;
 const navItems = [
-  { text: 'HOME', link: '#home' },
+  { text: 'HOME', link: '/' },
   { text: 'CATEGORIES', link: '#categories' },
   { text: 'REVIEWS', link: '#reviews' },
   { text: 'ABOUT US', link: '/aboutus' },
   { text: 'CONTACT US', link: '#contact us' },
 ];
 
-function DrawerAppBar(props) {
+function DrawerAppBarCat(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -52,7 +52,7 @@ function DrawerAppBar(props) {
   };
 
   const getNavLink = (item) => {
-    if (item.text === 'ABOUT US') {
+    if (item.text === 'HOME' || item.text === 'ABOUT US' || item.text === 'CATEGORIES') {
       return (
         <Link
           key={item.text}
@@ -158,7 +158,7 @@ function DrawerAppBar(props) {
   );
 }
 
-DrawerAppBar.propTypes = {
+DrawerAppBarCat.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
@@ -166,4 +166,4 @@ DrawerAppBar.propTypes = {
   window: PropTypes.func,
 };
 
-export default DrawerAppBar;
+export default DrawerAppBarCat;

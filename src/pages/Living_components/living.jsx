@@ -1,8 +1,10 @@
 import "./living.css";
+import DrawerAppBarCat from "../../components/navCat";
+
 export default function Living() {
   return (
-      
-        <div className="listings">
+    <div className="listings">
+          <DrawerAppBarCat/>      
       <div className="list">
         <p style={{ marginBottom: "13px", fontSize: "13px" }}>
           CHECK OUT OUR LISTINGS

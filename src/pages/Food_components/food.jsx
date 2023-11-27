@@ -1,8 +1,12 @@
 import React from 'react'
+import DrawerAppBarCat from '../../components/navCat'
 
 const Food = () => {
   return (
-    <div>food</div>
+    <div>
+      <DrawerAppBarCat/>
+      food
+      </div>
   )
 }
 

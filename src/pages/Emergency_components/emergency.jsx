@@ -1,8 +1,12 @@
 import React from 'react'
+import DrawerAppBarCat from '../../components/navCat'
 
 const Emergency = () => {
   return (
-    <div>emergency</div>
+    <div>
+      <DrawerAppBarCat/>
+      emergency
+    </div>
   )
 }
 
