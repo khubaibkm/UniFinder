@@ -1,11 +1,10 @@
 .listings {
-  width: 100%;
   height: 40vh;
-  color: white;
   background-image: url("/map image.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  color: white;
 }
 
 .list {

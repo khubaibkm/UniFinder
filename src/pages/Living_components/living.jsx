@@ -1,5 +1,6 @@
 import "./living.css";
 import DrawerAppBarCat from "../../components/navCat";
+import Footer from "../../components/footer";
 
 export default function Living() {
   return (
@@ -14,7 +15,13 @@ export default function Living() {
           Categories.
         </p>
       </div>
+
+      
+      <div id="contact us">
+          <Footer />
+        </div> 
     </div>
         
         );
 }
+

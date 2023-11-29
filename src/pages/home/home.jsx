@@ -4,15 +4,15 @@ import { Categories } from '../../components/categories'
 import Review from '../../components/review'
 import DrawerAppBar from '../../components/nav'
 import { useEffect } from 'react';
-
-
+import "./home.css";
+import Footer from '../../components/footer'
 
 const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div>
+    <div className='home'>
       <DrawerAppBar />
            <div id="home">
           <Page1 />
@@ -22,7 +22,10 @@ const Home = () => {
         </div>
         <div id="reviews">
           <Review />
-        </div>  
+        </div> 
+        <div id="contact us">
+          <Footer />
+        </div> 
     </div>
   )
 }

@@ -1,13 +1,7 @@
-.shopping {
-    height: 40vh;
+.home {
+    height: 100vh;
     background-image: url("/map image.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    color: white;
-  }
-
-  .shop-heading {
-    padding-top: 15vh;
-    padding-left: 5vw;
   }
