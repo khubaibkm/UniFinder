@@ -109,7 +109,7 @@ export default function Living() {
           <div className="living-card-top">
             <img
               className="living-card-top-pic"
-              src="public/images/living/hostel.png"
+              src="../hostel.png"
               alt="pro"
             />
             <div
@@ -132,7 +132,7 @@ export default function Living() {
             <img
               style={{ margin: " 2rem -0.3rem 2rem 1.5rem" }}
               className="living-card-top-pic"
-              src="public/images/living/apartment.png"
+              src="../apartment.png"
               alt="pro"
             />
             <div className="details">
@@ -140,11 +140,7 @@ export default function Living() {
             </div>
           </div>
           <div className="living-card-top">
-            <img
-              className="living-card-top-pic"
-              src="public/images/living/flats.png"
-              alt="pro"
-            />
+            <img className="living-card-top-pic" src="../flats.png" alt="pro" />
             <div className="details">
               <h1>Flats</h1>
             </div>
