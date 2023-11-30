@@ -19,33 +19,48 @@
 }
 .living_Card {
   display: flex;
-  justify-content: space-evenly;
+  justify-content:space-evenly;
   background-color: white !important;
   align-items: center;
   margin-top: 40px;
   border-radius: 0px !important;
 }
 .living-card-top {
-  background: #4a566c;
+  background: #212529;
   border-radius: 8px;
-  width: 18.75rem;
-  height: 6.875rem;
+  width: 17rem;
+  height: 7.5rem;
   display: flex;
   align-items: center;
   gap: 1rem;
+  transition: background 0.2s ease; /* Added transition property */
 }
+
+.living-card-top:hover {
+  background: #4a566c;
+  cursor: pointer;
+}
+
+
 .living-card-top img {
+  position: relative;
+  top: 0.8rem;
+  left: 0.8rem;
+  width: 2.5rem;
+}
+.living-card-top-white-circle{
   background: white;
   margin: 2rem 0.3rem 2rem 1.5rem;
   width: 4rem;
-  padding: 8px;
+  height: 4rem;
   border-radius: 50%;
 }
 
+
 .living-card-top h1 {
-  margin-top: 1rem;
-  font-size: 2rem !important;
-  font-weight: 500;
+  margin-top: 0.5rem;
+  font-size: 1.4rem !important;
+  font-weight: 400;
   color: white;
 }
 .details {

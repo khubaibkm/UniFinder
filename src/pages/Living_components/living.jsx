@@ -107,11 +107,13 @@ export default function Living() {
       <div id="living_page">
         <div className="living_Card">
           <div className="living-card-top">
+          <div className="living-card-top-white-circle">
             <img
               className="living-card-top-pic"
-              src="../hostel.png"
+              src="/images/living/hostel.png"
               alt="pro"
             />
+            </div>
             <div
               className="details"
               onMouseEnter={handleDropdownToggle}
@@ -129,18 +131,21 @@ export default function Living() {
             </div>
           </div>
           <div className="living-card-top">
+            <div className="living-card-top-white-circle">
             <img
-              style={{ margin: " 2rem -0.3rem 2rem 1.5rem" }}
               className="living-card-top-pic"
-              src="../apartment.png"
+              src="/images/living/apartment.png"
               alt="pro"
             />
+            </div>
             <div className="details">
               <h1>Apartments</h1>
             </div>
           </div>
           <div className="living-card-top">
-            <img className="living-card-top-pic" src="../flats.png" alt="pro" />
+          <div className="living-card-top-white-circle">
+            <img className="living-card-top-pic" src="/images/living/flats.png" alt="pro" />
+            </div>
             <div className="details">
               <h1>Flats</h1>
             </div>
