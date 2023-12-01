@@ -106,19 +106,19 @@ export default function Living() {
 
       <div id="living_page">
         <div className="living_Card">
-          <div className="living-card-top">
-          <div className="living-card-top-white-circle">
-            <img
-              className="living-card-top-pic"
-              src="/images/living/hostel.png"
-              alt="pro"
-            />
+          <div
+            className="living-card-top"
+            onMouseEnter={handleDropdownToggle}
+            onMouseLeave={handleDropdownToggle}
+          >
+            <div className="living-card-top-white-circle">
+              <img
+                className="living-card-top-pic"
+                src="/images/living/hostel.png"
+                alt="pro"
+              />
             </div>
-            <div
-              className="details"
-              onMouseEnter={handleDropdownToggle}
-              onMouseLeave={handleDropdownToggle}
-            >
+            <div className="details">
               <h1>Hostel</h1>
               {dropdownVisible && (
                 <div>
@@ -130,24 +130,52 @@ export default function Living() {
               )}
             </div>
           </div>
-          <div className="living-card-top">
+          <div
+            className="living-card-top"
+            onMouseEnter={handleDropdownToggle}
+            onMouseLeave={handleDropdownToggle}
+          >
             <div className="living-card-top-white-circle">
-            <img
-              className="living-card-top-pic"
-              src="/images/living/apartment.png"
-              alt="pro"
-            />
+              <img
+                className="living-card-top-pic"
+                src="/images/living/apartment.png"
+                alt="pro"
+              />
             </div>
             <div className="details">
               <h1>Apartments</h1>
+              {dropdownVisible && (
+                <div>
+                  <ul>
+                    <li onClick={handleGirlsClick}>GIRLS</li>
+                    <li onClick={handleBoysClick}>BOYS</li>
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
-          <div className="living-card-top">
-          <div className="living-card-top-white-circle">
-            <img className="living-card-top-pic" src="/images/living/flats.png" alt="pro" />
+          <div
+            className="living-card-top"
+            onMouseEnter={handleDropdownToggle}
+            onMouseLeave={handleDropdownToggle}
+          >
+            <div className="living-card-top-white-circle">
+              <img
+                className="living-card-top-pic"
+                src="/images/living/flats.png"
+                alt="pro"
+              />
             </div>
             <div className="details">
               <h1>Flats</h1>
+              {dropdownVisible && (
+                <div>
+                  <ul>
+                    <li onClick={handleGirlsClick}>GIRLS</li>
+                    <li onClick={handleBoysClick}>BOYS</li>
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -178,10 +206,7 @@ export default function Living() {
                   <div className="Rent">
                     <h5 style={{ fontSize: "17px" }}>Rent</h5>
                     <p>
-                      Balcony: <span>{item.Rent}</span>
-                    </p>
-                    <p>
-                      Non-balcony: <span>Rs. 3500/month.</span>
+                      <span>{item.Rent}</span>
                     </p>
                   </div>
                   {/* Media */}
