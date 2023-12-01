@@ -8,6 +8,7 @@ import Food from "./pages/Food_components/food";
 import Emergency from "./pages/Emergency_components/emergency";
 import Shopping from "./pages/Shopping_components/shopping";
 import AboutUs from "./components/aboutUs";
+
 function App() {
   return (
     <>
@@ -24,7 +25,7 @@ function App() {
           <Route path="food" element={<Food/>}/>
           <Route path="shopping" element={<Shopping/>}/>
           <Route path="emergency" element={<Emergency/>}/>       
-          <Route path="aboutus" element={<AboutUs/>}/>           
+          <Route path="aboutus" element={<AboutUs/>}/>                      
         </Routes>
         </Router>
       </div>

@@ -101,41 +101,16 @@
   display: block;
 }
 
-@media (max-width: 600px) {
-  .living_Card {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-  }
-  .living-card-top {
-    width: 16rem;
-    height: 5.75rem;
-  }
-  .living-card-top-pic {
-    margin: 1rem 1rem 1rem 1.5rem;
-    width: 4rem;
-    padding: 8px;
-  }
-  .living-card-top h1 {
-    font-size: 1.5rem;
-  }
-}
-@media (max-width: 800px) {
-  .living-card-top {
-    width: 14.5rem;
-    height: 5.75rem;
-  }
-  .living-card-top h1 {
-    font-size: 1.5rem;
-  }
-  .living-card-top-pic {
-    margin: 1rem 0.5rem 1rem 1.5rem;
-    width: 4rem;
-    padding: 8px;
-  }
+/* modal box */
+
+.boxmodal{
+  height: 700px;
+  width: 500px;
+  background-color: white;
+  border-radius: 8px;
+  position: relative;
+  left: 25rem;
+  padding: 25px;
 }
 
 /* living-content */
@@ -156,14 +131,15 @@
   color: black;
   background: #f8f4f4;
   line-height: 20px !important;
+
 }
 .live_pic {
   width: 25rem;
-  height: 22rem !important;
+  height: 23.2rem !important;
   border-radius: 10px 0px 0px 10px !important;
 }
 .live_data {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 .specs {
   white-space: pre-line;
@@ -199,4 +175,177 @@
   justify-content: center;
   align-items: center;
   margin: 20px;
+}
+
+@media (max-width: 1400px){
+  .boxmodal{
+    height: 30rem;
+    left: 14rem;
+    top: 2rem;
+  }
+}
+
+@media (max-width: 1000px){
+  .living-card-top {
+    width: 14.5rem;
+    height: 5.75rem;
+  }
+  .living-card-top h1 {
+    font-size: 1.15rem !important;
+  }
+  .living-card-top-pic {
+    margin: -.4rem -1.5rem 1.5rem -.4rem;
+    width: 3.2rem !important;
+    padding: 8px;
+  }
+  .live_card{
+    width: 46rem;
+  }
+  .live_pic {
+    width: 21rem;
+    height: 23.2rem;
+    border-radius: 10px 0px 0px 10px;
+  }
+  .boxmodal{
+    left: 6rem;
+    top: -2rem;
+  }
+}
+
+
+
+@media (max-width: 800px) {
+  .living-card-top {
+    width: 13rem;
+    height: 5.75rem;
+  }
+  .living-card-top h1 {
+    font-size: .9rem !important;
+  }
+  .living-card-top-pic {
+    margin: -.4rem 0.5rem 1rem -.3rem;
+    width: 4rem;
+    padding: 8px;
+  }
+  .live_card{
+    width: 35rem !important;
+    height: 18rem;
+  }
+  .live_pic {
+    width: 15rem !important;
+    height: 19.2rem !important;
+    border-radius: 10px 0px 0px 10px !important;
+  }
+  .hostel-item {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+  .Rent {
+    padding-bottom: 10px;
+  }
+  .media-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0px;
+  }
+  .specs{
+    white-space:unset;
+  }
+  .external-data {
+    font-size: 12px !important;
+    position: relative;
+    right: 0.8rem;
+  }
+  .media-img {
+    margin-left: -5px;
+    width: 28px !important;
+    padding-bottom: 1px !important;
+  }
+  .boxmodal{
+    left: 0rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .living_Card {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+  .living-card-top {
+    width: 16rem;
+    height: 5.75rem;
+  }
+  .living-card-top h1 {
+    font-size: 1.2rem !important;
+  }
+  .live_card{
+    width: 22rem !important;
+    height: 40rem;
+    flex-direction: column;
+  }
+  .live_pic {
+    width: 21.9rem !important;
+    height: 21rem !important;
+    border-radius:10px 10px 0 0 !important;
+
+  }
+  .hostel-item {
+    font-size: 20px;
+    position: relative;
+    bottom: 2rem;
+
+  }
+  .Rent {
+    padding-bottom: 10px;
+  }
+  .media-card {
+    display: flex;
+    margin-left: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .specs{
+    white-space: pre-line;
+    margin-bottom: 1rem;
+  }
+
+  .facility{
+    margin-top: -1rem;
+  }
+  .Rent{
+    margin-bottom: 1rem;
+  }
+ 
+  .boxmodal{
+    width: 24rem;
+    height: 35rem;
+  }
+}
+
+@media (max-width: 420px){
+  .live_card{
+    width: 19rem !important;
+  }
+  .live_pic {
+    width: 18.9rem !important;
+
+  }
+
+  .Rent {
+    padding-bottom: 10px;
+  }
+  .media-card {
+    display: flex;
+    margin-bottom: 1rem;
+    margin-left: 1.3rem;
+  }
+  .boxmodal{
+    width: 19rem;
+  }
+
 }

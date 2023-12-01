@@ -145,7 +145,7 @@ export const MainData = [
   {
     id: 11,
     hostel: "Verma Height Boys Hostel",
-    specs: `Rooms with Two single beds with kitchen for Boys`,
+    specs: `Rooms with Two single beds with kitchen`,
     Free: " cold purified water , gyser",
     Paid: " Mess.",
     Rent: "Rs. 2500 -4000/month",

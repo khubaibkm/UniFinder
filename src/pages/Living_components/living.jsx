@@ -3,6 +3,7 @@ import "./living.css";
 import DrawerAppBarCat from "../../components/navCat";
 import Footer from "../../components/footer";
 import { MainData } from "./living_data";
+import Modal from 'react-modal';
 
 export default function Living() {
   const [sortOrder, setSortOrder] = useState("asc"); // "asc" or "desc"
@@ -11,6 +12,15 @@ export default function Living() {
   const [postsPerPage] = useState(4);
   const [sortCriteria, setSortCriteria] = useState("");
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const getdata = () => {
     setData(MainData);
@@ -211,6 +221,7 @@ export default function Living() {
                   </div>
                   {/* Media */}
                   <div className="media-card">
+                    
                     <div className="media">
                       <a
                         href="#"
@@ -244,21 +255,34 @@ export default function Living() {
                         </p>
                       </a>
                     </div>
-                    <div className="media">
-                      <a href="#">
-                        <img
-                          className="media-img"
-                          src={item.mediaImg}
-                          alt="media"
-                        />
-                        <p
-                          className="external-data"
-                          style={{ marginLeft: "7px", color: "black" }}
-                        >
-                          Media
-                        </p>
-                      </a>
-                    </div>
+                  <div className="media">
+                <a onClick={openModal}>
+                <img className="media-img" src={item.mediaImg} alt="media" />
+                <p className="external-data" style={{ marginLeft: "7px", color: "black" }}>
+                        Media
+                  </p>
+                    </a>
+                   </div>
+
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel="Media Modal" className="boxmodal"
+        style={{
+          overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0.3)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          },
+        }}
+        
+      >
+        {/* Your modal content goes here */}
+        <p>This is the media modal content.</p>
+        <button onClick={closeModal}>Close Modal</button>
+      </Modal>
+
                     <div className="media">
                       <a href="#">
                         <img
