@@ -3,7 +3,7 @@ import "./living.css";
 import DrawerAppBarCat from "../../components/navCat";
 import Footer from "../../components/footer";
 import { MainData } from "./living_data";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 
 export default function Living() {
   const [sortOrder, setSortOrder] = useState("asc"); // "asc" or "desc"
@@ -82,23 +82,16 @@ export default function Living() {
   }
 
   // contact
-  function showPhoneNumber(phoneNumber) {
-    alert("Phone Number: " + phoneNumber);
-    // You can also use a modal or other UI components instead of alert
+  function showPhoneNumber(contactPerson, phoneNumber1, phoneNumber2) {
+    let alertMessage = `Contact Person: ${contactPerson}\nPhone Number 1: ${phoneNumber1}`;
+
+    if (phoneNumber2) {
+      alertMessage += `\nPhone Number 2: ${phoneNumber2}`;
+    }
+
+    alert(alertMessage);
   }
 
-  // Address
-  const item = {
-    addressImg:
-      "https://lh5.googleusercontent.com/p/AF1QipNVK7sGNXhNy62uYkJPXzLlZdwEbaPI0D_L8LsD=w426-h240-k-no",
-    latitude: "26.956781240938767",
-    longitude: "80.99797393547381",
-  };
-
-  const handleAddressClick = () => {
-    const mapsUrl = `https://www.google.com/maps?q=${item.latitude},${item.longitude}`;
-    window.open(mapsUrl, "_blank");
-  };
   return (
     <>
       <div className="listings">
@@ -221,11 +214,16 @@ export default function Living() {
                   </div>
                   {/* Media */}
                   <div className="media-card">
-                    
                     <div className="media">
                       <a
                         href="#"
-                        onClick={() => showPhoneNumber("+918604899882")}
+                        onClick={() =>
+                          showPhoneNumber(
+                            item.contactPerson,
+                            item.phone1,
+                            item.phone2
+                          )
+                        }
                       >
                         <img
                           className="media-img"
@@ -241,7 +239,11 @@ export default function Living() {
                       </a>
                     </div>
                     <div className="media">
-                      <a href="#" onClick={handleAddressClick}>
+                      <a
+                        href={item.map}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <img
                           className="media-img"
                           src={item.addressImg}
@@ -255,33 +257,40 @@ export default function Living() {
                         </p>
                       </a>
                     </div>
-                  <div className="media">
-                <a onClick={openModal}>
-                <img className="media-img" src={item.mediaImg} alt="media" />
-                <p className="external-data" style={{ marginLeft: "7px", color: "black" }}>
-                        Media
-                  </p>
-                    </a>
-                   </div>
+                    <div className="media">
+                      <a onClick={openModal}>
+                        <img
+                          className="media-img"
+                          src={item.mediaImg}
+                          alt="media"
+                        />
+                        <p
+                          className="external-data"
+                          style={{ marginLeft: "7px", color: "black" }}
+                        >
+                          Media
+                        </p>
+                      </a>
+                    </div>
 
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={closeModal}
-        contentLabel="Media Modal" className="boxmodal"
-        style={{
-          overlay: {
-            backgroundColor: 'rgba(0, 0, 0, 0.3)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          },
-        }}
-        
-      >
-        {/* Your modal content goes here */}
-        <p>This is the media modal content.</p>
-        <button onClick={closeModal}>Close Modal</button>
-      </Modal>
+                    <Modal
+                      isOpen={isModalOpen}
+                      onRequestClose={closeModal}
+                      contentLabel="Media Modal"
+                      className="boxmodal"
+                      style={{
+                        overlay: {
+                          backgroundColor: "rgba(0, 0, 0, 0.3)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        },
+                      }}
+                    >
+                      {/* Your modal content goes here */}
+                      <p>This is the media modal content.</p>
+                      <button onClick={closeModal}>Close Modal</button>
+                    </Modal>
 
                     <div className="media">
                       <a href="#">
