@@ -80,7 +80,7 @@ export const MainData = [
     category: ["cloth"],
   },
   {
-    id: 5,
+    id: 6,
     shopPlace: "Dress Code",
     specs: "One place for every grocery",
     serviceOptions: "Groceries, Health and Beauty, Food and Beverage",
