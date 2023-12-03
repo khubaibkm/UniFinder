@@ -40,42 +40,63 @@ export default function Living() {
     );
     setSortCriteria(criteria);
   };
-
   const handleNextPage = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    setActiveButton((prevButton) => Math.min(prevButton + 1, totalPages));
+    scrollToTop();
   };
-
+  const [activeButton, setActiveButton] = useState(1);
   const handlePrevPage = () => {
-    setCurrentPage((prevPage) => prevPage - 1);
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+    setActiveButton((prevButton) => Math.max(prevButton - 1, 1));
+    scrollToTop();
+  };
+  const totalPages = Math.ceil(data.length / postsPerPage);
+
+  const handlePageClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    setActiveButton(pageNumber);
+    scrollToTop();
+  };
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // You can change this to "auto" for instant scrolling
+    });
   };
   const handleDropdownToggle = () => {
     setDropdownVisible(!dropdownVisible);
   };
 
-  const lastPostIndex = currentPage * postsPerPage;
-  const firstPostIndex = lastPostIndex - postsPerPage;
-
-  const handleGirlsClick = () => {
-    // Filter data that contains "girls" keyword
-    const girlsData = MainData.filter((item) =>
-      item.specs.toLowerCase().includes("girls")
+  const lastPostIndex = Math.min(currentPage * postsPerPage, data.length);
+  const firstPostIndex = Math.max(lastPostIndex - postsPerPage, 0);
+  const [selectedHostelCategory, setSelectedHostelCategory] = useState("All"); // Default to show all categories
+  const handleGirlsHostelClick = () => {
+    const girlsHostelData = MainData.filter((item) =>
+      item.category.includes("Girl")
     );
-    setData(girlsData);
-    // Reset current page to 1 when applying a filter
+    setData(girlsHostelData);
+    setSelectedHostelCategory("Girls");
     setCurrentPage(1);
-    // Close the dropdown after clicking
     setDropdownVisible(false);
   };
 
   // Create a new function for handling boys filtering
-  const handleBoysClick = () => {
-    const boysData = MainData.filter((item) =>
-      item.specs.toLowerCase().includes("boys")
+  const handleBoysHostelClick = () => {
+    const boysHostelData = MainData.filter((item) =>
+      item.category.includes("Boy")
     );
-    setData(boysData);
+    setData(boysHostelData);
+    setSelectedHostelCategory("Boys");
     setCurrentPage(1);
     setDropdownVisible(false);
   };
+  const filteredData = data.filter((item) => {
+    if (selectedHostelCategory === "All") {
+      return true;
+    }
+    return item.category.includes(selectedHostelCategory);
+  });
   // adjust living-content height
   let livingPageHeight;
   if (data.length > 0 && data.length <= 3) {
@@ -129,8 +150,8 @@ export default function Living() {
               {dropdownVisible && (
                 <div>
                   <ul>
-                    <li onClick={handleGirlsClick}>GIRLS</li>
-                    <li onClick={handleBoysClick}>BOYS</li>
+                    <li onClick={handleGirlsHostelClick}>GIRLS</li>
+                    <li onClick={handleBoysHostelClick}>BOYS</li>
                   </ul>
                 </div>
               )}
@@ -153,8 +174,8 @@ export default function Living() {
               {dropdownVisible && (
                 <div>
                   <ul>
-                    <li onClick={handleGirlsClick}>GIRLS</li>
-                    <li onClick={handleBoysClick}>BOYS</li>
+                    <li onClick={handleGirlsHostelClick}>GIRLS</li>
+                    <li onClick={handleBoysHostelClick}>BOYS</li>
                   </ul>
                 </div>
               )}
@@ -188,148 +209,152 @@ export default function Living() {
 
         {/* living-content */}
         <div className="living-content" style={{ height: livingPageHeight }}>
-          {data
-            .slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage)
-            .map((item) => (
-              <div className="live_card" key={item.id}>
-                <img className="live_pic" src={item.hostel_img} alt="pro" />
-                <div className="live_data">
-                  <h4 className="hostel-item">{item.hostel}</h4>
-                  <p style={{ paddingBottom: "10px" }} className="specs">
-                    {item.specs}
+          {data.slice(firstPostIndex, lastPostIndex).map((item) => (
+            <div className="live_card" key={item.id}>
+              <img className="live_pic" src={item.hostel_img} alt="pro" />
+              <div className="live_data">
+                <h4 className="hostel-item">{item.hostel}</h4>
+                <p style={{ paddingBottom: "10px" }} className="specs">
+                  {item.specs}
+                </p>
+                {/* Facility */}
+                <div className="facility">
+                  <h5 style={{ fontSize: "17px" }}>Facilities</h5>
+                  <p>
+                    Free: <span>{item.Free}</span>
                   </p>
-                  {/* Facility */}
-                  <div className="facility">
-                    <h5 style={{ fontSize: "17px" }}>Facilities</h5>
-                    <p>
-                      Free: <span>{item.Free}</span>
-                    </p>
-                    <p>
-                      Paid: <span>{item.Paid}</span>
-                    </p>
-                  </div>
-                  {/*rent  */}
-                  <div className="Rent">
-                    <h5 style={{ fontSize: "17px" }}>Rent</h5>
-                    <p>
-                      <span>{item.Rent}</span>
-                    </p>
-                  </div>
-                  {/* Media */}
-                  <div className="media-card">
-                    <div className="media">
-                      <a
-                        href="#"
-                        onClick={() =>
-                          showPhoneNumber(
-                            item.contactPerson,
-                            item.phone1,
-                            item.phone2
-                          )
-                        }
-                      >
-                        <img
-                          className="media-img"
-                          src={item.contactImg}
-                          alt="contact"
-                        />
-                        <p
-                          className="external-data"
-                          style={{ color: "black " }}
-                        >
-                          Contact Us
-                        </p>
-                      </a>
-                    </div>
-                    <div className="media">
-                      <a
-                        href={item.map}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <img
-                          className="media-img"
-                          src={item.addressImg}
-                          alt="address"
-                        />
-                        <p
-                          className="external-data"
-                          style={{ color: "black " }}
-                        >
-                          Address
-                        </p>
-                      </a>
-                    </div>
-                    <div className="media">
-                      <a onClick={openModal}>
-                        <img
-                          className="media-img"
-                          src={item.mediaImg}
-                          alt="media"
-                        />
-                        <p
-                          className="external-data"
-                          style={{ marginLeft: "7px", color: "black" }}
-                        >
-                          Media
-                        </p>
-                      </a>
-                    </div>
-
-                    <Modal
-                      isOpen={isModalOpen}
-                      onRequestClose={closeModal}
-                      contentLabel="Media Modal"
-                      className="boxmodal"
-                      style={{
-                        overlay: {
-                          backgroundColor: "rgba(0, 0, 0, 0.3)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                        },
-                      }}
+                  <p>
+                    Paid: <span>{item.Paid}</span>
+                  </p>
+                </div>
+                {/*rent  */}
+                <div className="Rent">
+                  <h5 style={{ fontSize: "17px" }}>Rent</h5>
+                  <p>
+                    <span>{item.Rent}</span>
+                  </p>
+                </div>
+                {/* Media */}
+                <div className="media-card">
+                  <div className="media">
+                    <a
+                      href="#"
+                      onClick={() =>
+                        showPhoneNumber(
+                          item.contactPerson,
+                          item.phone1,
+                          item.phone2
+                        )
+                      }
                     >
-                      {/* Your modal content goes here */}
-                      <p>This is the media modal content.</p>
-                      <button onClick={closeModal}>Close Modal</button>
-                    </Modal>
+                      <img
+                        className="media-img"
+                        src={item.contactImg}
+                        alt="contact"
+                      />
+                      <p className="external-data" style={{ color: "black " }}>
+                        Contact Us
+                      </p>
+                    </a>
+                  </div>
+                  <div className="media">
+                    <a
+                      href={item.map}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        className="media-img"
+                        src={item.addressImg}
+                        alt="address"
+                      />
+                      <p className="external-data" style={{ color: "black " }}>
+                        Address
+                      </p>
+                    </a>
+                  </div>
+                  <div className="media">
+                    <a onClick={openModal}>
+                      <img
+                        className="media-img"
+                        src={item.mediaImg}
+                        alt="media"
+                      />
+                      <p
+                        className="external-data"
+                        style={{ marginLeft: "7px", color: "black" }}
+                      >
+                        Media
+                      </p>
+                    </a>
+                  </div>
 
-                    <div className="media">
-                      <a href="#">
-                        <img
-                          className="media-img"
-                          src={item.reviewImg}
-                          alt="reviews"
-                        />
-                        <p
-                          className="external-data"
-                          style={{ color: "black " }}
-                        >
-                          Reviews
-                        </p>
-                      </a>
-                    </div>
+                  <Modal
+                    isOpen={isModalOpen}
+                    onRequestClose={closeModal}
+                    contentLabel="Media Modal"
+                    className="boxmodal"
+                    style={{
+                      overlay: {
+                        backgroundColor: "rgba(0, 0, 0, 0.3)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      },
+                    }}
+                  >
+                    {/* Your modal content goes here */}
+                    <p>This is the media modal content.</p>
+                    <button onClick={closeModal}>Close Modal</button>
+                  </Modal>
+
+                  <div className="media">
+                    <a href="#">
+                      <img
+                        className="media-img"
+                        src={item.reviewImg}
+                        alt="reviews"
+                      />
+                      <p className="external-data" style={{ color: "black " }}>
+                        Reviews
+                      </p>
+                    </a>
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
+          ))}
         </div>
-        <div className="pagination">
+        <div className="pagination" style={{ padding: "0px" }}>
           <button
             onClick={handlePrevPage}
             disabled={currentPage === 1}
-            style={{ width: "60px", height: "30px" }}
+            className="pagebtn"
           >
             Prev
           </button>
-          <span style={{ paddingRight: "10px", paddingLeft: "10px" }}>
-            {currentPage}
-          </span>
+
+          {[...Array(totalPages)].map((_, index) => (
+            <button
+              key={index}
+              style={{
+                margin: "5px",
+                width: "20px",
+                borderRadius: "0px",
+                backgroundColor:
+                  activeButton === index + 1 ? "#4A566C" : "white",
+              }}
+              onClick={() => handlePageClick(index + 1)}
+              className={currentPage === index + 1 ? "activebtn" : ""}
+            >
+              {index + 1}
+            </button>
+          ))}
+
           <button
-            style={{ width: "60px", height: "30px" }}
             onClick={handleNextPage}
-            disabled={lastPostIndex >= data.length}
+            disabled={data.slice(currentPage * postsPerPage).length === 0}
+            className="pagebtn"
           >
             Next
           </button>

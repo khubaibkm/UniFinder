@@ -19,7 +19,7 @@
 }
 .living_Card {
   display: flex;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   background-color: white !important;
   align-items: center;
   margin-top: 40px;
@@ -41,21 +41,19 @@
   cursor: pointer;
 }
 
-
 .living-card-top img {
   position: relative;
   top: 0.8rem;
   left: 0.8rem;
   width: 2.5rem;
 }
-.living-card-top-white-circle{
+.living-card-top-white-circle {
   background: white;
   margin: 2rem 0.3rem 2rem 1.5rem;
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
 }
-
 
 .living-card-top h1 {
   margin-top: 0.5rem;
@@ -103,7 +101,7 @@
 
 /* modal box */
 
-.boxmodal{
+.boxmodal {
   height: 700px;
   width: 500px;
   background-color: white;
@@ -132,7 +130,6 @@
   color: black;
   background: #f8f4f4;
   line-height: 20px !important;
-
 }
 .live_pic {
   width: 25rem;
@@ -177,16 +174,20 @@
   align-items: center;
   margin: 20px;
 }
+.pagebtn {
+  border-radius: 0px !important;
+  padding: 0px 2px 0px 2px !important;
+}
 
-@media (max-width: 1400px){
-  .boxmodal{
+@media (max-width: 1400px) {
+  .boxmodal {
     height: 30rem;
     left: 14rem;
     top: 2rem;
   }
 }
 
-@media (max-width: 1000px){
+@media (max-width: 1000px) {
   .living-card-top {
     width: 14.5rem;
     height: 5.75rem;
@@ -195,11 +196,11 @@
     font-size: 1.15rem !important;
   }
   .living-card-top-pic {
-    margin: -.4rem -1.5rem 1.5rem -.4rem;
+    margin: -0.4rem -1.5rem 1.5rem -0.4rem;
     width: 3.2rem !important;
     padding: 8px;
   }
-  .live_card{
+  .live_card {
     width: 46rem;
   }
   .live_pic {
@@ -207,13 +208,11 @@
     height: 23.2rem;
     border-radius: 10px 0px 0px 10px;
   }
-  .boxmodal{
+  .boxmodal {
     left: 6rem;
     top: -2rem;
   }
 }
-
-
 
 @media (max-width: 800px) {
   .living-card-top {
@@ -221,14 +220,14 @@
     height: 5.75rem;
   }
   .living-card-top h1 {
-    font-size: .9rem !important;
+    font-size: 0.9rem !important;
   }
   .living-card-top-pic {
-    margin: -.4rem 0.5rem 1rem -.3rem;
+    margin: -0.4rem 0.5rem 1rem -0.3rem;
     width: 4rem;
     padding: 8px;
   }
-  .live_card{
+  .live_card {
     width: 35rem !important;
     height: 18rem;
   }
@@ -251,8 +250,8 @@
     justify-content: space-between;
     gap: 0px;
   }
-  .specs{
-    white-space:unset;
+  .specs {
+    white-space: unset;
   }
   .external-data {
     font-size: 12px !important;
@@ -264,7 +263,7 @@
     width: 28px !important;
     padding-bottom: 1px !important;
   }
-  .boxmodal{
+  .boxmodal {
     left: 0rem;
   }
 }
@@ -285,7 +284,7 @@
   .living-card-top h1 {
     font-size: 1.2rem !important;
   }
-  .live_card{
+  .live_card {
     width: 22rem !important;
     height: 40rem;
     flex-direction: column;
@@ -293,14 +292,12 @@
   .live_pic {
     width: 21.9rem !important;
     height: 21rem !important;
-    border-radius:10px 10px 0 0 !important;
-
+    border-radius: 10px 10px 0 0 !important;
   }
   .hostel-item {
     font-size: 20px;
     position: relative;
     bottom: 2rem;
-
   }
   .Rent {
     padding-bottom: 10px;
@@ -310,31 +307,30 @@
     margin-left: 1.3rem;
     margin-bottom: 1rem;
   }
-  .specs{
+  .specs {
     white-space: pre-line;
     margin-bottom: 1rem;
   }
 
-  .facility{
+  .facility {
     margin-top: -1rem;
   }
-  .Rent{
+  .Rent {
     margin-bottom: 1rem;
   }
- 
-  .boxmodal{
+
+  .boxmodal {
     width: 24rem;
     height: 35rem;
   }
 }
 
-@media (max-width: 420px){
-  .live_card{
+@media (max-width: 420px) {
+  .live_card {
     width: 19rem !important;
   }
   .live_pic {
     width: 18.9rem !important;
-
   }
 
   .Rent {
@@ -345,19 +341,17 @@
     margin-bottom: 1rem;
     margin-left: 1.3rem;
   }
-  .boxmodal{
+  .boxmodal {
     width: 19rem;
   }
-
 }
 
-
-@media (max-height: 900px){
-  .boxmodal{
+@media (max-height: 900px) {
+  .boxmodal {
     height: 35rem;
     top: 2rem;
   }
-  .list{
+  .list {
     margin-top: -1.5rem;
   }
 }
