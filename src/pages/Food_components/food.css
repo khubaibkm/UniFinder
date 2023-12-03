@@ -1,13 +1,21 @@
 .food {
-    height: 40vh;
-    background-image: url("/map image.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    color: white;
+  width: 100%;
+  height: 40vh;
+  color: white;
+  background-image: url("/map image.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   }
 
   .food-heading {
     padding-top: 15vh;
     padding-left: 5vw;
+    margin-bottom: 100px;
+  }
+
+  @media (max-height: 900px){
+    .food-heading{
+      margin-top: -1.5rem;
+    }
   }

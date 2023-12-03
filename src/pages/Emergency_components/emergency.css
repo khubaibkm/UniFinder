@@ -11,3 +11,9 @@
     padding-top: 15vh;
     padding-left: 5vw;
   }
+
+  @media (max-height: 900px){
+    .emer-heading{
+      margin-top: -1.5rem;
+    }
+  }

@@ -29,6 +29,9 @@ export default function Living() {
   useEffect(() => {
     getdata();
   }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleSort = (criteria) => {
     // Toggle sort order if clicking on the same criteria
@@ -157,7 +160,7 @@ export default function Living() {
               )}
             </div>
           </div>
-          <div
+          {/* <div
             className="living-card-top"
             onMouseEnter={handleDropdownToggle}
             onMouseLeave={handleDropdownToggle}
@@ -180,7 +183,7 @@ export default function Living() {
                 </div>
               )}
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* living-content */}

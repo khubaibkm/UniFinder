@@ -77,7 +77,7 @@ export default function VerticalTabs() {
               <button className="catbtn">Explore More</button>
             </Link>
           </div>
-          <img className='catImg' src="/images/living/paras.JPG" alt="" />
+          <img className='catImg' src="https://templatemo.com/templates/templatemo_564_plot_listing/assets/images/tabs-image-01.jpg" alt="" />
         </div>
       </TabPanel>
 
@@ -90,7 +90,7 @@ export default function VerticalTabs() {
               <button className="catbtn">Explore More</button>
             </Link>
           </div>
-          <img className='catImg' src="https://templatemo.com/templates/templatemo_564_plot_listing/assets/images/tabs-image-01.jpg" alt="" />
+          <img className='catImg' src="https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
         </div>
       </TabPanel>
 
@@ -103,7 +103,7 @@ export default function VerticalTabs() {
               <button className="catbtn">Explore More</button>
             </Link>
           </div>
-          <img className='catImg' src="https://templatemo.com/templates/templatemo_564_plot_listing/assets/images/tabs-image-01.jpg" alt="" />
+          <img className='catImg' src="https://images.unsplash.com/photo-1601598851547-4302969d0614?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
         </div>
       </TabPanel>
 
@@ -116,7 +116,7 @@ export default function VerticalTabs() {
               <button className="catbtn">Explore More</button>
             </Link>
           </div>
-          <img className='catImg' src="https://templatemo.com/templates/templatemo_564_plot_listing/assets/images/tabs-image-01.jpg" alt="" />
+          <img className='catImg' src="https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?q=80&w=1937&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
         </div>
       </TabPanel>
     </Box>

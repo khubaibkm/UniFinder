@@ -21,7 +21,7 @@ import { Link } from 'react-router-dom';
 const drawerWidth = 260;
 const navItems = [
   { text: 'HOME', link: '/' },
-  { text: 'CATEGORIES', link: '#categories' },
+  { text: 'CATEGORIES', link: '/' },
   { text: 'REVIEWS', link: '#reviews' },
   { text: 'ABOUT US', link: '/aboutus' },
   { text: 'CONTACT US', link: '#contact us' },
