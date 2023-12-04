@@ -2,8 +2,8 @@ export const MainData = [
   {
     id: 1,
     hostel: "Paras Boys Hostel",
-    specs: `Rooms with Two single beds both AC\nand Non-AC `,
-    Free: "Gym, Wifi,  cold purified water.",
+    specs: `Rooms with Two single beds both AC and Non-AC `,
+    Free: "Gym, Wifi,  cold water.",
     Paid: "AC, Mess.",
     Rent: "Rs. 3500-4000/month",
     hostel_img: "/images/living/paras front.jpg",
@@ -77,7 +77,7 @@ export const MainData = [
   {
     id: 4,
     hostel: "Regal Residence Girls",
-    specs: `Rooms with Two single beds both AC\nand Non-AC `,
+    specs: `Rooms with Two single beds both AC and Non-AC `,
     Free: " Wifi, cold purified water ",
     Paid: "AC, Electricity",
     Rent: "Rs.3500-7000/month",
@@ -227,7 +227,7 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
   {
     id: 9,
     hostel: "She Rose Girls Hostel",
-    specs: `Rooms with Two single beds both AC\nand Non-AC`,
+    specs: `Rooms with Two single beds both AC and Non-AC`,
     Free: " Wifi,  cold purified water.",
     Paid: "AC, Mess.",
     Rent: "For AC - Rs.8500/month\n Non AC - Rs.5500/month",
