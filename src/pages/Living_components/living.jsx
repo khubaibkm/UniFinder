@@ -76,23 +76,50 @@ export default function Living() {
   const lastPostIndex = Math.min(currentPage * postsPerPage, data.length);
   const firstPostIndex = Math.max(lastPostIndex - postsPerPage, 0);
   const [selectedHostelCategory, setSelectedHostelCategory] = useState("All"); // Default to show all categories
-  const handleGirlsHostelClick = () => {
-    const girlsHostelData = MainData.filter((item) =>
-      item.category.includes("Girl")
+  // Create a new function for handling Boys filtering in Hostel
+  const handleBoysHostelClick = () => {
+    const boysHostelData = MainData.filter(
+      (item) =>
+        item.category.includes("Boy") && item.category.includes("Hostel")
     );
-    setData(girlsHostelData);
-    setSelectedHostelCategory("Girls");
+    setData(boysHostelData);
+    setSelectedHostelCategory("Boys Hostels");
     setCurrentPage(1);
     setDropdownVisible(false);
   };
 
-  // Create a new function for handling boys filtering
-  const handleBoysHostelClick = () => {
-    const boysHostelData = MainData.filter((item) =>
-      item.category.includes("Boy")
+  // Create a new function for handling Girls filtering in Hostel
+  const handleGirlsHostelClick = () => {
+    const girlsHostelData = MainData.filter(
+      (item) =>
+        item.category.includes("Girl") && item.category.includes("Hostel")
     );
-    setData(boysHostelData);
-    setSelectedHostelCategory("Boys");
+    setData(girlsHostelData);
+    setSelectedHostelCategory("Girls Hostels");
+    setCurrentPage(1);
+    setDropdownVisible(false);
+  };
+
+  // Create a new function for handling Boys filtering in Apartment
+  const handleBoysApartmentClick = () => {
+    const boysApartmentData = MainData.filter(
+      (item) =>
+        item.category.includes("Boy") && item.category.includes("Apartment")
+    );
+    setData(boysApartmentData);
+    setSelectedHostelCategory("Boys Apartments");
+    setCurrentPage(1);
+    setDropdownVisible(false);
+  };
+
+  // Create a new function for handling Girls filtering in Apartment
+  const handleGirlsApartmentClick = () => {
+    const girlsApartmentData = MainData.filter(
+      (item) =>
+        item.category.includes("Girl") && item.category.includes("Apartment")
+    );
+    setData(girlsApartmentData);
+    setSelectedHostelCategory("Girls Apartments");
     setCurrentPage(1);
     setDropdownVisible(false);
   };
@@ -105,9 +132,9 @@ export default function Living() {
   // adjust living-content height
   let livingPageHeight;
   if (data.length > 0 && data.length <= 3) {
-    livingPageHeight = `${data.length * 500}px`; // Adjust 500 as needed
+    livingPageHeight = `${data.length * 500}px`;
   } else {
-    livingPageHeight = "auto"; // or set a default height as needed
+    livingPageHeight = "auto";
   }
 
   // contact
@@ -179,8 +206,8 @@ export default function Living() {
               {dropdownVisible && (
                 <div>
                   <ul>
-                    <li onClick={handleGirlsHostelClick}>GIRLS</li>
-                    <li onClick={handleBoysHostelClick}>BOYS</li>
+                    <li onClick={handleGirlsApartmentClick}>GIRLS</li>
+                    <li onClick={handleBoysApartmentClick}>BOYS</li>
                   </ul>
                 </div>
               )}
@@ -326,7 +353,9 @@ export default function Living() {
                               ))
                             )}
                       </div>
-                      <button className="modal-btn" onClick={closeModal}>Close</button>
+                      <button className="modal-btn" onClick={closeModal}>
+                        Close
+                      </button>
                     </div>
                   </Modal>
 
