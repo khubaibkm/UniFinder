@@ -71,7 +71,7 @@ const AboutUs = () => {
           <div className="left-box">
             <img
               className="ourpic"
-              src="/public/[removal.ai]_tmp-647b8ba017c78.png"
+              src="[removal.ai]_tmp-647b8ba017c78.png"
               alt="Left Image"
             />
             <div className="ourdata">
@@ -111,7 +111,7 @@ const AboutUs = () => {
           <div className="right-box">
             <img
               className="ourpic"
-              src="/public/[removal.ai]_tmp-647b8ba017c78.png"
+              src="[removal.ai]_tmp-647b8ba017c78.png"
               alt="Right Image"
             />
             <div className="ourdata">
