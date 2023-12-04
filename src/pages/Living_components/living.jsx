@@ -309,8 +309,7 @@ export default function Living() {
                   >
                     {/* Your modal content goes here */}
                     <div className="modal-content">
-                      <p>This is the media modal content.</p>
-
+                      <p className="modal-para">Check out Images</p>
                       {/* Images within a container with scroll */}
                       <div className="image-container-modal">
                         {currentHostelId !== null &&
@@ -327,7 +326,7 @@ export default function Living() {
                               ))
                             )}
                       </div>
-                      <button onClick={closeModal}>Close Modal</button>
+                      <button className="modal-btn" onClick={closeModal}>Close</button>
                     </div>
                   </Modal>
 

@@ -181,18 +181,54 @@
 
 /* Add this to your CSS */
 .image-container-modal {
-  max-height: 400px; /* Set a maximum height for the container */
+  max-height: 550px; 
   overflow-y: auto; /* Enable vertical scrolling */
   display: flex;
   flex-direction: column; /* Display images in a column */
   align-items: center; /* Center images horizontally */
   gap: 10px; /* Adjust the gap between images as needed */
+  align-items: center; /* Center the images horizontally */
 }
 
 .modal_img {
   max-width: 100%; /* Make sure the images don't exceed the container width */
   height: auto;
   width: auto;
+  border-radius: 8px;
+  border: 2px solid white;
+  margin-bottom: 10px;
+}
+.image-container-modal::-webkit-scrollbar{
+  display: block;
+  width: 6px;
+  background-color: white;
+}
+
+.image-container-modal::-webkit-scrollbar-thumb{
+  background-color: black;
+  border-radius: 8px;
+}
+
+.modal-para{
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.modal-btn {
+  padding: 10px 20px;
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 15px; 
+}
+
+.modal-btn:hover {
+  background-color: #3066BE;
 }
 
 @media (max-width: 1400px) {
@@ -265,6 +301,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 0px;
+    margin-right: -1rem;
   }
   .specs {
     white-space: unset;
@@ -322,6 +359,7 @@
   .media-card {
     display: flex;
     margin-left: 1.3rem;
+    margin-right: -1.2rem;
     margin-bottom: 1rem;
   }
   .specs {
@@ -371,4 +409,12 @@
   .list {
     margin-top: -1.5rem;
   }
+  .image-container-modal {
+    max-height: 400px; }
 }
+
+@media (max-width: 1400px) and (min-height: 900px) {
+  .image-container-modal {
+    max-height: 320px; }   
+}
+
