@@ -27,7 +27,6 @@ export default function Living() {
     setData(MainData);
   };
 
-
   useEffect(() => {
     getdata();
   }, []);
@@ -68,6 +67,10 @@ export default function Living() {
   };
   const handleDropdownToggle = () => {
     setDropdownVisible(!dropdownVisible);
+  };
+  const handleCardClick = (hostelId) => {
+    setCurrentHostelId(hostelId);
+    openModal();
   };
 
   const lastPostIndex = Math.min(currentPage * postsPerPage, data.length);
@@ -276,7 +279,7 @@ export default function Living() {
                     </a>
                   </div>
                   <div className="media">
-                    <a onClick={openModal}>
+                    <a onClick={() => handleCardClick(item.id)}>
                       <img
                         className="media-img"
                         src={item.mediaImg}
@@ -291,38 +294,42 @@ export default function Living() {
                     </a>
                   </div>
                   <Modal
-  isOpen={isModalOpen}
-  onRequestClose={closeModal}
-  contentLabel="Media Modal"
-  className="boxmodal"
-  style={{
-    overlay: {
-      backgroundColor: "rgba(0, 0, 0, 0.3)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-  }}
->
-  {/* Your modal content goes here */}
-  <div className="modal-content">
-    <p>This is the media modal content.</p>
+                    isOpen={isModalOpen}
+                    onRequestClose={closeModal}
+                    contentLabel="Media Modal"
+                    className="boxmodal"
+                    style={{
+                      overlay: {
+                        backgroundColor: "rgba(0, 0, 0, 0.3)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      },
+                    }}
+                  >
+                    {/* Your modal content goes here */}
+                    <div className="modal-content">
+                      <p>This is the media modal content.</p>
 
-    {/* Images within a container with scroll */}
-    <div className="image-container-modal">
-      {data.map((item) => (
-        <div key={item.id}>
-          {currentHostelId === item.id && item.modal_images?.map((image, index) => (
-            <img key={`${item.id}_${index}`} className="modal_img" src={image} alt={`Image ${index}`} />
-          ))}
-        </div>
-      ))}
-    </div>
-    <button onClick={closeModal}>Close Modal</button>
-  </div>
-</Modal>
-
-
+                      {/* Images within a container with scroll */}
+                      <div className="image-container-modal">
+                        {currentHostelId !== null &&
+                          data
+                            .filter((item) => item.id === currentHostelId)
+                            .map((item) =>
+                              item.modal_images?.map((image, index) => (
+                                <img
+                                  key={`${item.id}_${index}`}
+                                  className="modal_img"
+                                  src={image}
+                                  alt={`Image ${index}`}
+                                />
+                              ))
+                            )}
+                      </div>
+                      <button onClick={closeModal}>Close Modal</button>
+                    </div>
+                  </Modal>
 
                   <div className="media">
                     <a href="#">

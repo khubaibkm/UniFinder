@@ -191,12 +191,9 @@
 
 .modal_img {
   max-width: 100%; /* Make sure the images don't exceed the container width */
-  height: auto; /* Maintain the aspect ratio of the images */
-  border-radius: 8px;
+  height: auto;
+  width: auto;
 }
-
-
-
 
 @media (max-width: 1400px) {
   .boxmodal {
@@ -282,6 +279,7 @@
     width: 28px !important;
     padding-bottom: 1px !important;
   }
+
   .boxmodal {
     left: 0rem;
   }
