@@ -179,6 +179,25 @@
   padding: 0px 2px 0px 2px !important;
 }
 
+/* Add this to your CSS */
+.image-container-modal {
+  max-height: 400px; /* Set a maximum height for the container */
+  overflow-y: auto; /* Enable vertical scrolling */
+  display: flex;
+  flex-direction: column; /* Display images in a column */
+  align-items: center; /* Center images horizontally */
+  gap: 10px; /* Adjust the gap between images as needed */
+}
+
+.modal_img {
+  max-width: 100%; /* Make sure the images don't exceed the container width */
+  height: auto; /* Maintain the aspect ratio of the images */
+  border-radius: 8px;
+}
+
+
+
+
 @media (max-width: 1400px) {
   .boxmodal {
     height: 30rem;

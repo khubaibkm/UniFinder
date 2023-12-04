@@ -16,6 +16,7 @@ export const MainData = [
     mediaImg: "/images/living/3178404 1.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy"],
+    modal_images: ["/images/living/image 1.png", "/images/living/image 1.png", "/images/living/image 1.png", "public/images/living/paras (1).jpg", "public/images/living/paras (2).jpg", "public/images/living/paras front.jpg"],
   },
   {
     id: 2,

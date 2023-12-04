@@ -13,6 +13,7 @@ export default function Living() {
   const [sortCriteria, setSortCriteria] = useState("");
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentHostelId, setCurrentHostelId] = useState(null);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -25,6 +26,7 @@ export default function Living() {
   const getdata = () => {
     setData(MainData);
   };
+
 
   useEffect(() => {
     getdata();
@@ -288,25 +290,39 @@ export default function Living() {
                       </p>
                     </a>
                   </div>
-
                   <Modal
-                    isOpen={isModalOpen}
-                    onRequestClose={closeModal}
-                    contentLabel="Media Modal"
-                    className="boxmodal"
-                    style={{
-                      overlay: {
-                        backgroundColor: "rgba(0, 0, 0, 0.3)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      },
-                    }}
-                  >
-                    {/* Your modal content goes here */}
-                    <p>This is the media modal content.</p>
-                    <button onClick={closeModal}>Close Modal</button>
-                  </Modal>
+  isOpen={isModalOpen}
+  onRequestClose={closeModal}
+  contentLabel="Media Modal"
+  className="boxmodal"
+  style={{
+    overlay: {
+      backgroundColor: "rgba(0, 0, 0, 0.3)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+  }}
+>
+  {/* Your modal content goes here */}
+  <div className="modal-content">
+    <p>This is the media modal content.</p>
+
+    {/* Images within a container with scroll */}
+    <div className="image-container-modal">
+      {data.map((item) => (
+        <div key={item.id}>
+          {currentHostelId === item.id && item.modal_images?.map((image, index) => (
+            <img key={`${item.id}_${index}`} className="modal_img" src={image} alt={`Image ${index}`} />
+          ))}
+        </div>
+      ))}
+    </div>
+    <button onClick={closeModal}>Close Modal</button>
+  </div>
+</Modal>
+
+
 
                   <div className="media">
                     <a href="#">
