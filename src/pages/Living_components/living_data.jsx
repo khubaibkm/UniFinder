@@ -635,7 +635,7 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     category: ["Boy", "Hostel"],
     modal_images: [
       "public/images/living/vidya (1).JPG",
-      "public/images/living/vidya (5).JPGd",
+      "public/images/living/vidya (5).JPG",
     ],
   },
   {
