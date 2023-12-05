@@ -72,7 +72,7 @@ export default function VerticalTabs() {
         <h3>One of the most Trending Livings Right now!</h3>
         <div className='catdiv'>
           <div className="text-container">
-            <p>Paras Boys Hostel is a fully furnished hostel for boys where each room is designed for double occupancy with separate single beds. Additionally, there are separate cupboards, personal bathroom in each room, free WIFI, free Gym and many more Facilities.</p>
+            <p>Explore various housing options, including on-campus hostels and off-campus apartments. Find the perfect place to call home during your academic journey Discover essential services like gym, internet, etc. Also, choose your living based on your affordability.</p>
             <Link to="living">
               <button className="catbtn">Explore More</button>
             </Link>
@@ -85,7 +85,8 @@ export default function VerticalTabs() {
         <h3>Top Famous Restaurants category is here</h3>
         <div className='catdiv'>
           <div className="text-container">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim unde, a animi ad id eveniet, at dolorem velit tempore quibusdam ipsum quisquam ea tenetur exercitationem ab molestiae ullam fuga. Ad.</p>
+            <p>
+Discover a variety of restaurants and cafes nearby, serving quick bites to sit-down meals. Whether you love meat or prefer vegetarian or vegan options, there&apos;s something for everyone in the diverse local food scene. </p>
             <Link to="food">
               <button className="catbtn">Explore More</button>
             </Link>
@@ -98,7 +99,8 @@ export default function VerticalTabs() {
         <h3>One of the Trending Shopping List!</h3>
         <div className='catdiv'>
           <div className="text-container">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim unde, a animi ad id eveniet, at dolorem velit tempore quibusdam ipsum quisquam ea tenetur exercitationem ab molestiae ullam fuga. Ad.</p>
+            <p>
+Shop for everything you need at nearby malls and budget-friendly retail spots. Cook up a storm in your own kitchen with ingredients from local supermarkets and grocery stores. Explore fresh produce and unique items at nearby markets..</p>
             <Link to="shopping">
               <button className="catbtn">Explore More</button>
             </Link>
@@ -111,7 +113,7 @@ export default function VerticalTabs() {
         <h3>Check Out Emergency and Safety Choices!</h3>
         <div className='catdiv'>
           <div className="text-container">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim unde, a animi ad id eveniet, at dolorem velit tempore quibusdam ipsum quisquam ea tenetur exercitationem ab molestiae ullam fuga. Ad.</p>
+            <p>Stay healthy with nearby hospitals, clinics, and pharmacies. Explore on-campus health services. In emergencies, use local emergency rides for quick transport. Prioritize your well-being with accessible and reliable healthcare options in the community.</p>
             <Link to="emergency">
               <button className="catbtn">Explore More</button>
             </Link>
