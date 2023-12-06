@@ -69,11 +69,7 @@ const AboutUs = () => {
         <div className="main">
           {/* Flexbox Section */}
           <div className="left-box">
-            <img
-              className="ourpic"
-              src="[removal.ai]_tmp-647b8ba017c78.png"
-              alt="Left Image"
-            />
+            <img className="ourpic" src="mynewpic.jpg" alt="Left Image" />
             <div className="ourdata">
               <p>
                 MD ASIF SIDDIQUI
@@ -84,14 +80,13 @@ const AboutUs = () => {
                 <br />
                 <br />
                 Hi, I&apos;m Asif Siddiqui from Deoria, UP. I&apos;ve led
-                successful projects, showcasing my creative web design and
-                problem-solving skills. Currently exploring the frontier of
-                technology, I&apos;m enthusiastic about integrating cutting-edge
-                solutions, particularly in cloud computing. I&apos;m also
-                passionate about sky photography and sketching. In the future, I
-                aspire to delve into the exciting realm of game development.
-                Explore my profile for more, and feel free to reach out for
-                collaboration or assistance. Thank you!
+                successful projects, showcasing my creative web design .
+                Currently exploring the frontier of technology, I&apos;m
+                enthusiastic about integrating cutting-edge solutions,
+                particularly in cloud computing. I&apos;m also passionate about
+                sky photography and sketching. In the future, Explore my profile
+                for more, and feel free to reach out for collaboration or
+                assistance. Thank you!
               </p>
 
               <p style={{ paddingBottom: "30px", fontWeight: "bold" }}>
@@ -109,11 +104,7 @@ const AboutUs = () => {
           </div>
 
           <div className="right-box">
-            <img
-              className="ourpic"
-              src="[removal.ai]_tmp-647b8ba017c78.png"
-              alt="Right Image"
-            />
+            <img className="ourpic" src="khubaib1.jpg" alt="Right Image" />
             <div className="ourdata">
               <p>
                 KHUBAIB AHMAD
