@@ -66,6 +66,9 @@ const AboutUs = () => {
             needs.
           </p>
         </div>
+        <br />
+        <hr />
+        <br />
         <div className="main">
           {/* Flexbox Section */}
           <div className="left-box">

@@ -1,8 +1,7 @@
-// Loader.jsx
-import React from "react";
 import loadingImage from "/logo_black.png"; // Replace with the actual path to your image
 import { css, keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
+import "./loader.css";
 
 const fadeInOut = keyframes`
   0% {
@@ -12,7 +11,7 @@ const fadeInOut = keyframes`
     opacity: 1;
 
   }
-  90% {
+  80% {
     opacity: 0;
   }
 `;
@@ -22,13 +21,11 @@ const OverrideDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Adjust this to the desired height */
+  height: 100vh;
 `;
 
 const Image = styled.img`
-  //width: 150px; /* Adjust this to the desired width */
-  //height: 150px; /* Adjust this to the desired height */
-  animation: ${fadeInOut} 4s linear infinite; /* Adjust the duration for smoother animation */
+  animation: ${fadeInOut} 4.5s linear infinite;
 `;
 
 const LoaderContainer = styled.div`
@@ -39,7 +36,7 @@ const Loader = () => {
   return (
     <OverrideDiv>
       <LoaderContainer>
-        <Image src={loadingImage} alt="Loading" />
+        <Image className="loadImg" src={loadingImage} alt="Loading" />
       </LoaderContainer>
     </OverrideDiv>
   );
