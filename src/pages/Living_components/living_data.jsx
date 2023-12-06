@@ -53,8 +53,8 @@ export const MainData = [
     hostel: "National Girls Hostel",
     specs: `Rooms with Two single beds`,
     Free: " Wifi ,cold purified water , gyser",
-    Paid: " Mess.",
-    Rent: "Rs. NA/month",
+    Paid: " Cooler",
+    Rent: "Rs. 7000-8000/month",
     phone1: "NA ",
     contactPerson: " NA",
     hostel_img: "/images/living/national front.jpg",
@@ -637,8 +637,8 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
-      "public/images/living/vidya (1).jpg",
-      "public/images/living/vidya (5).jpg",
+      "/images/living/vidya (1).jpg",
+      "/images/living/vidya (5).jpg",
     ],
   },
   {
