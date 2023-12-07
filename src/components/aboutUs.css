@@ -47,6 +47,15 @@
   margin-bottom: 50px;
 }
 
+.founder{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 5px;
+}
+
 /* Media query for responsiveness */
 @media (min-width: 1200px){
   .main{
@@ -83,6 +92,9 @@
   .left-box {
     width: 100%;
     margin-bottom: 400px;
+  }
+  .founder{
+    font-size: 22px;
   }
 }
 

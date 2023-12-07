@@ -69,6 +69,10 @@ const AboutUs = () => {
         <br />
         <hr />
         <br />
+        <br />
+        <p className="founder">FOUNDERS</p>
+        <br />
+        <br />
         <div className="main">
           {/* Flexbox Section */}
           <div className="left-box">
@@ -105,7 +109,6 @@ const AboutUs = () => {
               </p>
             </div>
           </div>
-
           <div className="right-box">
             <img className="ourpic" src="khubaib1.jpg" alt="Right Image" />
             <div className="ourdata">
