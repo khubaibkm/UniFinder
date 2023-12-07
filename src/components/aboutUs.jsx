@@ -1,4 +1,3 @@
-// import React from "react";
 import "./aboutUs.css";
 import DrawerAppBarCat from "./navCat";
 import { useEffect } from "react";
