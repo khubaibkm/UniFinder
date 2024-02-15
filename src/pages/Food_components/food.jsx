@@ -13,6 +13,7 @@ export default function Food() {
   // const [sortCriteria, setSortCriteria] = useState("");
   // const [dropdownVisible, setDropdownVisible] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedFoodItemId, setSelectedFoodItemId] = useState(null);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -54,10 +55,13 @@ export default function Food() {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth", // You can change this to "auto" for instant scrolling
+      behavior: "smooth",
     });
   };
-
+  const handleFoodItemClick = (foodItemId) => {
+    setSelectedFoodItemId(foodItemId);
+    openModal();
+  };
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
 
@@ -66,7 +70,7 @@ export default function Food() {
   if (data.length > 0 && data.length <= 3) {
     livingPageHeight = `${data.length * 500}px`; // Adjust 500 as needed
   } else {
-    livingPageHeight = "auto"; // or set a default height as needed
+    livingPageHeight = "auto";
   }
 
   // contact
@@ -227,7 +231,7 @@ export default function Food() {
                       </a>
                     </div>
                     <div className="media">
-                      <a onClick={openModal}>
+                      <a onClick={() => handleFoodItemClick(item.id)}>
                         <img
                           className="media-img"
                           src={item.mediaImg}
@@ -241,7 +245,6 @@ export default function Food() {
                         </p>
                       </a>
                     </div>
-
                     <Modal
                       isOpen={isModalOpen}
                       onRequestClose={closeModal}
@@ -256,9 +259,27 @@ export default function Food() {
                         },
                       }}
                     >
-                      {/* Your modal content goes here */}
-                      <p>This is the media modal content.</p>
-                      <button onClick={closeModal}>Close Modal</button>
+                      <div className="modal-content">
+                        <p className="modal-para">Check out Images</p>
+                        <div className="image-container-modal">
+                          {selectedFoodItemId !== null &&
+                            data
+                              .filter((item) => item.id === selectedFoodItemId)
+                              .map((item) =>
+                                item.modal_images?.map((image, index) => (
+                                  <img
+                                    key={`${item.id}_${index}`}
+                                    className="modal_img"
+                                    src={image}
+                                    alt={`Image ${index}`}
+                                  />
+                                ))
+                              )}
+                        </div>
+                        <button className="modal-btn" onClick={closeModal}>
+                          Close
+                        </button>
+                      </div>
                     </Modal>
 
                     <div className="media">
