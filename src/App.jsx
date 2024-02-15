@@ -9,7 +9,6 @@ import Emergency from "./pages/Emergency_components/emergency";
 import Shopping from "./pages/Shopping_components/shopping";
 import AboutUs from "./components/aboutUs";
 import Loader from "./components/Loader";
-
 function App() {
   const [loading, setLoading] = useState(true);
 

@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "unifinder-dd842"
-  }
+    "default": "unifinder-dd842",
+    "staging": "unifinder-dd842"
+  },
+  "targets": {},
+  "etags": {}
 }
