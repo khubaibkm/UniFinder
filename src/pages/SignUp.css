@@ -1,0 +1,75 @@
+.shadow-box {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    /* Reduced padding for smaller screens */
+    height: auto;
+    max-width: 600px;
+    /* Set maximum width */
+    margin: auto;
+}
+
+.sign-in-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn1 {
+    width: 18rem;
+    border-radius: 50px !important;
+    background-color: black !important;
+}
+
+.btn1:hover {
+    background-color: rgb(37, 37, 37) !important;
+}
+
+.button-group {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.icon {
+    margin-right: 10px;
+    position: relative;
+    top: 0.5rem;
+    width: 25px;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 968px) {
+    .icon {
+        display: block !important;
+    }
+
+    .mainicon {
+        display: block !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .shadow-box {
+        padding: 60px;
+    }
+}
+
+@media (max-width: 576px) {
+    .shadow-box {
+        padding: 40px;
+    }
+}
+
+@media (max-width: 376px) {
+    .shadow-box {
+        box-shadow: none;
+    }
+
+    .btn1 {
+        width: 15rem;
+        font-size: 12px !important;
+    }
+}

@@ -1,0 +1,8 @@
+.homeWithoutSiging {
+    height: 100vh;
+    background-image: url("/map image.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+}
