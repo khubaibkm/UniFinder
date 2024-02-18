@@ -1,13 +1,9 @@
 .shadow-box {
     background-color: #fff;
-    border-radius: 20px;
+    border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 40px;
-    /* Reduced padding for smaller screens */
-    height: auto;
-    max-width: 600px;
-    /* Set maximum width */
-    margin: auto;
+
 }
 
 .sign-in-option {
@@ -60,12 +56,19 @@
 @media (max-width: 576px) {
     .shadow-box {
         padding: 40px;
+        margin-bottom: 12rem;
+
+    }
+
+    .mainicon {
+        width: 10rem;
     }
 }
 
 @media (max-width: 376px) {
     .shadow-box {
         box-shadow: none;
+        height: 12rem;
     }
 
     .btn1 {

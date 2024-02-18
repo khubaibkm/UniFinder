@@ -107,14 +107,14 @@ function DrawerAppBar(props) {
       <CssBaseline />
       <AppBar component="nav" sx={{ backgroundColor: "black" }}>
         <Toolbar sx={{ padding: "0 5rem 0 5rem !important" }}>
-          <IconButton className='navicon'
+          <IconButton style={{position: "relative", left:".8rem"}} className='navicon'
             color="inherit"
             aria-label="open drawer"
             edge="end"
             onClick={handleDrawerToggle}
             sx={{ ml: 'auto', display: { sm: 'none' } }}
           >
-            <MenuIcon />
+            {/* <MenuIcon /> */}
             <img className='logo-white' src="/logo_white.png" alt="" />
           </IconButton>
           <Typography
