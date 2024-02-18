@@ -114,7 +114,7 @@ function DrawerAppBar(props) {
             onClick={handleDrawerToggle}
             sx={{ ml: 'auto', display: { sm: 'none' } }}
           >
-            {/* <MenuIcon /> */}
+            <MenuIcon />
             <img className='logo-white' src="/logo_white.png" alt="" />
           </IconButton>
           <Typography
