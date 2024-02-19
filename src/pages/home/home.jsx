@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import "./home.css";
 import Footer from '../../components/footer'
 
-const Home = () => {
+const Home = () => { 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

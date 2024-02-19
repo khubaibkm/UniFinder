@@ -4,23 +4,38 @@ import { Link } from "react-router-dom";
 export const DefaultPage1 = () => {
   return (
     <div id="page1">
-      <h1>Welcome to UniFinder!</h1><br />
-      <h1 style={{fontWeight:"300"}}>
-        Let's get Started.
+      <h4>OVER 200+ ACTIVE LISTINGS</h4>
+      <h1>
+        Discover the Best Nearby Places & <br /> Things
       </h1>
       <div id="mypic">
-        <Link to="/signup">
+        <Link to="signup">
 
           <div className="icon-container">
-            <img src="/icons/signup.png" alt="signup" />
-            <p>Sign Up</p>
+            <img src="/icons/living.png" alt="living" />
+            <p>Living</p>
           </div>
         </Link>
-        <Link to="signin">
+        <Link to="signup">
       
           <div className="icon-container">
-            <img src="/icons/signin.png" alt="signin" />
-            <p>Sign In</p>
+            <img src="/icons/food.png" alt="food" />
+            <p>Food</p>
+          </div>
+        
+        </Link>
+        <Link to="signup">
+      
+          <div className="icon-container">
+            <img src="/icons/shopping.png" alt="shopping" />
+            <p>Shopping</p>
+          </div>
+        
+        </Link>
+        <Link to="signup" className="emer">
+          <div className="icon-container">
+            <img src="/icons/emergency.png" alt="emergency" />
+            <p>Emergency</p>
           </div>
         
         </Link>
