@@ -20,6 +20,8 @@ import { Link } from 'react-router-dom';
 
 const drawerWidth = 260;
 const navItems = [
+  { text: 'sign up', link: '/signup' },
+  { text: 'log in', link: '/signin' },
 ];
 
 function DrawerAppBar(props) {
@@ -36,18 +38,8 @@ function DrawerAppBar(props) {
     setMobileOpen(false);
   };
 
-  const scrollToId = (id) => {
-    scroller.scrollTo(id, {
-      duration: 500,
-      delay: 100,
-      smooth: true,
-      offset: -200, 
-    });
-    closeDrawer();
-  };
 
   const getNavLink = (item) => {
-    if (item.text === 'ABOUT US') {
       return (
         <Link
           key={item.text}
@@ -65,20 +57,7 @@ function DrawerAppBar(props) {
             {item.text}
           </Button>
         </Link>
-      );
-    } else {
-      return (
-        <Button
-          key={item.text}
-          onClick={() => scrollToId(item.link.slice(1))}
-          sx={{ color: 'white', fontWeight: '400', marginRight: '25px', fontSize: '15px' }}
-          className='nav-button'
-        >
-          {item.text}
-        </Button>
-      );
-    }
-  };
+      );}
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
