@@ -6,12 +6,14 @@ import { MainData } from "./food_data";
 import Modal from "react-modal";
 
 export default function Food() {
-  // const [sortOrder, setSortOrder] = useState("asc"); // "asc" or "desc"
+  const handleCategoryChange = () => {
+    setCurrentPage(1);
+    setActiveButton(1);
+  };
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(4);
-  // const [sortCriteria, setSortCriteria] = useState("");
-  // const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [activeButton, setActiveButton] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedFoodItemId, setSelectedFoodItemId] = useState(null);
 
@@ -39,14 +41,12 @@ export default function Food() {
     setActiveButton((prevButton) => Math.min(prevButton + 1, totalPages));
     scrollToTop();
   };
-  const [activeButton, setActiveButton] = useState(1);
   const handlePrevPage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
     setActiveButton((prevButton) => Math.max(prevButton - 1, 1));
     scrollToTop();
   };
   const totalPages = Math.ceil(data.length / postsPerPage);
-
   const handlePageClick = (pageNumber) => {
     setCurrentPage(pageNumber);
     setActiveButton(pageNumber);
@@ -83,6 +83,7 @@ export default function Food() {
 
     alert(alertMessage);
   }
+
   // Filteration
   const [selectedCategory, setSelectedCategory] = useState("All"); // Default to show all categories
   const filteredData = data.filter((item) => {
@@ -110,7 +111,10 @@ export default function Food() {
         <div className="living_Card">
           <div
             className="living-card-top"
-            onClick={() => setSelectedCategory("Restaurants")}
+            onClick={() => {
+              setSelectedCategory("Restaurants");
+              handleCategoryChange();
+            }}
           >
             <div className="living-card-top-white-circle">
               <img
@@ -125,7 +129,10 @@ export default function Food() {
           </div>
           <div
             className="living-card-top"
-            onClick={() => setSelectedCategory("Dhabas")}
+            onClick={() => {
+              setSelectedCategory("Dhabas");
+              handleCategoryChange();
+            }}
           >
             <div className="living-card-top-white-circle">
               <img
@@ -141,7 +148,10 @@ export default function Food() {
 
           <div
             className="living-card-top"
-            onClick={() => setSelectedCategory("Cafe")}
+            onClick={() => {
+              setSelectedCategory("Cafe");
+              handleCategoryChange();
+            }}
           >
             <div className="living-card-top-white-circle">
               <img
