@@ -134,7 +134,7 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
   },
   {
     id: 6,
-    hostel: "Royal Infront Hostel",
+    hostel: "Orient Infront Hostel",
     specs: `Rooms with Two/Three single beds Non-AC `,
     Free: "cold purified water , gyser",
     Paid: "Cooler",
@@ -187,14 +187,15 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
   },
   {
     id: 8,
-    hostel: "Royal Boys Hostel",
+    hostel: "Orient Boys Hostel",
     specs: `Rooms with Two single beds Non-AC`,
     Free: " cold purified water , gyser",
     Paid: "Cooler, Mess.",
     Rent: "Rs. 2500/month",
     hostel_img: "/images/living/royal (2).png",
     contactImg: "/images/living/6596115 1.png",
-    phone1: "NA",
+    phone1: "+917905870060",
+    phone2: "+918756455051",
     contactPerson: "Arif",
     map: `
  https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh/26.9595546,80.9978098/@26.9594089,80.9979806,98m/data=!3m1!1e3!4m9!4m8!1m5!1m1!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2m2!1d80.9992311!2d26.958454!1m0!3e2?entry=ttu
