@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import { signInWithPopup, fetchSignInMethodsForEmail } from "firebase/auth";
+import { signInWithPopup, fetchSignInMethodsForEmail, onAuthStateChanged } from "firebase/auth";
 import { auth, googleProvider, githubProvider } from "/src/firebase.js";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +11,17 @@ import "./SignUp.css";
 
 const SignIn = () => {
     const navigate = useNavigate();
-    const [email, setEmail] = useState("");
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in, redirect to the home page
+                navigate("/home");
+            }
+        });
+
+        return () => unsubscribe();
+    }, [navigate]);
 
     const SignInWithGoogle = async () => {
         try {
@@ -64,8 +74,8 @@ const SignIn = () => {
             <Grid
                 container
                 justifyContent="center"
-                alignItems="center" /* Center vertically */
-                style={{ height: "100vh" }} /* Full height of the viewport */
+                alignItems="center"
+                style={{ height: "100vh" }}
             >
                 <Grid item>
                     <div className="shadow-box">
