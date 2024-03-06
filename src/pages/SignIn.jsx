@@ -17,6 +17,7 @@ const SignIn = () => {
             if (user) {
                 // User is signed in, redirect to the home page
                 navigate("/home");
+                toast.success("User signed in successfully!");
             }
         });
 
@@ -38,7 +39,6 @@ const SignIn = () => {
                 navigate("/home");
             } else {
                 navigate("/home");
-                toast.success("User signed in successfully!");
             }
         } catch (error) {
             console.error(error);
@@ -61,7 +61,6 @@ const SignIn = () => {
                 navigate("/home");
             } else {
                 navigate("/home");
-                toast.success("User signed in successfully!");
             }
         } catch (error) {
             console.error(error);

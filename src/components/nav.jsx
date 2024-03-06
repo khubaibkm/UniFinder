@@ -1,5 +1,4 @@
 import * as React from 'react';
-import "./page1.css"
 import { scroller } from 'react-scroll';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
@@ -16,7 +15,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from "/src/firebase.js";
 
 const drawerWidth = 260;
 const navItems = [
@@ -24,12 +24,13 @@ const navItems = [
   { text: 'CATEGORIES', link: '#categories' },
   { text: 'REVIEWS', link: '#reviews' },
   { text: 'ABOUT US', link: '/aboutus' },
-  { text: 'CONTACT US', link: '#contact us' },
+  { text: 'LOG OUT', link: '/logout' },
 ];
 
 function DrawerAppBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -46,9 +47,19 @@ function DrawerAppBar(props) {
       duration: 500,
       delay: 100,
       smooth: true,
-      offset: -200, 
+      offset: -200,
     });
     closeDrawer();
+  };
+
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+      navigate("/signin"); // Redirect to the sign-in page after successful logout
+    } catch (error) {
+      console.error("Error logging out:", error);
+      // Handle logout error if needed
+    }
   };
 
   const getNavLink = (item) => {
@@ -70,6 +81,17 @@ function DrawerAppBar(props) {
             {item.text}
           </Button>
         </Link>
+      );
+    } else if (item.text === 'LOG OUT') {
+      return (
+        <Button
+          key={item.text}
+          onClick={handleLogout}
+          sx={{ color: 'white', fontWeight: '400', marginRight: '25px', fontSize: '15px' }}
+          className='nav-button'
+        >
+          {item.text}
+        </Button>
       );
     } else {
       return (
