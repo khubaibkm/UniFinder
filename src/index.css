@@ -6,23 +6,24 @@
   font-family: "Montserrat", sans-serif !important;
 }
 
-*::selection{
+*::selection {
   color: black;
   background-color: white;
 }
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
   display: block;
-  width: 5px;
+  width: 10px;
   background-color: black;
 }
 
-body::-webkit-scrollbar-thumb{
+body::-webkit-scrollbar-thumb {
   background-color: white;
-  border-radius: 50px;
+  border-radius: 10px;
+  border: 3px solid black;
 }
 
-body{
+body {
   overflow-x: hidden;
 }
 
@@ -42,6 +43,7 @@ button {
   cursor: pointer;
   transition: border-color 0.25s; */
 }
+
 /* button:hover {
   border-color: #646cff;
 }
@@ -55,10 +57,19 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
+  }
+}
+
+@media (max-width: 500px) {
+  .scrollToTop {
+    padding: 13px 35px 33px 8px !important;
+    margin-right: -1.5rem;
   }
 }
