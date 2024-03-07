@@ -13,6 +13,8 @@ import AboutUs from "./components/aboutUs";
 import Loader from "./components/Loader";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
+// import Error from "./components/error";
+import Protected from "./components/services/Protected";
 import HomeWithoutSigning from "./pages/HomeWithoutSigning";
 
 function App() {
@@ -43,12 +45,13 @@ function App() {
               <Route path="/" element={<HomeWithoutSigning />} />
               <Route path="signin" element={<SignIn />} />
               <Route path="signup" element={<SignUp />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/home/living" element={<Living />} />
-              <Route path="/home/food" element={<Food />} />
-              <Route path="/home/shopping" element={<Shopping />} />
-              <Route path="/home/emergency" element={<Emergency />} />
+              <Route path="/home" element={<Protected Component={Home} />} />
+              <Route path="/home/living" element={<Protected Component={Living} />} />
+              <Route path="/home/food" element={<Protected Component={Food} />} />
+              <Route path="/home/shopping" element={<Protected Component={Shopping} />} />
+              <Route path="/home/emergency" element={<Protected Component={Emergency} />} />
               <Route path="aboutus" element={<AboutUs />} />
+              {/* <Route path="*" element={<Error />} /> */}
             </Routes>
           </Router>
         )}

@@ -1,6 +1,6 @@
 import { onAuthStateChanged } from "firebase/auth";
-import { useEffect } from "react";
-import { auth } from "/src/firebase.js";
+import React, { useEffect } from "react";
+import { auth } from "../../firebase.js";
 import { useNavigate } from "react-router-dom";
 
 const Protected = (props) => {
