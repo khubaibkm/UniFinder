@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { scroller } from 'react-scroll';
 import PropTypes from 'prop-types';
+import "./nav.css";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -88,7 +89,7 @@ function DrawerAppBar(props) {
           key={item.text}
           onClick={handleLogout}
           sx={{ color: 'white', fontWeight: '400', marginRight: '25px', fontSize: '15px' }}
-          className='nav-button'
+          className='logout'
         >
           {item.text}
         </Button>
