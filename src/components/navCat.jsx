@@ -1,7 +1,7 @@
 import * as React from 'react';
-import "./page1.css"
 import { scroller } from 'react-scroll';
 import PropTypes from 'prop-types';
+import "./nav.css";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -16,7 +16,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from "/src/firebase.js";
 
 const drawerWidth = 260;
 const navItems = [
@@ -24,12 +25,13 @@ const navItems = [
   { text: 'CATEGORIES', link: '/home' },
   { text: 'REVIEWS', link: '#reviews' },
   { text: 'ABOUT US', link: '/aboutus' },
-  { text: 'CONTACT US', link: '#contact us' },
+  { text: 'LOG OUT', link: '/logout' },
 ];
 
 function DrawerAppBarCat(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -51,6 +53,17 @@ function DrawerAppBarCat(props) {
     closeDrawer();
   };
 
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+      navigate("/signin"); // Redirect to the sign-in page after successful logout
+    } catch (error) {
+      console.error("Error logging out:", error);
+      // Handle logout error if needed
+    }
+  };
+
+
   const getNavLink = (item) => {
     if (item.text === 'HOME' || item.text === 'ABOUT US' || item.text === 'CATEGORIES') {
       return (
@@ -71,7 +84,18 @@ function DrawerAppBarCat(props) {
           </Button>
         </Link>
       );
-    } else {
+    } else if (item.text === 'LOG OUT') {
+      return (
+        <Button
+          key={item.text}
+          onClick={handleLogout}
+          sx={{ color: 'white', fontWeight: '400', marginRight: '25px', fontSize: '15px' }}
+          className='nav-button logout'
+        >
+          {item.text}
+        </Button>
+      );}
+      else {
       return (
         <Button
           key={item.text}

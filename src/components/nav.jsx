@@ -89,7 +89,7 @@ function DrawerAppBar(props) {
           key={item.text}
           onClick={handleLogout}
           sx={{ color: 'white', fontWeight: '400', marginRight: '25px', fontSize: '15px' }}
-          className='logout'
+          className='nav-button logout'
         >
           {item.text}
         </Button>
