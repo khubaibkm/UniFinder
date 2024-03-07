@@ -1,6 +1,7 @@
 .logout {
     background-color: rgb(81, 81, 81) !important;
-    padding: 8px 16px !important;
+    padding: 6px 12px !important;
+    color: white !important;
 }
 
 .logout:hover {
