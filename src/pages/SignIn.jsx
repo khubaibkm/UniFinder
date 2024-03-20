@@ -64,7 +64,7 @@ const SignIn = () => {
             }
         } catch (error) {
             console.error(error);
-            toast.error("Error signing up with GitHub");
+            // toast.error("Error signing up with GitHub");
         }
     };
 

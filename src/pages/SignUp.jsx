@@ -39,12 +39,12 @@ const SignUp = () => {
         try {
             const result = await signInWithPopup(auth, githubProvider);
             const user = result.user;
-
+    
             const userSignInMethods = await fetchSignInMethodsForEmail(
                 auth,
                 user.email
             );
-
+    
             if (userSignInMethods.length > 0) {
                 toast.error("Email is already registered");
             } else {
@@ -53,9 +53,10 @@ const SignUp = () => {
             }
         } catch (error) {
             console.error(error);
-            toast.error("Error signing up with GitHub");
+            toast.error("You are already registered");
         }
     };
+               
 
     return (
         <Container className="mt-5" maxWidth="lg">
