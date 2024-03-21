@@ -16,6 +16,7 @@ import SignIn from "./pages/SignIn";
 // import Error from "./components/error";
 import Protected from "./components/services/Protected";
 import HomeWithoutSigning from "./pages/HomeWithoutSigning";
+import IntroForm from "./components/introForm";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -45,6 +46,10 @@ function App() {
               <Route path="/" element={<HomeWithoutSigning />} />
               <Route path="signin" element={<SignIn />} />
               <Route path="signup" element={<SignUp />} />
+              <Route
+              path="/form"
+              element={<Protected Component={IntroForm} />}
+            />
               <Route path="/home" element={<Protected Component={Home} />} />
               <Route path="/home/living" element={<Protected Component={Living} />} />
               <Route path="/home/food" element={<Protected Component={Food} />} />
