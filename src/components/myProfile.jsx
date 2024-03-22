@@ -1,3 +1,5 @@
+// MyProfile.jsx
+
 import React, { useState, useEffect } from "react";
 import { db, auth, storage } from "/src/firebase.js";
 import { collection, query, where, updateDoc, doc, serverTimestamp, getDocs } from "firebase/firestore";
@@ -26,7 +28,7 @@ const MyProfile = () => {
           return;
         }
 
-        const q = query( // Use query function here
+        const q = query(
           collection(db, "intro"),
           where("firebaseUID", "==", currentUser.uid)
         );
@@ -127,23 +129,24 @@ const MyProfile = () => {
           <div className="row align-items-center">
             <div className="col-md-4 mb-3 text-center">
               <Typography variant="subtitle1" className="mb-2">
-                <strong>Profile Picture:</strong>
+                {/* <center><strong>Profile Picture:</strong></center> */}
               </Typography>
               <div className="profile-image-container">
-                {editingField === "profileImageUrl" ? (
-                  <div>
-                    <input type="file" onChange={handleImageChange} accept="image/*" />
-                    {image && (
-                      <Avatar src={URL.createObjectURL(image)} alt="Preview" />
-                    )}
-                  </div>
-                ) : (
-                  <span>
-                    {userData.profileImageUrl && (
-                      <Avatar src={userData.profileImageUrl} alt="Profile" className="profile-image" />
-                    )}
-                  </span>
-                )}
+                {editingField === "profileImageUrl"
+                  ? (
+                    <div>
+                      <input type="file" onChange={handleImageChange} accept="image/*" />
+                      {/* {image && (
+                        <Avatar src={URL.createObjectURL(image)} alt="Preview" />
+                      )} */}
+                    </div>
+                  ) : (
+                    <span>
+                      {userData.profileImageUrl && (
+                        <Avatar src={userData.profileImageUrl} alt="Profile" className="profile-image" />
+                      )}
+                    </span>
+                  )}
                 <IconButton onClick={() => handleEditClick("profileImageUrl")} className="edit-icon">
                   <FaPencilAlt />
                 </IconButton>
@@ -174,21 +177,21 @@ const MyProfile = () => {
                 variant="contained"
                 color="primary"
                 disabled={loading}
+                className="button"
               >
                 {loading ? "Updating..." : "Save Changes"}
               </Button>
-              <Button onClick={handleCancelEdit
-} variant="outlined" className="ml-2">
-Cancel
-</Button>
-</div>
-</div>
-) : (
-<Typography>Loading...</Typography>
-)}
-</div>
-</div>
-);
+              <Button onClick={handleCancelEdit} variant="outlined" className="button">
+                Cancel
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <Typography>Loading...</Typography>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default MyProfile;

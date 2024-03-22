@@ -1,20 +1,47 @@
+/* myProfile.css */
+
+/* Container Styles */
 .container {
     margin-top: 5rem;
     padding: 5rem;
 }
 
+/* Card Styles */
 .card {
     padding: 2rem;
+    width: 30rem;
+    margin: auto;
 }
 
-.avatar {
-    margin-bottom: 2rem;
+/* Profile Picture Styles */
+.profile-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2.5rem;
 }
 
+.profile-image-container .edit-icon {
+    margin-top: 1rem;
+}
+
+.profile-image {
+    margin-top: 5rem;
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
+    /* Ensure the image completely fills the container */
+    object-position: center;
+    /* Center the image within the container */
+    border-radius: 50%;
+}
+
+/* Input Styles */
 .input {
     margin-bottom: 3rem;
 }
 
+/* Button Styles */
 .button {
-    margin-right: 2rem;
+    margin-right: 1rem;
 }
