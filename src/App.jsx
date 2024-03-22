@@ -17,6 +17,7 @@ import SignIn from "./pages/SignIn";
 import Protected from "./components/services/Protected";
 import HomeWithoutSigning from "./pages/HomeWithoutSigning";
 import IntroForm from "./components/introForm";
+import MyProfile from "./components/myProfile";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -49,6 +50,10 @@ function App() {
               <Route
               path="/form"
               element={<Protected Component={IntroForm} />}
+            />
+              <Route
+              path="/profile"
+              element={<Protected Component={MyProfile} />}
             />
               <Route path="/home" element={<Protected Component={Home} />} />
               <Route path="/home/living" element={<Protected Component={Living} />} />

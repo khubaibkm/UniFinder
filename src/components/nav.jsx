@@ -16,8 +16,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth } from "/src/firebase.js";
+import { auth, storage } from "/src/firebase.js"; // Import storage from firebase
+import { getDownloadURL, ref } from "firebase/storage"; // Import getDownloadURL and ref from firebase storage
 
 const drawerWidth = 260;
 const navItems = [
@@ -31,6 +33,8 @@ const navItems = [
 function DrawerAppBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [profilePic, setProfilePic] = React.useState();
+  const [loading, setLoading] = React.useState(true);
   const navigate = useNavigate();
 
   const handleDrawerToggle = () => {
@@ -56,12 +60,35 @@ function DrawerAppBar(props) {
   const handleLogout = async () => {
     try {
       await auth.signOut();
-      navigate("/signin"); // Redirect to the sign-in page after successful logout
+      navigate("/signin");
     } catch (error) {
       console.error("Error logging out:", error);
-      // Handle logout error if needed
     }
   };
+
+  React.useEffect(() => {
+    const fetchProfilePic = async (currentUser) => {
+      try {
+        if (currentUser) {
+          // Get the collection ID of the profile picture
+          const collectionId = `profile_images/${currentUser.email}`;
+          // Reference to the profile image in Firebase Storage
+          const storageRef = ref(storage, collectionId);
+          // Get the download URL for the profile image
+          const url = await getDownloadURL(storageRef);
+          setProfilePic(url); // Set the profilePic state with the URL
+          setLoading(false);
+        }
+      } catch (error) {
+        console.error('Error fetching profile picture:', error);
+        setLoading(false);
+      }
+    };
+  
+    const currentUser = auth.currentUser;
+    fetchProfilePic(currentUser); 
+  }, []); 
+  
 
   const getNavLink = (item) => {
     if (item.text === 'ABOUT US') {
@@ -108,6 +135,32 @@ function DrawerAppBar(props) {
     }
   };
 
+  const handleProfileClick = () => {
+    navigate("/profile");
+  };
+
+  const renderProfileCircle = () => {
+    const avatarStyle = {
+      cursor: 'pointer',
+      width: '45px',
+      height: '45px',
+      backgroundColor: 'white',
+      color: 'black',
+      backgroundImage: `url(${profilePic || "/user.png"})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    };
+  
+    return (
+      <Avatar
+        onClick={handleProfileClick}
+        sx={avatarStyle}
+      >
+        {!loading || !profilePic} 
+      </Avatar>
+    );
+  };
+
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
@@ -130,63 +183,69 @@ function DrawerAppBar(props) {
     </Box>
   );
 
-  return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar component="nav" sx={{ backgroundColor: "black" }}>
-        <Toolbar sx={{ padding: "0 5rem 0 5rem !important" }}>
-          <IconButton className='navicon'
-            color="inherit"
-            aria-label="open drawer"
-            edge="end"
-            onClick={handleDrawerToggle}
-            sx={{ ml: 'auto', display: { sm: 'none' } }}
-          >
-            <MenuIcon />
-            <img className='logo-white' src="/logo_white.png" alt="" />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            <img className='logo-white' src="/logo_white.png" alt="" />
-          </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => getNavLink(item))}
-          </Box>
-        </Toolbar>
-      </AppBar>
-      <nav>
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
+return (
+  <>
+
+  <Box sx={{ display: 'flex' }}>
+    <CssBaseline />
+    <AppBar component="nav" sx={{ backgroundColor: "black" }}>
+      <Toolbar sx={{ padding: "0 5rem 0 5rem !important" }}>
+        <IconButton className='navicon'
+          color="inherit"
+          aria-label="open drawer"
+          edge="end"
+          onClick={handleDrawerToggle}
+          sx={{ ml: 'auto', display: { sm: 'none' } }}
         >
-          {drawer}
-        </Drawer>
-      </nav>
-      <Box component="main" sx={{ p: 0 }}>
-        <Toolbar />
-      </Box>
+          <MenuIcon />
+          <img className='logo-white' src="/logo_white.png" alt="" />
+        </IconButton>
+        <Typography
+          variant="h6"
+          component="div"
+          sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }} 
+        >
+          <img className='logo-white' src="/logo_white.png" alt="" />
+        </Typography>
+        <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center' }}> {/* Added alignItems for centering */}
+          {navItems.map((item) => getNavLink(item))}
+          {renderProfileCircle()} {/* Render the profile picture circle */}
+        </Box>
+      </Toolbar>
+    </AppBar>
+    <nav>
+      <Drawer
+        container={container}
+        variant="temporary"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{
+          keepMounted: true, // Better open performance on mobile.
+        }}
+        sx={{
+          display: { xs: 'block', sm: 'none' },
+          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+        }}
+      >
+        {drawer}
+      </Drawer>
+    </nav>
+    <Box component="main" sx={{ p: 0 }}>
+      <Toolbar />
     </Box>
-  );
-}
+  </Box>
+  </>
+);
 
-DrawerAppBar.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
-};
-
-export default DrawerAppBar;
+  }
+  
+  DrawerAppBar.propTypes = {
+    /**
+     * Injected by the documentation to work in an iframe.
+     * You won't need it on your project.
+     */
+    window: PropTypes.func,
+  };
+  
+  export default DrawerAppBar;
+  

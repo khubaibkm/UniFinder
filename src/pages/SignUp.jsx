@@ -17,16 +17,16 @@ const SignUp = () => {
         try {
             const result = await signInWithPopup(auth, googleProvider);
             const user = result.user;
-
+    
             const userSignInMethods = await fetchSignInMethodsForEmail(
                 auth,
                 user.email
             );
-
+    
             if (userSignInMethods.length > 0) {
                 toast.error("Email is already registered");
             } else {
-                navigate("/home");
+                navigate("/form");
                 toast.success("User signed up successfully!");
             }
         } catch (error) {
@@ -34,7 +34,7 @@ const SignUp = () => {
             toast.error("Error signing up");
         }
     };
-
+    
     const SignUpWithGitHub = async () => {
         try {
             const result = await signInWithPopup(auth, githubProvider);
@@ -48,15 +48,15 @@ const SignUp = () => {
             if (userSignInMethods.length > 0) {
                 toast.error("Email is already registered");
             } else {
-                navigate("/home");
+                navigate("/form");
                 toast.success("User signed up successfully!");
             }
         } catch (error) {
             console.error(error);
-            toast.error("You are already registered");
+            toast.error("Error signing up with GitHub");
         }
     };
-               
+    
 
     return (
         <Container className="mt-5" maxWidth="lg">

@@ -38,7 +38,7 @@ const SignIn = () => {
                 toast.error("Email is already registered");
                 navigate("/home");
             } else {
-                navigate("/home");
+                navigate("/form");
             }
         } catch (error) {
             console.error(error);
@@ -60,11 +60,11 @@ const SignIn = () => {
                 toast.error("Email is already registered");
                 navigate("/home");
             } else {
-                navigate("/home");
+                navigate("/form");
             }
         } catch (error) {
             console.error(error);
-            // toast.error("Error signing up with GitHub");
+            toast.error("Error signing up with GitHub");
         }
     };
 
