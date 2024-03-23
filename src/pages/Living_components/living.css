@@ -172,16 +172,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+  margin-top: 40px;
 }
-.pagebtn {
-  border-radius: 0px !important;
+.sidebtn {
+  border-radius: 5px !important;
   padding: 0px 2px 0px 2px !important;
 }
-
+.activebtn {
+  height: 32px;
+  width: 32px;
+}
 /* Add this to your CSS */
 .image-container-modal {
-  max-height: 550px; 
+  max-height: 550px;
   overflow-y: auto; /* Enable vertical scrolling */
   display: flex;
   flex-direction: column; /* Display images in a column */
@@ -198,18 +201,18 @@
   border: 2px solid white;
   margin-bottom: 10px;
 }
-.image-container-modal::-webkit-scrollbar{
+.image-container-modal::-webkit-scrollbar {
   display: block;
   width: 6px;
   background-color: white;
 }
 
-.image-container-modal::-webkit-scrollbar-thumb{
+.image-container-modal::-webkit-scrollbar-thumb {
   background-color: black;
   border-radius: 8px;
 }
 
-.modal-para{
+.modal-para {
   text-align: center;
   margin-bottom: 1rem;
   font-size: 20px;
@@ -218,17 +221,17 @@
 
 .modal-btn {
   padding: 10px 20px;
-  background-color: #4A90E2;
+  background-color: #4a90e2;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  margin-top: 15px; 
+  margin-top: 15px;
 }
 
 .modal-btn:hover {
-  background-color: #3066BE;
+  background-color: #3066be;
 }
 
 @media (max-width: 1400px) {
@@ -399,6 +402,13 @@
   .boxmodal {
     width: 19rem;
   }
+  .sidebtn {
+    display: none;
+  }
+  button {
+    width: 25px !important;
+    height: 25px !important;
+  }
 }
 
 @media (max-height: 900px) {
@@ -410,11 +420,12 @@
     margin-top: -1.5rem;
   }
   .image-container-modal {
-    max-height: 400px; }
+    max-height: 400px;
+  }
 }
 
 @media (max-width: 1400px) and (min-height: 900px) {
   .image-container-modal {
-    max-height: 320px; }   
+    max-height: 320px;
+  }
 }
-

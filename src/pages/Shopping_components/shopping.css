@@ -11,12 +11,21 @@
   padding-top: 15vh;
   padding-left: 5vw;
 }
-.pagebtn {
-  border-radius: 0px !important;
+.sidebtn {
+  border-radius: 5px !important;
   padding: 0px 2px 0px 2px !important;
 }
 @media (max-height: 900px) {
   .shop-heading {
     margin-top: -1.5rem;
+  }
+}
+@media (max-width: 420px) {
+  .sidebtn {
+    display: none;
+  }
+  button {
+    width: 25px !important;
+    height: 25px !important;
   }
 }

@@ -4,6 +4,7 @@ import "./shopping.css";
 import Footer from "../../components/footer";
 import { MainData } from "./shopping_data";
 import Modal from "react-modal";
+import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
 
 export default function Shopping() {
   // const [sortOrder, setSortOrder] = useState("asc"); // "asc" or "desc"
@@ -261,9 +262,9 @@ export default function Shopping() {
           <button
             onClick={handlePrevPage}
             disabled={currentPage === 1}
-            className="pagebtn"
+            className="sidebtn"
           >
-            Prev
+            <KeyboardArrowLeft />
           </button>
 
           {[...Array(totalPages)].map((_, index) => (
@@ -271,10 +272,11 @@ export default function Shopping() {
               key={index}
               style={{
                 margin: "5px",
-                width: "20px",
-                borderRadius: "0px",
+                width: "30px",
+                height: "30px",
+                borderRadius: "5px",
                 backgroundColor:
-                  activeButton === index + 1 ? "#4A566C" : "white",
+                  activeButton === index + 1 ? "#D3D3D3" : "white",
               }}
               onClick={() => handlePageClick(index + 1)}
               className={currentPage === index + 1 ? "activebtn" : ""}
@@ -286,9 +288,9 @@ export default function Shopping() {
           <button
             onClick={handleNextPage}
             disabled={data.slice(currentPage * postsPerPage).length === 0}
-            className="pagebtn"
+            className="sidebtn"
           >
-            Next
+            <KeyboardArrowRight />
           </button>
         </div>
         <div id="contact us">

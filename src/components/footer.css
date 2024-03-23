@@ -63,22 +63,21 @@ footer {
     flex-direction: column;
   }
   .footer_info .footer_width {
-    padding: 0 20px;}
+    padding: 0 20px;
+  }
 }
 
-@media screen and (max-width: 600px){
-  .logo{
+@media screen and (max-width: 600px) {
+  .logo {
     width: 220px;
   }
 }
 
-
 @media screen and (max-height: 700px) {
-
   .footer_info {
-    margin-top: 220px;
+    margin-top: 100px;
   }
-  .logo{
+  .logo {
     width: 220px;
   }
 }
