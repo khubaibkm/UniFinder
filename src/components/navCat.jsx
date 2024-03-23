@@ -16,8 +16,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth } from "/src/firebase.js";
+import { auth, storage } from "/src/firebase.js"; // Import storage from firebase
+import { getDownloadURL, ref } from "firebase/storage"; // Import getDownloadURL and ref from firebase storage
+
 
 const drawerWidth = 260;
 const navItems = [
@@ -25,12 +28,13 @@ const navItems = [
   { text: 'CATEGORIES', link: '/home' },
   { text: 'REVIEWS', link: '#reviews' },
   { text: 'ABOUT US', link: '/aboutus' },
-  { text: 'LOG OUT', link: '/logout' },
 ];
 
 function DrawerAppBarCat(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [profilePic, setProfilePic] = React.useState();
+  const [loading, setLoading] = React.useState(true);
   const navigate = useNavigate();
 
   const handleDrawerToggle = () => {
@@ -48,20 +52,32 @@ function DrawerAppBarCat(props) {
       duration: 500,
       delay: 100,
       smooth: true,
-      offset: -200, 
+      offset: -200,
     });
     closeDrawer();
   };
-
-  const handleLogout = async () => {
-    try {
-      await auth.signOut();
-      navigate("/signin"); // Redirect to the sign-in page after successful logout
-    } catch (error) {
-      console.error("Error logging out:", error);
-      // Handle logout error if needed
-    }
-  };
+  React.useEffect(() => {
+    const fetchProfilePic = async (currentUser) => {
+      try {
+        if (currentUser) {
+          // Get the collection ID of the profile picture
+          const collectionId = `profile_images/${currentUser.email}`;
+          // Reference to the profile image in Firebase Storage
+          const storageRef = ref(storage, collectionId);
+          // Get the download URL for the profile image
+          const url = await getDownloadURL(storageRef);
+          setProfilePic(url); // Set the profilePic state with the URL
+          setLoading(false);
+        }
+      } catch (error) {
+        console.error('Error fetching profile picture:', error);
+        setLoading(false);
+      }
+    };
+  
+    const currentUser = auth.currentUser;
+    fetchProfilePic(currentUser); 
+  }, []);
 
 
   const getNavLink = (item) => {
@@ -84,17 +100,7 @@ function DrawerAppBarCat(props) {
           </Button>
         </Link>
       );
-    } else if (item.text === 'LOG OUT') {
-      return (
-        <Button
-          key={item.text}
-          onClick={handleLogout}
-          sx={{ color: 'white', fontWeight: '400', marginRight: '25px', fontSize: '15px' }}
-          className='nav-button logout'
-        >
-          {item.text}
-        </Button>
-      );}
+    }
       else {
       return (
         <Button
@@ -107,6 +113,32 @@ function DrawerAppBarCat(props) {
         </Button>
       );
     }
+  };
+
+  const handleProfileClick = () => {
+    navigate("/profile");
+  };
+
+  const renderProfileCircle = () => {
+    const avatarStyle = {
+      cursor: 'pointer',
+      width: '45px',
+      height: '45px',
+      backgroundColor: 'white',
+      color: 'black',
+      backgroundImage: `url(${profilePic || "/user.png"})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    };
+  
+    return (
+      <Avatar className='avatarr'
+        onClick={handleProfileClick}
+        sx={avatarStyle}
+      >
+        {!loading || !profilePic} 
+      </Avatar>
+    );
   };
 
   const drawer = (
@@ -128,6 +160,9 @@ function DrawerAppBarCat(props) {
           </ListItem>
         ))}
       </List>
+      <Box sx={{ mt: 'auto', mb: 2 }}>
+        {renderProfileCircle()} {/* Render the profile picture circle */}
+      </Box>
     </Box>
   );
 
@@ -149,12 +184,13 @@ function DrawerAppBarCat(props) {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }} 
           >
             <img className='logo-white' src="/logo_white.png" alt="" />
           </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center' }}> {/* Added alignItems for centering */}
             {navItems.map((item) => getNavLink(item))}
+            {renderProfileCircle()} {/* Render the profile picture circle */}
           </Box>
         </Toolbar>
       </AppBar>
@@ -180,7 +216,9 @@ function DrawerAppBarCat(props) {
       </Box>
     </Box>
   );
-}
+  
+
+  }
 
 DrawerAppBarCat.propTypes = {
   /**

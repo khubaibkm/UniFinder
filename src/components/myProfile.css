@@ -2,15 +2,14 @@
 
 /* Container Styles */
 .container {
-    margin-top: 5rem;
-    padding: 5rem;
+    margin-top: 0rem;
+    padding: 2rem;
 }
 
 /* Card Styles */
-.card {
-    padding: 2rem;
-    width: 30rem;
-    margin: auto;
+.cardd {
+    padding: 2rem !important;
+    margin: auto !important;
 }
 
 /* Profile Picture Styles */
@@ -21,27 +20,92 @@
     margin-bottom: 2.5rem;
 }
 
+
+
 .profile-image-container .edit-icon {
-    margin-top: 1rem;
+    margin-top: .5rem;
 }
 
 .profile-image {
-    margin-top: 5rem;
-    width: 15rem;
-    height: 15rem;
-    object-fit: cover;
-    /* Ensure the image completely fills the container */
-    object-position: center;
-    /* Center the image within the container */
-    border-radius: 50%;
+    margin-top: 2rem !important;
+    width: 15rem !important;
+    height: 15rem !important;
 }
 
-/* Input Styles */
-.input {
-    margin-bottom: 3rem;
+.profile-image img {
+    height: 110%;
 }
 
 /* Button Styles */
 .button {
-    margin-right: 1rem;
+    margin-right: 1rem !important;
+}
+
+.loggout {
+    margin-top: 0rem !important;
+    float: right;
+}
+
+/* ----------------------------------------------------------------- */
+
+@media (min-width: 600px) {
+
+    /* For screens larger than 600px width */
+    .cardd {
+        width: 30rem !important;
+    }
+}
+
+@media (max-width: 1000px) {
+    .avatarr {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+}
+
+@media (max-width: 599px) {
+    .profile-image {
+        width: 12rem !important;
+        height: 12rem !important;
+    }
+
+    .cardd {
+        width: 77% !important;
+    }
+
+    .avatarr {
+        width: 8rem !important;
+        height: 8rem !important;
+        margin: auto;
+    }
+
+    .cardd {
+        height: 33rem;
+    }
+
+    .loggout {
+        margin-top: 1rem !important;
+        float: left;
+    }
+}
+
+
+@media (max-width: 420px) {
+    .profile-image {
+        width: 10rem !important;
+        height: 10rem !important;
+    }
+
+    .cardd {
+        height: 34rem !important;
+    }
+
+    .button {
+        margin-bottom: 1rem !important;
+    }
+
+    .loggout {
+        margin-top: 0rem !important;
+    }
 }

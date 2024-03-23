@@ -27,7 +27,6 @@ const navItems = [
   { text: 'CATEGORIES', link: '#categories' },
   { text: 'REVIEWS', link: '#reviews' },
   { text: 'ABOUT US', link: '/aboutus' },
-  { text: 'LOG OUT', link: '/logout' },
 ];
 
 function DrawerAppBar(props) {
@@ -57,14 +56,6 @@ function DrawerAppBar(props) {
     closeDrawer();
   };
 
-  const handleLogout = async () => {
-    try {
-      await auth.signOut();
-      navigate("/signin");
-    } catch (error) {
-      console.error("Error logging out:", error);
-    }
-  };
 
   React.useEffect(() => {
     const fetchProfilePic = async (currentUser) => {
@@ -110,17 +101,7 @@ function DrawerAppBar(props) {
           </Button>
         </Link>
       );
-    } else if (item.text === 'LOG OUT') {
-      return (
-        <Button
-          key={item.text}
-          onClick={handleLogout}
-          sx={{ color: 'white', fontWeight: '400', marginRight: '25px', fontSize: '15px' }}
-          className='nav-button logout'
-        >
-          {item.text}
-        </Button>
-      );
+  
     } else {
       return (
         <Button
@@ -152,7 +133,7 @@ function DrawerAppBar(props) {
     };
   
     return (
-      <Avatar
+      <Avatar className='avatarr'
         onClick={handleProfileClick}
         sx={avatarStyle}
       >
@@ -180,62 +161,63 @@ function DrawerAppBar(props) {
           </ListItem>
         ))}
       </List>
+      <Box sx={{ mt: 'auto', mb: 2 }}>
+        {renderProfileCircle()} {/* Render the profile picture circle */}
+      </Box>
     </Box>
   );
-
-return (
-  <>
-
-  <Box sx={{ display: 'flex' }}>
-    <CssBaseline />
-    <AppBar component="nav" sx={{ backgroundColor: "black" }}>
-      <Toolbar sx={{ padding: "0 5rem 0 5rem !important" }}>
-        <IconButton className='navicon'
-          color="inherit"
-          aria-label="open drawer"
-          edge="end"
-          onClick={handleDrawerToggle}
-          sx={{ ml: 'auto', display: { sm: 'none' } }}
+  
+  return (
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <AppBar component="nav" sx={{ backgroundColor: "black" }}>
+        <Toolbar sx={{ padding: "0 5rem 0 5rem !important" }}>
+          <IconButton className='navicon'
+            color="inherit"
+            aria-label="open drawer"
+            edge="end"
+            onClick={handleDrawerToggle}
+            sx={{ ml: 'auto', display: { sm: 'none' } }}
+          >
+            <MenuIcon />
+            <img className='logo-white' src="/logo_white.png" alt="" />
+          </IconButton>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }} 
+          >
+            <img className='logo-white' src="/logo_white.png" alt="" />
+          </Typography>
+          <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center' }}> {/* Added alignItems for centering */}
+            {navItems.map((item) => getNavLink(item))}
+            {renderProfileCircle()} {/* Render the profile picture circle */}
+          </Box>
+        </Toolbar>
+      </AppBar>
+      <nav>
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: 'block', sm: 'none' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          }}
         >
-          <MenuIcon />
-          <img className='logo-white' src="/logo_white.png" alt="" />
-        </IconButton>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }} 
-        >
-          <img className='logo-white' src="/logo_white.png" alt="" />
-        </Typography>
-        <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center' }}> {/* Added alignItems for centering */}
-          {navItems.map((item) => getNavLink(item))}
-          {renderProfileCircle()} {/* Render the profile picture circle */}
-        </Box>
-      </Toolbar>
-    </AppBar>
-    <nav>
-      <Drawer
-        container={container}
-        variant="temporary"
-        open={mobileOpen}
-        onClose={handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
-        }}
-        sx={{
-          display: { xs: 'block', sm: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-        }}
-      >
-        {drawer}
-      </Drawer>
-    </nav>
-    <Box component="main" sx={{ p: 0 }}>
-      <Toolbar />
+          {drawer}
+        </Drawer>
+      </nav>
+      <Box component="main" sx={{ p: 0 }}>
+        <Toolbar />
+      </Box>
     </Box>
-  </Box>
-  </>
-);
+  );
+  
 
   }
   

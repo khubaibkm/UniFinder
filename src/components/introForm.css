@@ -10,11 +10,11 @@
 
 
 
-.card {
-    margin-top: 1rem;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.cardintro {
+    margin-top: 2rem !important;
+    background-color: #fff !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
 .card-body {
@@ -89,8 +89,8 @@
 
 
 @media (max-width: 768px) {
-    .card {
-        margin-top: 1rem;
+    .cardintro {
+        margin-top: 1rem !important;
     }
 
     .form-control-onboard {
@@ -106,7 +106,7 @@
     .onboarding-container {
         padding: 1rem;
         margin-top: 3rem;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
 
     .imgg {
@@ -115,5 +115,30 @@
 
     .headingg {
         margin-top: -2rem !important;
+    }
+
+    .cardintro {
+        width: 22rem !important;
+        margin: auto;
+    }
+
+    .card-body {
+        padding: 2.5rem;
+    }
+}
+
+@media (max-width: 376px) {
+    .cardintro {
+        width: 20rem !important;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 340px) {
+    .cardintro {
+        width: 18rem !important;
     }
 }

@@ -159,7 +159,7 @@ const IntroForm = () => {
       <Container className="onboarding-container mt-5" maxWidth="lg">
         <Grid container justifyContent="center">
           <Grid item xs={12} md={8}>
-            <div className="card shadow">
+            <div className="card cardintro shadow">
               <img className="mb-4 imgg" src="/vite.png" alt="UniFinder Logo" />
               <div className="card-body">
                 <Typography className="headingg" variant="h5" align="center" gutterBottom>
