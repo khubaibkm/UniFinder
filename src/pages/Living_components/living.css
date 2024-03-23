@@ -405,7 +405,7 @@
   .sidebtn {
     display: none;
   }
-  button {
+  #pagination-btn {
     width: 25px !important;
     height: 25px !important;
   }

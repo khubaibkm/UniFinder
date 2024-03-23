@@ -388,6 +388,7 @@ export default function Living() {
 
           {[...Array(totalPages)].map((_, index) => (
             <button
+            id="pagination-btn"
               key={index}
               style={{
                 margin: "5px",
