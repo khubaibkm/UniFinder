@@ -4,7 +4,11 @@ import DrawerAppBarCat from "../../components/navCat";
 import Footer from "../../components/footer";
 import { MainData } from "./living_data";
 import Modal from "react-modal";
-import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
+import {
+  Call,
+  KeyboardArrowLeft,
+  KeyboardArrowRight,
+} from "@mui/icons-material";
 
 export default function Living() {
   const [sortOrder, setSortOrder] = useState("asc"); // "asc" or "desc"
@@ -15,7 +19,79 @@ export default function Living() {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentHostelId, setCurrentHostelId] = useState(null);
+  //pagination code
+  const renderPageButtons = () => {
+    const maxVisiblePages = 2;
+    const buttons = [];
+    if (totalPages <= 1) {
+      return buttons;
+    }
+    buttons.push(
+      <button
+        id="pagination-btn"
+        key={1}
+        style={{
+          margin: "5px",
+          width: "30px",
+          height: "30px",
+          borderRadius: "5px",
+          backgroundColor: activeButton === 1 ? "#D3D3D3" : "white",
+        }}
+        onClick={() => handlePageClick(1)}
+        className={currentPage === 1 ? "activebtn" : ""}
+      >
+        1
+      </button>
+    );
+    if (currentPage > maxVisiblePages + 1) {
+      buttons.push(<span key="left-dots">...</span>);
+    }
+    const start = Math.max(2, currentPage - maxVisiblePages);
+    const end = Math.min(totalPages - 1, currentPage + maxVisiblePages);
 
+    for (let i = start; i <= end; i++) {
+      buttons.push(
+        <button
+          id="pagination-btn"
+          key={i}
+          style={{
+            margin: "5px",
+            width: "30px",
+            height: "30px",
+            borderRadius: "5px",
+            backgroundColor: activeButton === i ? "#D3D3D3" : "white",
+          }}
+          onClick={() => handlePageClick(i)}
+          className={currentPage === i ? "activebtn" : ""}
+        >
+          {i}
+        </button>
+      );
+    }
+
+    if (end < totalPages - 1) {
+      buttons.push(<span key="right-dots">...</span>);
+    }
+    buttons.push(
+      <button
+        id="pagination-btn"
+        key={totalPages}
+        style={{
+          margin: "5px",
+          width: "30px",
+          height: "30px",
+          borderRadius: "5px",
+          backgroundColor: activeButton === totalPages ? "#D3D3D3" : "white",
+        }}
+        onClick={() => handlePageClick(totalPages)}
+        className={currentPage === totalPages ? "activebtn" : ""}
+      >
+        {totalPages}
+      </button>
+    );
+
+    return buttons;
+  };
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -385,26 +461,7 @@ export default function Living() {
           >
             <KeyboardArrowLeft />
           </button>
-
-          {[...Array(totalPages)].map((_, index) => (
-            <button
-            id="pagination-btn"
-              key={index}
-              style={{
-                margin: "5px",
-                width: "30px",
-                height: "30px",
-                borderRadius: "5px",
-                backgroundColor:
-                  activeButton === index + 1 ? "#D3D3D3" : "white",
-              }}
-              onClick={() => handlePageClick(index + 1)}
-              className={currentPage === index + 1 ? "activebtn" : ""}
-            >
-              {index + 1}
-            </button>
-          ))}
-
+          {renderPageButtons()}
           <button
             onClick={handleNextPage}
             disabled={data.slice(currentPage * postsPerPage).length === 0}

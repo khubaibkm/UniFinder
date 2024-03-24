@@ -7,13 +7,13 @@ export const MainData = [
     Paid: "AC, Mess.",
     Rent: "Rs. 3500-4000/month",
     hostel_img: "/images/living/paras front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+917275807178",
     contactPerson: "Vinod",
-    addressImg: "/images/living/447031 1.png",
+    addressImg: "/images/living/location.png",
     map: `https://www.google.com/maps/place/Paras+Boys+Hostel+-+Kursi+Road/@26.9548321,80.9956039,17z/data=!4m14!1m7!3m6!1s0x399959b537a27ce7:0xc3b1179e1579e014!2sParas+Boys+Hostel+-+Kursi+Road!8m2!3d26.9548273!4d80.9981788!16s%2Fg%2F11fn5sp32z!3m5!1s0x399959b537a27ce7:0xc3b1179e1579e014!8m2!3d26.9548273!4d80.9981788!16s%2Fg%2F11fn5sp32z?entry=ttu
     `,
-    mediaImg: "/images/living/3178404 1.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -32,13 +32,13 @@ export const MainData = [
     Paid: "Mess , cooler",
     Rent: "Rs. 2000-2200/month",
     hostel_img: "/images/living/shaalimar front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+919554472777",
     contactPerson: " Mohd Salim ",
     map: `https://www.google.com/maps/dir//XX4X%2BJ49+Shalimar+Boys+Hostel+Kursi+Road+Lucknow,+Lucknow,+Uttar+Pradesh+226026/@26.95655,80.9952898,17z/data=!4m8!4m7!1m0!1m5!1m1!1s0x399959e7fc01ead7:0x643ac12cc828ea56!2m2!1d80.9978663!2d26.9565444?entry=ttu
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -58,13 +58,13 @@ export const MainData = [
     phone1: "NA ",
     contactPerson: " NA",
     hostel_img: "/images/living/national front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     map: `
 https://www.google.com/maps/place/National+Girls+Hostel/@26.9592271,81.0008333,98m/data=!3m1!1e3!4m19!1m12!4m11!1m6!1m2!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2sIntegral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh!2m2!1d80.9992311!2d26.958454!1m3!2m2!1d80.9983123!2d26.957302!3m5!1s0x3999595d1c46c77d:0xa34511ba665764dc!8m2!3d26.9590747!4d81.0011515!16s%2Fg%2F11szfxqwqv?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Girl", "Hostel"],
     modal_images: [
@@ -84,7 +84,7 @@ https://www.google.com/maps/place/National+Girls+Hostel/@26.9592271,81.0008333,9
     Paid: "AC, Electricity",
     Rent: "Rs.3500-7000/month",
     hostel_img: "/images/living/regal (6).png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+917518471163",
     phone2: "+918800652669",
     map: `
@@ -92,8 +92,8 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
 
     `,
     contactPerson: "Aneeqa Rehman",
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Girl", "Hostel"],
     modal_images: [
@@ -112,15 +112,15 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Paid: " NA",
     Rent: "Rs. 3500/month",
     hostel_img: "/images/living/paradise front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+918090208280",
     contactPerson: "Junaid Khan",
     map: `
 https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh/26.9595649,81.0022084/26.9595381,81.0022058/@26.9595186,81.001894,49m/data=!3m1!1e3!4m15!4m14!1m10!1m1!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2m2!1d80.9992311!2d26.958454!3m4!1m2!1d81.0020462!2d26.9595394!3s0x399959e909a0f239:0x1e17089250580fea!1m0!1m0!3e2?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Girl", "Hostel"],
     modal_images: [
@@ -140,15 +140,15 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Paid: "Cooler",
     Rent: "Rs. 2200-2700/month ",
     hostel_img: "/images/living/royal infront front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+919321072432",
     contactPerson: "Bunty",
     map: `
     https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh/26.9595546,80.9978098/@26.9594089,80.9979806,98m/data=!3m1!1e3!4m9!4m8!1m5!1m1!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2m2!1d80.9992311!2d26.958454!1m0!3e2?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -165,15 +165,15 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Paid: "Cooler",
     Rent: "Rs. 2800-3000/month",
     hostel_img: "/images/living/arsh front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+919793078323",
     contactPerson: "Firoj W Khan",
     map: `
     https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh/26.9593266,80.9981501/@26.9594089,80.9979806,98m/data=!3m1!1e3!4m9!4m8!1m5!1m1!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2m2!1d80.9992311!2d26.958454!1m0!3e2?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -193,7 +193,7 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Paid: "Cooler, Mess.",
     Rent: "Rs. 2500/month",
     hostel_img: "/images/living/royal (2).png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+917905870060",
     phone2: "+918756455051",
     contactPerson: "Arif",
@@ -201,8 +201,8 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
  https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh/26.9595546,80.9978098/@26.9594089,80.9979806,98m/data=!3m1!1e3!4m9!4m8!1m5!1m1!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2m2!1d80.9992311!2d26.958454!1m0!3e2?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -219,14 +219,14 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Paid: "AC, Mess.",
     Rent: "For AC - Rs.8500/month\n Non AC - Rs.5500/month",
     hostel_img: "/images/living/she rose front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+917457944338",
     contactPerson: "Shivani",
     map: `
    https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh/26.9597569,80.9983206/@26.9589038,80.9960051,786m/data=!3m2!1e3!4b1!4m8!4m7!1m5!1m1!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2m2!1d80.9992311!2d26.958454!1m0?entry=ttu
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Girl", "Hostel"],
     modal_images: [
@@ -242,15 +242,15 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Paid: "Cooler ,Mess.",
     Rent: "Rs. 2500-3000/month",
     hostel_img: "/images/living/zee front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+916394091240",
     contactPerson: "Mohd Arif",
     map: `
  
 https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh/26.9598428,80.9981801/@26.9596467,80.9980087,98m/data=!3m1!1e3!4m9!4m8!1m5!1m1!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2m2!1d80.9992311!2d26.958454!1m0!3e2?entry=ttu
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Girl", "Hostel"],
     modal_images: [
@@ -269,15 +269,15 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Paid: " Mess.",
     Rent: "Rs. 2500/month",
     hostel_img: "/images/living/al-musarrat front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "NA",
     contactPerson: "Balgovind",
     map: `
    https://www.google.com/maps/place/Al+Masarrat+Boys+Hostel/@26.9593974,80.997827,49m/data=!3m1!1e3!4m6!3m5!1s0x399959e62c12db49:0x97add95ef792835d!8m2!3d26.959289!4d80.9977512!16s%2Fg%2F11c137p9l1?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -301,9 +301,9 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh/26.9593018,80.9976781/@26.9595009,80.9978746,98m/data=!3m1!1e3!4m9!4m8!1m5!1m1!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2m2!1d80.9992311!2d26.958454!1m0!3e2?entry=ttu
 
     `,
-    contactImg: "/images/living/6596115 1.png",
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    contactImg: "/images/living/phone.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -321,7 +321,7 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Paid: " Mess.",
     Rent: "Rs. 2700/month",
     hostel_img: "/images/living/st-xavier front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+919455882348",
     phone2: "+91902682818",
     contactPerson: "Bimal Kumar",
@@ -329,8 +329,8 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
 https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh/26.9591077,80.9980235/@26.9591112,80.9978558,98m/data=!3m1!1e3!4m9!4m8!1m5!1m1!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2m2!1d80.9992311!2d26.958454!1m0!3e2?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -348,15 +348,15 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Paid: " Mess.",
     Rent: "Rs. 5000-5500/month",
     hostel_img: "/images/living/krishna front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+917905640993",
     contactPerson: "Satender",
     map: `
 https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh/26.9596102,80.9983142/@26.9594089,80.9979806,98m/data=!3m1!1e3!4m9!4m8!1m5!1m1!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2m2!1d80.9992311!2d26.958454!1m0!3e2?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -375,13 +375,13 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Paid: "AC, Mess.",
     Rent: "Contact to owner",
     hostel_img: "/images/living/Unity front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+919170763907",
     phone2: "+919119884568",
     map: `https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh/26.9594294,81.0019494/@26.9592881,81.0017625,98m/data=!3m1!1e3!4m9!4m8!1m5!1m1!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2m2!1d80.9992311!2d26.958454!1m0!3e2?entry=ttu`,
     contactPerson: "Arshad / Nadim ",
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -400,15 +400,15 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Paid: " Electricity",
     Rent: "Rs. NA/month",
     hostel_img: "/images/living/infinity front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "NA",
     contactPerson: "Shah Alam",
     map: `
 https://www.google.com/maps/place/INFINITY+TOWER/@26.9598986,80.9983279,49m/data=!3m1!1e3!4m6!3m5!1s0x399959c6839208d5:0x1a3d3fc15b4e8cc3!8m2!3d26.9599853!4d80.9981917!16s%2Fg%2F11hymgkgqs?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -425,15 +425,15 @@ https://www.google.com/maps/place/INFINITY+TOWER/@26.9598986,80.9983279,49m/data
     Paid: " AC",
     Rent: "Rs. 3000/month",
     hostel_img: "/images/living/trivedi front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+919918585192",
     contactPerson: "Rohit / Trivedi",
     map: `
 
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -451,14 +451,14 @@ https://www.google.com/maps/place/INFINITY+TOWER/@26.9598986,80.9983279,49m/data
     Paid: " Mess.",
     Rent: "Rs. 2500-3000/month",
     hostel_img: "/images/living/makan front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+919889228933",
     map: `
 https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh/26.9564337,80.9984317/@26.9563576,80.9985733,196m/data=!3m1!1e3!4m9!4m8!1m5!1m1!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2m2!1d80.9992311!2d26.958454!1m0!3e2?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -476,15 +476,15 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Paid: " Mess.",
     Rent: "Rs. 2000/month",
     hostel_img: "/images/living/kn front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "NA",
     contactPerson: "Atikur Rehman",
     map: `
 https://www.google.com/maps/place/KN+boys+hostel/@26.9557649,80.9984432,49m/data=!3m1!1e3!4m6!3m5!1s0x399959ee37c5f081:0xff0c62cb24e4e382!8m2!3d26.955609!4d80.9983423!16s%2Fg%2F11l1y2x4d1?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -501,15 +501,15 @@ https://www.google.com/maps/place/KN+boys+hostel/@26.9557649,80.9984432,49m/data
     Paid: " Mess.",
     Rent: "Rs. 2500/month",
     hostel_img: "/images/living/cafeteria front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "NA",
     contactPerson: "NA",
     map: `
 https://www.google.com/maps/place/Uzma+Hostel/@26.9557649,80.9984432,49m/data=!3m1!1e3!4m6!3m5!1s0x39995911711469b1:0x8cc872d9995622a8!8m2!3d26.955733!4d80.9986013!16s%2Fg%2F11k56sdr30?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -526,15 +526,15 @@ https://www.google.com/maps/place/Uzma+Hostel/@26.9557649,80.9984432,49m/data=!3
     Paid: " Mess.",
     Rent: "Rs. 2500/month",
     hostel_img: "/images/living/new sanik front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+917235087989",
     contactPerson: "Wahid Ahmad",
     map: `
 https://www.google.com/maps/place/Raj+Telore/@26.9561585,80.9997303,49m/data=!3m1!1e3!4m6!3m5!1s0x39995947b0a1fc63:0xf84ddb479f246d34!8m2!3d26.9560822!4d80.9997474!16s%2Fg%2F11t81fc9vm?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -551,15 +551,15 @@ https://www.google.com/maps/place/Raj+Telore/@26.9561585,80.9997303,49m/data=!3m
     Paid: " Mess.",
     Rent: "Rs. 1200-1500/month",
     hostel_img: "/images/living/np front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+917459833635",
     contactPerson: "Ritik",
     map: `
 https://www.google.com/maps/place/N+P+Hostel/@26.956981,80.9983326,393m/data=!3m1!1e3!4m6!3m5!1s0x399959e7e4baddb1:0x35cafd5c927c613c!8m2!3d26.9568982!4d80.9977642!16s%2Fg%2F11c2008tlw?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -576,15 +576,15 @@ https://www.google.com/maps/place/N+P+Hostel/@26.956981,80.9983326,393m/data=!3m
     Paid: " Mess.",
     Rent: "Rs. 2000/month",
     hostel_img: "/images/living/galaxy front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "NA",
     contactPerson: "Sadab Khan",
     map: `
 https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh/26.9566692,80.9980102/@26.9563576,80.9985733,196m/data=!3m1!1e3!4m9!4m8!1m5!1m1!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2m2!1d80.9992311!2d26.958454!1m0!3e2?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -601,15 +601,15 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Paid: " Mess.",
     Rent: "Rs. 2500/month",
     hostel_img: "/images/living/salman front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+918429825742",
     contactPerson: "Salman",
     map: `
 https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh/26.9562885,80.9977089/@26.9563027,80.9984446,196m/data=!3m1!1e3!4m9!4m8!1m5!1m1!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2m2!1d80.9992311!2d26.958454!1m0!3e2?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -626,15 +626,15 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Paid: " Mess.",
     Rent: "Rs. 2500/month",
     hostel_img: "/images/living/vidya front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+919651891781",
     contactPerson: "Deepu Singh",
     map: `
 https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh/26.9569029,80.9985916/@26.9563027,80.9984446,196m/data=!3m1!1e3!4m9!4m8!1m5!1m1!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2m2!1d80.9992311!2d26.958454!1m0!3e2?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -650,15 +650,15 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Paid: " Mess.",
     Rent: "Rs. 2200/month",
     hostel_img: "/images/living/nadeem front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+919044858636",
     contactPerson: "Yakub",
     map: `
 
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: ["/images/living/nadeem (2).png"],
@@ -671,15 +671,15 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Paid: " Mess.",
     Rent: "Rs. 2200/month",
     hostel_img: "/images/living/new front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+918881621195",
     map: `
 
 
     `,
     contactPerson: "Faisal",
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -696,15 +696,15 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Paid: " Mess.",
     Rent: "Rs. 2500/month",
     hostel_img: "/images/living/ayaan front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "NA",
     contactPerson: "Ali Samad",
     map: `
 
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -721,15 +721,15 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Paid: " Mess.",
     Rent: "Rs. 2000/month",
     hostel_img: "/images/living/gazi front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+919984919986",
     contactPerson: "Osama Gazi",
     map: `
 https://www.google.com/maps/place/GAZI+HOSTEL/@26.959826,81.0011565,98m/data=!3m1!1e3!4m19!1m12!4m11!1m6!1m2!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2sIntegral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh!2m2!1d80.9992311!2d26.958454!1m3!2m2!1d80.9983123!2d26.957302!3m5!1s0x39995914634c011b:0x4082fa3c54a0ec9e!8m2!3d26.9598738!4d81.0014875!16s%2Fg%2F11p72jb2nq?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -746,15 +746,15 @@ https://www.google.com/maps/place/GAZI+HOSTEL/@26.959826,81.0011565,98m/data=!3m
     Paid: " Mess.",
     Rent: "NA",
     hostel_img: "/images/living/meraj front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+919005531897",
     contactPerson: "Kurban Khan",
     map: `
 https://www.google.com/maps/place/Meraj+Hostel+Integral+University/@26.959826,81.0011565,98m/data=!3m1!1e3!4m19!1m12!4m11!1m6!1m2!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2sIntegral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh!2m2!1d80.9992311!2d26.958454!1m3!2m2!1d80.9983123!2d26.957302!3m5!1s0x399959e902c9160b:0xcfffe66256f518f1!8m2!3d26.959859!4d81.0009689!16s%2Fg%2F11gh2slb87?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -771,15 +771,15 @@ https://www.google.com/maps/place/Meraj+Hostel+Integral+University/@26.959826,81
     Paid: " Electricity",
     Rent: "Rs. 13K-15K/month",
     hostel_img: "/images/living/apartment near meraj front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+916388115518",
     map: `
 https://www.google.com/maps/place/Meraj+Hostel+Integral+University/@26.959826,81.0011565,98m/data=!3m1!1e3!4m19!1m12!4m11!1m6!1m2!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2sIntegral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh!2m2!1d80.9992311!2d26.958454!1m3!2m2!1d80.9983123!2d26.957302!3m5!1s0x399959e902c9160b:0xcfffe66256f518f1!8m2!3d26.959859!4d81.0009689!16s%2Fg%2F11gh2slb87?entry=ttu
 
     `,
     contactPerson: "Seraj / Asif",
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Apartment"],
     modal_images: [
@@ -798,15 +798,15 @@ https://www.google.com/maps/place/Meraj+Hostel+Integral+University/@26.959826,81
     Paid: " Mess.",
     Rent: "Rs. 2000/month",
     hostel_img: "/images/living/anwar front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+919721402230",
     contactPerson: "Anwar",
     map: `
 
 https://www.google.com/maps/place/Rahmaan+hostel/@26.959826,81.0011565,98m/data=!3m1!1e3!4m19!1m12!4m11!1m6!1m2!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2sIntegral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh!2m2!1d80.9992311!2d26.958454!1m3!2m2!1d80.9983123!2d26.957302!3m5!1s0x39995924ea186e65:0x87f772dad6a9c6a0!8m2!3d26.959669!4d81.0010738!16s%2Fg%2F11y1xppv7g?entry=ttu
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Girl"],
     modal_images: [
@@ -823,15 +823,15 @@ https://www.google.com/maps/place/Rahmaan+hostel/@26.959826,81.0011565,98m/data=
     Paid: " Mess.",
     Rent: "Rs. 2200/month",
     hostel_img: "/images/living/rehman front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+918470935838",
     contactPerson: "Irfan",
     map: `
 https://www.google.com/maps/place/Rahmaan+hostel/@26.9594076,81.0011444,98m/data=!3m1!1e3!4m19!1m12!4m11!1m6!1m2!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2sIntegral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh!2m2!1d80.9992311!2d26.958454!1m3!2m2!1d80.9983123!2d26.957302!3m5!1s0x39995924ea186e65:0x87f772dad6a9c6a0!8m2!3d26.959669!4d81.0010738!16s%2Fg%2F11y1xppv7g?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -848,7 +848,7 @@ https://www.google.com/maps/place/Rahmaan+hostel/@26.9594076,81.0011444,98m/data
     Paid: " Mess.",
     Rent: "Rs. 2200/month",
     hostel_img: "/images/living/siddiqui front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+919984842438",
     map: `
 https://www.google.com/maps/place/Rahmaan+hostel/@26.9594076,81.0011444,98m/data=!3m1!1e3!4m19!1m12!4m11!1m6!1m2!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2sIntegral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh!2m2!1d80.9992311!2d26.958454!1m3!2m2!1d80.9983123!2d26.957302!3m5!1s0x39995924ea186e65:0x87f772dad6a9c6a0!8m2!3d26.959669!4d81.0010738!16s%2Fg%2F11y1xppv7g?entry=ttu
@@ -856,8 +856,8 @@ https://www.google.com/maps/place/Rahmaan+hostel/@26.9594076,81.0011444,98m/data
     `,
     phone2: "+918470935838",
     contactPerson: "Irfan",
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -874,13 +874,13 @@ https://www.google.com/maps/place/Rahmaan+hostel/@26.9594076,81.0011444,98m/data
     Paid: " Mess , Wifi",
     Rent: "Rs. 2500-3000/month",
     hostel_img: "/images/living/fauji front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+919670440392",
     map: `
 https://www.google.com/maps/place/Fauji+Boys+Hostel/@26.9595236,80.9996464,98m/data=!3m1!1e3!4m19!1m12!4m11!1m6!1m2!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2sIntegral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh!2m2!1d80.9992311!2d26.958454!1m3!2m2!1d80.9983123!2d26.957302!3m5!1s0x399959e8951761af:0x1a21083be60a5f0d!8m2!3d26.9593691!4d80.9994648!16s%2Fg%2F11bx0d3z05?entry=ttu
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Hostel"],
     modal_images: [
@@ -898,15 +898,15 @@ https://www.google.com/maps/place/Fauji+Boys+Hostel/@26.9595236,80.9996464,98m/d
     Paid: " Mess.",
     Rent: "Rs. 15000/month",
     hostel_img: "/images/living/new sanik front.png",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "+919793643799",
     contactPerson: "Riyaz",
     map: `
     https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh/26.9564436,80.9995943/@26.9564418,81.0001732,98m/data=!3m1!1e3!4m10!4m9!1m5!1m1!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2m2!1d80.9992311!2d26.958454!1m0!3e2!5i1?entry=ttu
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Apartment"],
     modal_images: [
@@ -923,15 +923,15 @@ https://www.google.com/maps/place/Fauji+Boys+Hostel/@26.9595236,80.9996464,98m/d
     Paid: " Mess.",
     Rent: "Rs. NA/month",
     hostel_img: "/images/under_construction.jpg",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "NA",
     contactPerson: "NA",
     map: `
   
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Apartment"],
     modal_images: [],
@@ -944,15 +944,15 @@ https://www.google.com/maps/place/Fauji+Boys+Hostel/@26.9595236,80.9996464,98m/d
     Paid: " Mess.",
     Rent: "Rs. NA/month",
     hostel_img: "/images/under_construction.jpg",
-    contactImg: "/images/living/6596115 1.png",
+    contactImg: "/images/living/phone.png",
     phone1: "NA",
     contactPerson: "NA",
     map: `
   
 
     `,
-    addressImg: "/images/living/447031 1.png",
-    mediaImg: "/images/living/3178404 1.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Apartment"],
     modal_images: [],

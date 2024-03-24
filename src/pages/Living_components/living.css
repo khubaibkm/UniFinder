@@ -409,8 +409,11 @@
     width: 25px !important;
     height: 25px !important;
   }
+  .activebtn {
+    width: 25px !important;
+    height: 25px !important;
+  }
 }
-
 @media (max-height: 900px) {
   .boxmodal {
     height: 35rem;
