@@ -5,6 +5,10 @@ import Footer from "../../components/footer";
 import { MainData } from "./food_data";
 import Modal from "react-modal";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
+import { ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage";
+import { storage } from "/src/firebase.js";
+import { toast } from "react-toastify";
+
 
 export default function Food() {
   const handleCategoryChange = () => {
@@ -17,6 +21,8 @@ export default function Food() {
   const [activeButton, setActiveButton] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedFoodItemId, setSelectedFoodItemId] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [modalImages, setModalImages] = useState([]);
   //pagination code
   const renderPageButtons = () => {
     const maxVisiblePages = 2;
@@ -108,6 +114,55 @@ export default function Food() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  useEffect(() => {
+    if (selectedFoodItemId && isModalOpen) {
+      fetchModalImages(selectedFoodItemId);
+    }
+  }, [selectedFoodItemId, isModalOpen]);
+
+  const handleUpload = async (e) => {
+    const file = e.target.files[0];
+    setUploading(true);
+
+    try {
+      if (!selectedFoodItemId) {
+        throw new Error("No food item selected.");
+      }
+
+      const storageRef = ref(
+        storage,
+        `food_images/${selectedFoodItemId}/${file.name}`
+      );
+
+      await uploadBytes(storageRef, file);
+      const imageUrl = await getDownloadURL(storageRef);
+
+      setModalImages((prevImages) => [...prevImages, imageUrl]);
+      setUploading(false);
+      toast.success("Image uploaded successfully!");
+    } catch (error) {
+      console.error("Error uploading image: ", error);
+      setUploading(false);
+    }
+  };
+
+  // Function to fetch modal images from Firebase storage
+  const fetchModalImages = async (foodItemId) => {
+    try {
+      if (!foodItemId) {
+        throw new Error("No food item ID provided.");
+      }
+
+      const imagesRef = ref(storage, `food_images/${foodItemId}`);
+      const imageList = await listAll(imagesRef);
+      const urls = await Promise.all(
+        imageList.items.map((item) => getDownloadURL(item))
+      );
+      setModalImages(urls);
+    } catch (error) {
+      console.error("Error fetching modal images: ", error);
+    }
+  };
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
@@ -329,23 +384,23 @@ export default function Food() {
                       </a>
                     </div>
                     <Modal
-                      isOpen={isModalOpen}
-                      onRequestClose={closeModal}
-                      contentLabel="Media Modal"
-                      className="boxmodal"
-                      style={{
-                        overlay: {
-                          backgroundColor: "rgba(0, 0, 0, 0.3)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                        },
-                      }}
-                    >
-                      <div className="modal-content">
-                        <p className="modal-para">Check out Images</p>
-                        <div className="image-container-modal">
-                          {selectedFoodItemId !== null &&
+          isOpen={isModalOpen}
+          onRequestClose={closeModal}
+          contentLabel="Media Modal"
+          className="boxmodal"
+          style={{
+            overlay: {
+              backgroundColor: "rgba(0, 0, 0, 0.3)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            },
+          }}
+        >
+          <div className="modal-content">
+            {/* Modal content */}
+            <div className="image-container-modal">
+            {selectedFoodItemId !== null &&
                             data
                               .filter((item) => item.id === selectedFoodItemId)
                               .map((item) =>
@@ -358,12 +413,38 @@ export default function Food() {
                                   />
                                 ))
                               )}
-                        </div>
-                        <button className="modal-btn" onClick={closeModal}>
-                          Close
-                        </button>
-                      </div>
-                    </Modal>
+              {/* Modal images */}
+              {modalImages.map((imageUrl, index) => (
+                <img
+                  key={index}
+                  className="modal_img"
+                  src={imageUrl}
+                  alt={`Image ${index}`}
+                />
+              ))}
+            </div>
+            {/* Conditional rendering of upload button text */}
+            {uploading ? (
+              <p className="custom-file-upload">Uploading...</p>
+            ) : (
+              <label htmlFor="file-input" className="custom-file-upload">
+                Upload Image
+              </label>
+            )}
+            {/* Hide the input element */}
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleUpload}
+              disabled={uploading}
+              id="file-input"
+              style={{ display: 'none' }}
+            />
+            <button className="modal-btn" onClick={closeModal}>
+              Close
+            </button>
+          </div>
+        </Modal>
 
                     <div className="media">
                       <a href="#">

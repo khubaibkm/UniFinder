@@ -6,7 +6,6 @@ import { MainData } from "./living_data";
 import Modal from "react-modal";
 import {toast} from 'react-toastify';
 import {
-  Call,
   KeyboardArrowLeft,
   KeyboardArrowRight,
 } from "@mui/icons-material";
