@@ -8,7 +8,7 @@ import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
 import { ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage";
 import { storage } from "/src/firebase.js";
 import { toast } from "react-toastify";
-
+import SearchBar from "../../components/SearchBar";
 
 export default function Food() {
   const handleCategoryChange = () => {
@@ -220,6 +220,18 @@ export default function Food() {
     }
     return item.category.includes(selectedCategory);
   });
+  // searchbar
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredFood, setFilteredFood] = useState(MainData);
+
+  const handleSearchChange = (event) => {
+    const query = event.target.value.toLowerCase();
+    setSearchQuery(query);
+    const filtered = MainData.filter((food) =>
+      food.foodPlace.toLowerCase().includes(query)
+    );
+    setFilteredFood(filtered);
+  };
 
   return (
     <>
@@ -293,10 +305,10 @@ export default function Food() {
             </div>
           </div>
         </div>
-
+        <SearchBar onChange={handleSearchChange} />
         {/* living-content */}
         <div className="living-content" style={{ height: livingPageHeight }}>
-          {filteredData
+          {filteredFood
             .slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage)
             .map((item) => (
               <div className="live_card" key={item.id}>
@@ -384,23 +396,23 @@ export default function Food() {
                       </a>
                     </div>
                     <Modal
-          isOpen={isModalOpen}
-          onRequestClose={closeModal}
-          contentLabel="Media Modal"
-          className="boxmodal"
-          style={{
-            overlay: {
-              backgroundColor: "rgba(0, 0, 0, 0.3)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            },
-          }}
-        >
-          <div className="modal-content">
-            {/* Modal content */}
-            <div className="image-container-modal">
-            {selectedFoodItemId !== null &&
+                      isOpen={isModalOpen}
+                      onRequestClose={closeModal}
+                      contentLabel="Media Modal"
+                      className="boxmodal"
+                      style={{
+                        overlay: {
+                          backgroundColor: "rgba(0, 0, 0, 0.3)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        },
+                      }}
+                    >
+                      <div className="modal-content">
+                        {/* Modal content */}
+                        <div className="image-container-modal">
+                          {selectedFoodItemId !== null &&
                             data
                               .filter((item) => item.id === selectedFoodItemId)
                               .map((item) =>
@@ -413,38 +425,41 @@ export default function Food() {
                                   />
                                 ))
                               )}
-              {/* Modal images */}
-              {modalImages.map((imageUrl, index) => (
-                <img
-                  key={index}
-                  className="modal_img"
-                  src={imageUrl}
-                  alt={`Image ${index}`}
-                />
-              ))}
-            </div>
-            {/* Conditional rendering of upload button text */}
-            {uploading ? (
-              <p className="custom-file-upload">Uploading...</p>
-            ) : (
-              <label htmlFor="file-input" className="custom-file-upload">
-                Upload Image
-              </label>
-            )}
-            {/* Hide the input element */}
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleUpload}
-              disabled={uploading}
-              id="file-input"
-              style={{ display: 'none' }}
-            />
-            <button className="modal-btn" onClick={closeModal}>
-              Close
-            </button>
-          </div>
-        </Modal>
+                          {/* Modal images */}
+                          {modalImages.map((imageUrl, index) => (
+                            <img
+                              key={index}
+                              className="modal_img"
+                              src={imageUrl}
+                              alt={`Image ${index}`}
+                            />
+                          ))}
+                        </div>
+                        {/* Conditional rendering of upload button text */}
+                        {uploading ? (
+                          <p className="custom-file-upload">Uploading...</p>
+                        ) : (
+                          <label
+                            htmlFor="file-input"
+                            className="custom-file-upload"
+                          >
+                            Upload Image
+                          </label>
+                        )}
+                        {/* Hide the input element */}
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={handleUpload}
+                          disabled={uploading}
+                          id="file-input"
+                          style={{ display: "none" }}
+                        />
+                        <button className="modal-btn" onClick={closeModal}>
+                          Close
+                        </button>
+                      </div>
+                    </Modal>
 
                     <div className="media">
                       <a href="#">

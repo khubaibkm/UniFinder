@@ -85,14 +85,14 @@ const AboutUs = () => {
                 Batch: 2020-24
                 <br />
                 <br />
-                Hi, I&apos;m Asif Siddiqui from Deoria, UP. I&apos;ve led
-                successful projects, showcasing my creative web design .
-                Currently exploring the frontier of technology, I&apos;m
-                enthusiastic about integrating cutting-edge solutions,
-                particularly in cloud computing. I&apos;m also passionate about
-                sky photography and sketching. In the future, Explore my profile
-                for more, and feel free to reach out for collaboration or
-                assistance. Thank you!
+                Hello! I&apos;m Asif Siddiqui from Deoria, Uttar Pradesh. I love
+                creating beautiful websites and have experience in web design.
+                Currently, I&apos;m exploring the exciting world of technology,
+                especially the MERN stack . When I&apos;m not coding,
+                you&apos;ll find me capturing the sky&apos;s beauty through
+                photography or expressing myself through sketches. Feel free to
+                check out my profile—I&apos;m open to collaboration and always
+                ready to help. Thank you!
               </p>
 
               <p style={{ paddingBottom: "30px", fontWeight: "bold" }}>

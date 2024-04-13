@@ -4,13 +4,11 @@ import DrawerAppBarCat from "../../components/navCat";
 import Footer from "../../components/footer";
 import { MainData } from "./living_data";
 import Modal from "react-modal";
-import {toast} from 'react-toastify';
-import {
-  KeyboardArrowLeft,
-  KeyboardArrowRight,
-} from "@mui/icons-material";
+import { toast } from "react-toastify";
+import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
 import { ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage";
 import { storage } from "/src/firebase.js";
+import SearchBar from "../../components/SearchBar";
 
 export default function Living() {
   const [sortOrder, setSortOrder] = useState("asc"); // "asc" or "desc"
@@ -97,77 +95,75 @@ export default function Living() {
 
     return buttons;
   };
-  
-  
-    const getdata = () => {
-      setData(MainData);
-    };
-  
-    useEffect(() => {
-      getdata();
-    }, []);
-  
-    useEffect(() => {
-      setData(MainData);
-    }, []);
 
-    useEffect(() => {
-      if (currentHostelId && isModalOpen) {
-        fetchModalImages(currentHostelId);
+  const getdata = () => {
+    setData(MainData);
+  };
+
+  useEffect(() => {
+    getdata();
+  }, []);
+
+  useEffect(() => {
+    setData(MainData);
+  }, []);
+
+  useEffect(() => {
+    if (currentHostelId && isModalOpen) {
+      fetchModalImages(currentHostelId);
+    }
+  }, [currentHostelId, isModalOpen]);
+
+  const openModal = async () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleUpload = async (e) => {
+    const file = e.target.files[0];
+    setUploading(true);
+
+    try {
+      if (!currentHostelId) {
+        throw new Error("No hostel selected.");
       }
-    }, [currentHostelId, isModalOpen]);
 
-    const openModal = async () => {
-      setIsModalOpen(true);
-    };
-  
-    const closeModal = () => {
-      setIsModalOpen(false);
-    };
+      const storageRef = ref(
+        storage,
+        `hostel_images/${currentHostelId}/${file.name}`
+      );
 
-    const handleUpload = async (e) => {
-      const file = e.target.files[0];
-      setUploading(true);
-  
-      try {
-        if (!currentHostelId) {
-          throw new Error("No hostel selected.");
-        }
-  
-        const storageRef = ref(
-          storage,
-          `hostel_images/${currentHostelId}/${file.name}`
-        );
-  
-        await uploadBytes(storageRef, file);
-        const imageUrl = await getDownloadURL(storageRef);
-  
-        setModalImages((prevImages) => [...prevImages, imageUrl]);
-        setUploading(false);
-        toast.success("Image uploaded successfully!");
-      } catch (error) {
-        console.error("Error uploading image: ", error);
-        setUploading(false);
+      await uploadBytes(storageRef, file);
+      const imageUrl = await getDownloadURL(storageRef);
+
+      setModalImages((prevImages) => [...prevImages, imageUrl]);
+      setUploading(false);
+      toast.success("Image uploaded successfully!");
+    } catch (error) {
+      console.error("Error uploading image: ", error);
+      setUploading(false);
+    }
+  };
+
+  const fetchModalImages = async (hostelId) => {
+    try {
+      if (!hostelId) {
+        throw new Error("No hostel ID provided.");
       }
-    };
-  
-    const fetchModalImages = async (hostelId) => {
-      try {
-        if (!hostelId) {
-          throw new Error("No hostel ID provided.");
-        }
-  
-        const imagesRef = ref(storage, `hostel_images/${hostelId}`);
-        const imageList = await listAll(imagesRef);
-        const urls = await Promise.all(
-          imageList.items.map((item) => getDownloadURL(item))
-        );
-        setModalImages(urls);
-      } catch (error) {
-        console.error("Error fetching modal images: ", error);
-      }
-    };
 
+      const imagesRef = ref(storage, `hostel_images/${hostelId}`);
+      const imageList = await listAll(imagesRef);
+      const urls = await Promise.all(
+        imageList.items.map((item) => getDownloadURL(item))
+      );
+      setModalImages(urls);
+    } catch (error) {
+      console.error("Error fetching modal images: ", error);
+    }
+  };
 
   const handleSort = (criteria) => {
     // Toggle sort order if clicking on the same criteria
@@ -283,7 +279,17 @@ export default function Living() {
 
     alert(alertMessage);
   }
-
+  // search bar
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredHostels, setFilteredHostels] = useState(MainData);
+  const handleSearchChange = (event) => {
+    const query = event.target.value.toLowerCase();
+    setSearchQuery(query);
+    const filtered = MainData.filter((hostel) =>
+      hostel.hostel.toLowerCase().includes(query)
+    );
+    setFilteredHostels(filtered);
+  };
   return (
     <>
       <div className="listings">
@@ -374,10 +380,11 @@ export default function Living() {
             </div>
           </div> */}
         </div>
+        <SearchBar onChange={handleSearchChange} />
 
         {/* living-content */}
         <div className="living-content" style={{ height: livingPageHeight }}>
-          {data.slice(firstPostIndex, lastPostIndex).map((item) => (
+          {filteredHostels.slice(firstPostIndex, lastPostIndex).map((item) => (
             <div className="live_card" key={item.id}>
               <img className="live_pic" src={item.hostel_img} alt="pro" />
               <div className="live_data">
@@ -457,70 +464,71 @@ export default function Living() {
                     </a>
                   </div>
 
-        <Modal
-  isOpen={isModalOpen}
-  onRequestClose={closeModal}
-  contentLabel="Media Modal"
-  className="boxmodal"
-  style={{
-    overlay: {
-      backgroundColor: "rgba(0, 0, 0, 0.3)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-  }}
->
-<div className="modal-content">
-  <p className="modal-para">Check out Images</p>
-  {/* Render modal images for the current hostel only */}
-  <div className="image-container-modal">
-    {currentHostelId !== null &&
-      data
-        .filter((item) => item.id === currentHostelId)
-        .map((item) =>
-          item.modal_images?.map((image, index) => (
-            <img
-              key={`${item.id}_${index}`}
-              className="modal_img"
-              src={image}
-              alt={`Image ${index}`}
-            />
-          ))
-        )}
-    {modalImages.map((imageUrl, index) => (
-      <img
-        key={index}
-        className="modal_img"
-        src={imageUrl}
-        alt={`Image ${index}`}
-      />
-    ))}
-  </div>
-  {/* Conditional rendering of upload button text */}
-  {uploading ? (
-    <p className="custom-file-upload">Uploading...</p>
-  ) : (
-    <label htmlFor="file-input" className="custom-file-upload">
-      Upload Image
-    </label>
-  )}
-  {/* Hide the input element */}
-  <input
-    type="file"
-    accept="image/*"
-    onChange={handleUpload}
-    disabled={uploading}
-    id="file-input"
-    style={{ display: 'none' }}
-  />
-  <button className="modal-btn" onClick={closeModal}>
-    Close
-  </button>
-</div>
-
-</Modal>
-        
+                  <Modal
+                    isOpen={isModalOpen}
+                    onRequestClose={closeModal}
+                    contentLabel="Media Modal"
+                    className="boxmodal"
+                    style={{
+                      overlay: {
+                        backgroundColor: "rgba(0, 0, 0, 0.3)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      },
+                    }}
+                  >
+                    <div className="modal-content">
+                      <p className="modal-para">Check out Images</p>
+                      {/* Render modal images for the current hostel only */}
+                      <div className="image-container-modal">
+                        {currentHostelId !== null &&
+                          data
+                            .filter((item) => item.id === currentHostelId)
+                            .map((item) =>
+                              item.modal_images?.map((image, index) => (
+                                <img
+                                  key={`${item.id}_${index}`}
+                                  className="modal_img"
+                                  src={image}
+                                  alt={`Image ${index}`}
+                                />
+                              ))
+                            )}
+                        {modalImages.map((imageUrl, index) => (
+                          <img
+                            key={index}
+                            className="modal_img"
+                            src={imageUrl}
+                            alt={`Image ${index}`}
+                          />
+                        ))}
+                      </div>
+                      {/* Conditional rendering of upload button text */}
+                      {uploading ? (
+                        <p className="custom-file-upload">Uploading...</p>
+                      ) : (
+                        <label
+                          htmlFor="file-input"
+                          className="custom-file-upload"
+                        >
+                          Upload Image
+                        </label>
+                      )}
+                      {/* Hide the input element */}
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleUpload}
+                        disabled={uploading}
+                        id="file-input"
+                        style={{ display: "none" }}
+                      />
+                      <button className="modal-btn" onClick={closeModal}>
+                        Close
+                      </button>
+                    </div>
+                  </Modal>
 
                   <div className="media">
                     <a href="#">
