@@ -1,8 +1,11 @@
 import PropTypes from "prop-types";
 import { TextField, IconButton, InputAdornment } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
+import { useMediaQuery } from "@mui/material";
 
 const SearchBar = ({ onChange }) => {
+  const isSmallScreen = useMediaQuery("(max-width:600px)");
+
   return (
     <div
       style={{
@@ -15,7 +18,7 @@ const SearchBar = ({ onChange }) => {
         placeholder="Search..."
         onChange={onChange}
         style={{
-          width: "100%",
+          width: isSmallScreen ? "280px" : "100%",
           maxWidth: "350px",
           marginTop: "30px",
         }}
