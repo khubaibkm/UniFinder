@@ -17,6 +17,7 @@
 #living_page {
   width: 100%;
 }
+
 .living_Card {
   display: flex;
   justify-content: space-evenly;
@@ -25,6 +26,7 @@
   margin-top: 40px;
   border-radius: 0px !important;
 }
+
 .living-card-top {
   background: #212529;
   border-radius: 8px;
@@ -33,7 +35,8 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  transition: background 0.3s ease; /* Added transition property */
+  transition: background 0.3s ease;
+  /* Added transition property */
 }
 
 .living-card-top:hover {
@@ -47,6 +50,7 @@
   left: 0.8rem;
   width: 2.5rem;
 }
+
 .living-card-top-white-circle {
   background: white;
   margin: 2rem 0.3rem 2rem 1.5rem;
@@ -61,16 +65,20 @@
   font-weight: 400;
   color: white;
 }
+
 .details {
   position: relative;
 }
+
 .details div {
   position: absolute;
   top: 100%;
   left: 0;
   display: none;
-  background-color: #fff; /* Background color of the dropdown */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional box shadow for a subtle effect */
+  background-color: #fff;
+  /* Background color of the dropdown */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* Optional box shadow for a subtle effect */
   padding: 10px;
   border-radius: 5px;
 }
@@ -91,7 +99,8 @@
   content: "";
   display: block;
   margin-top: 8px;
-  border-bottom: 1px solid #ccc; /* Adjust the color as needed */
+  border-bottom: 1px solid #ccc;
+  /* Adjust the color as needed */
 }
 
 /* Show the dropdown when the .details div is hovered */
@@ -118,6 +127,7 @@
   align-items: center;
   margin-top: 45px;
 }
+
 .live_card {
   width: 50rem;
   height: 22rem;
@@ -131,37 +141,46 @@
   background: #f8f4f4;
   line-height: 20px !important;
 }
+
 .live_pic {
   width: 25rem;
   height: 23.2rem !important;
   border-radius: 10px 0px 0px 10px !important;
 }
+
 .live_data {
   margin-left: 10px;
 }
+
 .specs {
   white-space: pre-line;
 }
+
 .hostel-item {
   font-size: 23px;
   margin-top: 20px;
   /* padding-bottom: 10px; */
 }
+
 .facility {
   padding-bottom: 10px;
 }
+
 .Rent {
   padding-bottom: 20px;
 }
+
 .media-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 27px;
 }
+
 .external-data {
   font-size: 13px !important;
 }
+
 .media-img {
   margin-left: 10px;
   width: 35px !important;
@@ -174,33 +193,43 @@
   align-items: center;
   margin-top: 40px;
 }
+
 .sidebtn {
   border-radius: 5px !important;
   padding: 0px 2px 0px 2px !important;
 }
+
 .activebtn {
   height: 32px;
   width: 32px;
 }
+
 /* Add this to your CSS */
 .image-container-modal {
   max-height: 550px;
-  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-y: auto;
+  /* Enable vertical scrolling */
   display: flex;
-  flex-direction: column; /* Display images in a column */
-  align-items: center; /* Center images horizontally */
-  gap: 10px; /* Adjust the gap between images as needed */
-  align-items: center; /* Center the images horizontally */
+  flex-direction: column;
+  /* Display images in a column */
+  align-items: center;
+  /* Center images horizontally */
+  gap: 10px;
+  /* Adjust the gap between images as needed */
+  align-items: center;
+  /* Center the images horizontally */
 }
 
 .modal_img {
-  max-width: 100%; /* Make sure the images don't exceed the container width */
+  max-width: 100%;
+  /* Make sure the images don't exceed the container width */
   height: auto;
   width: auto;
   border-radius: 8px;
   border: 2px solid white;
   margin-bottom: 10px;
 }
+
 .image-container-modal::-webkit-scrollbar {
   display: block;
   width: 6px;
@@ -234,6 +263,24 @@
   background-color: #3066be;
 }
 
+
+/* CSS to style the custom file upload button */
+.custom-file-upload {
+  padding: 6px 12px;
+  display: inline;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 6px;
+  padding: 9px 25px;
+  margin: 0 10px 10px 0;
+}
+
+.custom-file-upload:hover {
+  background-color: #0056b3;
+}
+
+
 @media (max-width: 1400px) {
   .boxmodal {
     height: 30rem;
@@ -247,22 +294,27 @@
     width: 14.5rem;
     height: 5.75rem;
   }
+
   .living-card-top h1 {
     font-size: 1.15rem !important;
   }
+
   .living-card-top-pic {
     margin: -0.4rem -1.5rem 1.5rem -0.4rem;
     width: 3.2rem !important;
     padding: 8px;
   }
+
   .live_card {
     width: 46rem;
   }
+
   .live_pic {
     width: 21rem;
     height: 23.2rem;
     border-radius: 10px 0px 0px 10px;
   }
+
   .boxmodal {
     left: 6rem;
     top: -2rem;
@@ -274,31 +326,38 @@
     width: 13rem;
     height: 5.75rem;
   }
+
   .living-card-top h1 {
     font-size: 0.9rem !important;
   }
+
   .living-card-top-pic {
     margin: -0.4rem 0.5rem 1rem -0.3rem;
     width: 4rem;
     padding: 8px;
   }
+
   .live_card {
     width: 35rem !important;
     height: 18rem;
   }
+
   .live_pic {
     width: 15rem !important;
     height: 19.2rem !important;
     border-radius: 10px 0px 0px 10px !important;
   }
+
   .hostel-item {
     font-size: 20px;
     font-weight: 400;
     margin-bottom: 5px;
   }
+
   .Rent {
     padding-bottom: 10px;
   }
+
   .media-card {
     display: flex;
     align-items: center;
@@ -306,14 +365,17 @@
     gap: 0px;
     margin-right: -1rem;
   }
+
   .specs {
     white-space: unset;
   }
+
   .external-data {
     font-size: 12px !important;
     position: relative;
     right: 0.8rem;
   }
+
   .media-img {
     margin-left: -5px;
     width: 28px !important;
@@ -334,37 +396,45 @@
     align-items: center;
     margin-top: 30px;
   }
+
   .living-card-top {
     width: 16rem;
     height: 5.75rem;
   }
+
   .living-card-top h1 {
     font-size: 1.2rem !important;
   }
+
   .live_card {
     width: 22rem !important;
     height: 40rem;
     flex-direction: column;
   }
+
   .live_pic {
     width: 21.9rem !important;
     height: 21rem !important;
     border-radius: 10px 10px 0 0 !important;
   }
+
   .hostel-item {
     font-size: 20px;
     position: relative;
     bottom: 2rem;
   }
+
   .Rent {
     padding-bottom: 10px;
   }
+
   .media-card {
     display: flex;
     margin-left: 1.3rem;
     margin-right: -1.2rem;
     margin-bottom: 1rem;
   }
+
   .specs {
     white-space: pre-line;
     margin-bottom: 1rem;
@@ -373,6 +443,7 @@
   .facility {
     margin-top: -1rem;
   }
+
   .Rent {
     margin-bottom: 1rem;
   }
@@ -387,6 +458,7 @@
   .live_card {
     width: 19rem !important;
   }
+
   .live_pic {
     width: 18.9rem !important;
   }
@@ -394,34 +466,42 @@
   .Rent {
     padding-bottom: 10px;
   }
+
   .media-card {
     display: flex;
     margin-bottom: 1rem;
     margin-left: 1.3rem;
   }
+
   .boxmodal {
     width: 19rem;
   }
+
   .sidebtn {
     display: none;
   }
+
   #pagination-btn {
     width: 25px !important;
     height: 25px !important;
   }
+
   .activebtn {
     width: 25px !important;
     height: 25px !important;
   }
 }
+
 @media (max-height: 900px) {
   .boxmodal {
     height: 35rem;
     top: 2rem;
   }
+
   .list {
     margin-top: -1.5rem;
   }
+
   .image-container-modal {
     max-height: 400px;
   }

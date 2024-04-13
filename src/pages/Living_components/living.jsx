@@ -4,11 +4,14 @@ import DrawerAppBarCat from "../../components/navCat";
 import Footer from "../../components/footer";
 import { MainData } from "./living_data";
 import Modal from "react-modal";
+import {toast} from 'react-toastify';
 import {
   Call,
   KeyboardArrowLeft,
   KeyboardArrowRight,
 } from "@mui/icons-material";
+import { ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage";
+import { storage } from "/src/firebase.js";
 
 export default function Living() {
   const [sortOrder, setSortOrder] = useState("asc"); // "asc" or "desc"
@@ -19,6 +22,9 @@ export default function Living() {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentHostelId, setCurrentHostelId] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [modalImages, setModalImages] = useState([]);
+
   //pagination code
   const renderPageButtons = () => {
     const maxVisiblePages = 2;
@@ -92,24 +98,77 @@ export default function Living() {
 
     return buttons;
   };
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
+  
+  
+    const getdata = () => {
+      setData(MainData);
+    };
+  
+    useEffect(() => {
+      getdata();
+    }, []);
+  
+    useEffect(() => {
+      setData(MainData);
+    }, []);
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+    useEffect(() => {
+      if (currentHostelId && isModalOpen) {
+        fetchModalImages(currentHostelId);
+      }
+    }, [currentHostelId, isModalOpen]);
 
-  const getdata = () => {
-    setData(MainData);
-  };
+    const openModal = async () => {
+      setIsModalOpen(true);
+    };
+  
+    const closeModal = () => {
+      setIsModalOpen(false);
+    };
 
-  useEffect(() => {
-    getdata();
-  }, []);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    const handleUpload = async (e) => {
+      const file = e.target.files[0];
+      setUploading(true);
+  
+      try {
+        if (!currentHostelId) {
+          throw new Error("No hostel selected.");
+        }
+  
+        const storageRef = ref(
+          storage,
+          `hostel_images/${currentHostelId}/${file.name}`
+        );
+  
+        await uploadBytes(storageRef, file);
+        const imageUrl = await getDownloadURL(storageRef);
+  
+        setModalImages((prevImages) => [...prevImages, imageUrl]);
+        setUploading(false);
+        toast.success("Image uploaded successfully!");
+      } catch (error) {
+        console.error("Error uploading image: ", error);
+        setUploading(false);
+      }
+    };
+  
+    const fetchModalImages = async (hostelId) => {
+      try {
+        if (!hostelId) {
+          throw new Error("No hostel ID provided.");
+        }
+  
+        const imagesRef = ref(storage, `hostel_images/${hostelId}`);
+        const imageList = await listAll(imagesRef);
+        const urls = await Promise.all(
+          imageList.items.map((item) => getDownloadURL(item))
+        );
+        setModalImages(urls);
+      } catch (error) {
+        console.error("Error fetching modal images: ", error);
+      }
+    };
+
 
   const handleSort = (criteria) => {
     // Toggle sort order if clicking on the same criteria
@@ -148,6 +207,7 @@ export default function Living() {
   const handleCardClick = (hostelId) => {
     setCurrentHostelId(hostelId);
     openModal();
+    fetchModalImages(hostelId);
   };
 
   const lastPostIndex = Math.min(currentPage * postsPerPage, data.length);
@@ -397,44 +457,71 @@ export default function Living() {
                       </p>
                     </a>
                   </div>
-                  <Modal
-                    isOpen={isModalOpen}
-                    onRequestClose={closeModal}
-                    contentLabel="Media Modal"
-                    className="boxmodal"
-                    style={{
-                      overlay: {
-                        backgroundColor: "rgba(0, 0, 0, 0.3)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      },
-                    }}
-                  >
-                    {/* Your modal content goes here */}
-                    <div className="modal-content">
-                      <p className="modal-para">Check out Images</p>
-                      {/* Images within a container with scroll */}
-                      <div className="image-container-modal">
-                        {currentHostelId !== null &&
-                          data
-                            .filter((item) => item.id === currentHostelId)
-                            .map((item) =>
-                              item.modal_images?.map((image, index) => (
-                                <img
-                                  key={`${item.id}_${index}`}
-                                  className="modal_img"
-                                  src={image}
-                                  alt={`Image ${index}`}
-                                />
-                              ))
-                            )}
-                      </div>
-                      <button className="modal-btn" onClick={closeModal}>
-                        Close
-                      </button>
-                    </div>
-                  </Modal>
+
+        <Modal
+  isOpen={isModalOpen}
+  onRequestClose={closeModal}
+  contentLabel="Media Modal"
+  className="boxmodal"
+  style={{
+    overlay: {
+      backgroundColor: "rgba(0, 0, 0, 0.3)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+  }}
+>
+<div className="modal-content">
+  <p className="modal-para">Check out Images</p>
+  {/* Render modal images for the current hostel only */}
+  <div className="image-container-modal">
+    {currentHostelId !== null &&
+      data
+        .filter((item) => item.id === currentHostelId)
+        .map((item) =>
+          item.modal_images?.map((image, index) => (
+            <img
+              key={`${item.id}_${index}`}
+              className="modal_img"
+              src={image}
+              alt={`Image ${index}`}
+            />
+          ))
+        )}
+    {modalImages.map((imageUrl, index) => (
+      <img
+        key={index}
+        className="modal_img"
+        src={imageUrl}
+        alt={`Image ${index}`}
+      />
+    ))}
+  </div>
+  {/* Conditional rendering of upload button text */}
+  {uploading ? (
+    <p className="custom-file-upload">Uploading...</p>
+  ) : (
+    <label htmlFor="file-input" className="custom-file-upload">
+      Upload Image
+    </label>
+  )}
+  {/* Hide the input element */}
+  <input
+    type="file"
+    accept="image/*"
+    onChange={handleUpload}
+    disabled={uploading}
+    id="file-input"
+    style={{ display: 'none' }}
+  />
+  <button className="modal-btn" onClick={closeModal}>
+    Close
+  </button>
+</div>
+
+</Modal>
+        
 
                   <div className="media">
                     <a href="#">
