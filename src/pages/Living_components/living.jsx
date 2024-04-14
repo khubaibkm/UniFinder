@@ -21,8 +21,181 @@ export default function Living() {
   const [currentHostelId, setCurrentHostelId] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [modalImages, setModalImages] = useState([]);
+  const [activeButton, setActiveButton] = useState(1);
+  const [selectedHostelCategory, setSelectedHostelCategory] = useState("All"); // Default to show all categories
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredHostels, setFilteredHostels] = useState(MainData);
 
-  //pagination code
+  useEffect(() => {
+    setData(MainData);
+  }, []);
+
+  useEffect(() => {
+    if (currentHostelId && isModalOpen) {
+      fetchModalImages(currentHostelId);
+    }
+  }, [currentHostelId, isModalOpen]);
+
+  const openModal = async () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleUpload = async (e) => {
+    const file = e.target.files[0];
+    setUploading(true);
+
+    try {
+      if (!currentHostelId) {
+        throw new Error("No hostel selected.");
+      }
+
+      const storageRef = ref(
+        storage,
+        `hostel_images/${currentHostelId}/${file.name}`
+      );
+
+      await uploadBytes(storageRef, file);
+      const imageUrl = await getDownloadURL(storageRef);
+
+      setModalImages((prevImages) => [...prevImages, imageUrl]);
+      setUploading(false);
+      toast.success("Image uploaded successfully!");
+    } catch (error) {
+      console.error("Error uploading image: ", error);
+      setUploading(false);
+    }
+  };
+
+  const fetchModalImages = async (hostelId) => {
+    try {
+      if (!hostelId) {
+        throw new Error("No hostel ID provided.");
+      }
+
+      const imagesRef = ref(storage, `hostel_images/${hostelId}`);
+      const imageList = await listAll(imagesRef);
+      const urls = await Promise.all(
+        imageList.items.map((item) => getDownloadURL(item))
+      );
+      setModalImages(urls);
+    } catch (error) {
+      console.error("Error fetching modal images: ", error);
+    }
+  };
+
+  const handleSort = (criteria) => {
+    // Toggle sort order if clicking on the same criteria
+    setSortOrder((prevOrder) =>
+      sortCriteria === criteria ? (prevOrder === "asc" ? "desc" : "asc") : "asc"
+    );
+    setSortCriteria(criteria);
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    setActiveButton((prevButton) => Math.min(prevButton + 1, totalPages));
+    scrollToTop();
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+    setActiveButton((prevButton) => Math.max(prevButton - 1, 1));
+    scrollToTop();
+  };
+
+  const totalPages = Math.ceil(filteredHostels.length / postsPerPage);
+
+  const handlePageClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    setActiveButton(pageNumber);
+    scrollToTop();
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const handleDropdownToggle = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
+
+  const handleBoysHostelClick = () => {
+    const boysHostelData = MainData.filter(
+      (item) =>
+        item.category.includes("Boy") && item.category.includes("Hostel")
+    );
+    setFilteredHostels(boysHostelData);
+    setSelectedHostelCategory("Boys Hostels");
+    setCurrentPage(1);
+    setDropdownVisible(false);
+  };
+
+  const handleGirlsHostelClick = () => {
+    const girlsHostelData = MainData.filter(
+      (item) =>
+        item.category.includes("Girl") && item.category.includes("Hostel")
+    );
+    setFilteredHostels(girlsHostelData);
+    setSelectedHostelCategory("Girls Hostels");
+    setCurrentPage(1);
+    setDropdownVisible(false);
+  };
+
+  const handleBoysApartmentClick = () => {
+    const boysApartmentData = MainData.filter(
+      (item) =>
+        item.category.includes("Boy") && item.category.includes("Apartment")
+    );
+    setFilteredHostels(boysApartmentData);
+    setSelectedHostelCategory("Boys Apartments");
+    setCurrentPage(1);
+    setDropdownVisible(false);
+  };
+
+  const handleGirlsApartmentClick = () => {
+    const girlsApartmentData = MainData.filter(
+      (item) =>
+        item.category.includes("Girl") && item.category.includes("Apartment")
+    );
+    setFilteredHostels(girlsApartmentData);
+    setSelectedHostelCategory("Girls Apartments");
+    setCurrentPage(1);
+    setDropdownVisible(false);
+  };
+
+  const handleSearchChange = (event) => {
+    const query = event.target.value.toLowerCase();
+    setSearchQuery(query);
+    const filtered = MainData.filter((hostel) =>
+      hostel.hostel.toLowerCase().includes(query)
+    );
+    setFilteredHostels(filtered);
+  };
+  // Function to handle clicking on the card to open media
+  const handleCardClick = (hostelId) => {
+    setCurrentHostelId(hostelId);
+    openModal();
+    fetchModalImages(hostelId);
+  };
+
+  // Function to display contact information
+  const showPhoneNumber = (contactPerson, phoneNumber1, phoneNumber2) => {
+    let alertMessage = `Contact Person: ${contactPerson}\nPhone Number 1: ${phoneNumber1}`;
+
+    if (phoneNumber2) {
+      alertMessage += `\nPhone Number 2: ${phoneNumber2}`;
+    }
+
+    alert(alertMessage);
+  };
+  // Render page buttons
   const renderPageButtons = () => {
     const maxVisiblePages = 2;
     const buttons = [];
@@ -96,200 +269,6 @@ export default function Living() {
     return buttons;
   };
 
-  const getdata = () => {
-    setData(MainData);
-  };
-
-  useEffect(() => {
-    getdata();
-  }, []);
-
-  useEffect(() => {
-    setData(MainData);
-  }, []);
-
-  useEffect(() => {
-    if (currentHostelId && isModalOpen) {
-      fetchModalImages(currentHostelId);
-    }
-  }, [currentHostelId, isModalOpen]);
-
-  const openModal = async () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleUpload = async (e) => {
-    const file = e.target.files[0];
-    setUploading(true);
-
-    try {
-      if (!currentHostelId) {
-        throw new Error("No hostel selected.");
-      }
-
-      const storageRef = ref(
-        storage,
-        `hostel_images/${currentHostelId}/${file.name}`
-      );
-
-      await uploadBytes(storageRef, file);
-      const imageUrl = await getDownloadURL(storageRef);
-
-      setModalImages((prevImages) => [...prevImages, imageUrl]);
-      setUploading(false);
-      toast.success("Image uploaded successfully!");
-    } catch (error) {
-      console.error("Error uploading image: ", error);
-      setUploading(false);
-    }
-  };
-
-  const fetchModalImages = async (hostelId) => {
-    try {
-      if (!hostelId) {
-        throw new Error("No hostel ID provided.");
-      }
-
-      const imagesRef = ref(storage, `hostel_images/${hostelId}`);
-      const imageList = await listAll(imagesRef);
-      const urls = await Promise.all(
-        imageList.items.map((item) => getDownloadURL(item))
-      );
-      setModalImages(urls);
-    } catch (error) {
-      console.error("Error fetching modal images: ", error);
-    }
-  };
-
-  const handleSort = (criteria) => {
-    // Toggle sort order if clicking on the same criteria
-    setSortOrder((prevOrder) =>
-      sortCriteria === criteria ? (prevOrder === "asc" ? "desc" : "asc") : "asc"
-    );
-    setSortCriteria(criteria);
-  };
-  const handleNextPage = () => {
-    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
-    setActiveButton((prevButton) => Math.min(prevButton + 1, totalPages));
-    scrollToTop();
-  };
-  const [activeButton, setActiveButton] = useState(1);
-  const handlePrevPage = () => {
-    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
-    setActiveButton((prevButton) => Math.max(prevButton - 1, 1));
-    scrollToTop();
-  };
-  const totalPages = Math.ceil(data.length / postsPerPage);
-
-  const handlePageClick = (pageNumber) => {
-    setCurrentPage(pageNumber);
-    setActiveButton(pageNumber);
-    scrollToTop();
-  };
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth", // You can change this to "auto" for instant scrolling
-    });
-  };
-  const handleDropdownToggle = () => {
-    setDropdownVisible(!dropdownVisible);
-  };
-  const handleCardClick = (hostelId) => {
-    setCurrentHostelId(hostelId);
-    openModal();
-    fetchModalImages(hostelId);
-  };
-
-  const lastPostIndex = Math.min(currentPage * postsPerPage, data.length);
-  const firstPostIndex = Math.max(lastPostIndex - postsPerPage, 0);
-  const [selectedHostelCategory, setSelectedHostelCategory] = useState("All"); // Default to show all categories
-  // Create a new function for handling Boys filtering in Hostel
-  const handleBoysHostelClick = () => {
-    const boysHostelData = MainData.filter(
-      (item) =>
-        item.category.includes("Boy") && item.category.includes("Hostel")
-    );
-    setData(boysHostelData);
-    setSelectedHostelCategory("Boys Hostels");
-    setCurrentPage(1);
-    setDropdownVisible(false);
-  };
-
-  // Create a new function for handling Girls filtering in Hostel
-  const handleGirlsHostelClick = () => {
-    const girlsHostelData = MainData.filter(
-      (item) =>
-        item.category.includes("Girl") && item.category.includes("Hostel")
-    );
-    setData(girlsHostelData);
-    setSelectedHostelCategory("Girls Hostels");
-    setCurrentPage(1);
-    setDropdownVisible(false);
-  };
-
-  // Create a new function for handling Boys filtering in Apartment
-  const handleBoysApartmentClick = () => {
-    const boysApartmentData = MainData.filter(
-      (item) =>
-        item.category.includes("Boy") && item.category.includes("Apartment")
-    );
-    setData(boysApartmentData);
-    setSelectedHostelCategory("Boys Apartments");
-    setCurrentPage(1);
-    setDropdownVisible(false);
-  };
-
-  // Create a new function for handling Girls filtering in Apartment
-  const handleGirlsApartmentClick = () => {
-    const girlsApartmentData = MainData.filter(
-      (item) =>
-        item.category.includes("Girl") && item.category.includes("Apartment")
-    );
-    setData(girlsApartmentData);
-    setSelectedHostelCategory("Girls Apartments");
-    setCurrentPage(1);
-    setDropdownVisible(false);
-  };
-  const filteredData = data.filter((item) => {
-    if (selectedHostelCategory === "All") {
-      return true;
-    }
-    return item.category.includes(selectedHostelCategory);
-  });
-  // adjust living-content height
-  let livingPageHeight;
-  if (data.length > 0 && data.length <= 3) {
-    livingPageHeight = `${data.length * 500}px`;
-  } else {
-    livingPageHeight = "auto";
-  }
-
-  // contact
-  function showPhoneNumber(contactPerson, phoneNumber1, phoneNumber2) {
-    let alertMessage = `Contact Person: ${contactPerson}\nPhone Number 1: ${phoneNumber1}`;
-
-    if (phoneNumber2) {
-      alertMessage += `\nPhone Number 2: ${phoneNumber2}`;
-    }
-
-    alert(alertMessage);
-  }
-  // search bar
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filteredHostels, setFilteredHostels] = useState(MainData);
-  const handleSearchChange = (event) => {
-    const query = event.target.value.toLowerCase();
-    setSearchQuery(query);
-    const filtered = MainData.filter((hostel) =>
-      hostel.hostel.toLowerCase().includes(query)
-    );
-    setFilteredHostels(filtered);
-  };
   return (
     <>
       <div className="listings">
@@ -355,197 +334,183 @@ export default function Living() {
               )}
             </div>
           </div>
-          {/* <div
-            className="living-card-top"
-            onMouseEnter={handleDropdownToggle}
-            onMouseLeave={handleDropdownToggle}
-          >
-            <div className="living-card-top-white-circle">
-              <img
-                className="living-card-top-pic"
-                src="/images/living/flats.png"
-                alt="pro"
-              />
-            </div>
-            <div className="details">
-              <h1>Flats</h1>
-              {dropdownVisible && (
-                <div>
-                  <ul>
-                    <li onClick={handleGirlsClick}>GIRLS</li>
-                    <li onClick={handleBoysClick}>BOYS</li>
-                  </ul>
-                </div>
-              )}
-            </div>
-          </div> */}
         </div>
         <SearchBar onChange={handleSearchChange} />
-
         {/* living-content */}
-        <div className="living-content" style={{ height: livingPageHeight }}>
-          {filteredHostels.slice(firstPostIndex, lastPostIndex).map((item) => (
-            <div className="live_card" key={item.id}>
-              <img className="live_pic" src={item.hostel_img} alt="pro" />
-              <div className="live_data">
-                <h4 className="hostel-item">{item.hostel}</h4>
-                <p style={{ paddingBottom: "10px" }} className="specs">
-                  {item.specs}
-                </p>
-                {/* Facility */}
-                <div className="facility">
-                  <h5 style={{ fontSize: "17px" }}>Facilities</h5>
-                  <p>
-                    Free: <span>{item.Free}</span>
+        <div className="living-content">
+          {filteredHostels
+            .slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage)
+            .map((item) => (
+              <div className="live_card" key={item.id}>
+                <img className="live_pic" src={item.hostel_img} alt="pro" />
+                <div className="live_data">
+                  <h4 className="hostel-item">{item.hostel}</h4>
+                  <p style={{ paddingBottom: "10px" }} className="specs">
+                    {item.specs}
                   </p>
-                  <p>
-                    Paid: <span>{item.Paid}</span>
-                  </p>
-                </div>
-                {/*rent  */}
-                <div className="Rent">
-                  <h5 style={{ fontSize: "17px" }}>Rent</h5>
-                  <p>
-                    <span>{item.Rent}</span>
-                  </p>
-                </div>
-                {/* Media */}
-                <div className="media-card">
-                  <div className="media">
-                    <a
-                      href="#"
-                      onClick={() =>
-                        showPhoneNumber(
-                          item.contactPerson,
-                          item.phone1,
-                          item.phone2
-                        )
-                      }
-                    >
-                      <img
-                        className="media-img"
-                        src={item.contactImg}
-                        alt="contact"
-                      />
-                      <p className="external-data" style={{ color: "black " }}>
-                        Contact Us
-                      </p>
-                    </a>
+                  {/* Facility */}
+                  <div className="facility">
+                    <h5 style={{ fontSize: "17px" }}>Facilities</h5>
+                    <p>
+                      Free: <span>{item.Free}</span>
+                    </p>
+                    <p>
+                      Paid: <span>{item.Paid}</span>
+                    </p>
                   </div>
-                  <div className="media">
-                    <a
-                      href={item.map}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <img
-                        className="media-img"
-                        src={item.addressImg}
-                        alt="address"
-                      />
-                      <p className="external-data" style={{ color: "black " }}>
-                        Address
-                      </p>
-                    </a>
+                  {/*rent  */}
+                  <div className="Rent">
+                    <h5 style={{ fontSize: "17px" }}>Rent</h5>
+                    <p>
+                      <span>{item.Rent}</span>
+                    </p>
                   </div>
-                  <div className="media">
-                    <a onClick={() => handleCardClick(item.id)}>
-                      <img
-                        className="media-img"
-                        src={item.mediaImg}
-                        alt="media"
-                      />
-                      <p
-                        className="external-data"
-                        style={{ marginLeft: "7px", color: "black" }}
+                  {/* Media */}
+                  <div className="media-card">
+                    <div className="media">
+                      <a
+                        href="#"
+                        onClick={() =>
+                          showPhoneNumber(
+                            item.contactPerson,
+                            item.phone1,
+                            item.phone2
+                          )
+                        }
                       >
-                        Media
-                      </p>
-                    </a>
-                  </div>
-
-                  <Modal
-                    isOpen={isModalOpen}
-                    onRequestClose={closeModal}
-                    contentLabel="Media Modal"
-                    className="boxmodal"
-                    style={{
-                      overlay: {
-                        backgroundColor: "rgba(0, 0, 0, 0.3)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      },
-                    }}
-                  >
-                    <div className="modal-content">
-                      <p className="modal-para">Check out Images</p>
-                      {/* Render modal images for the current hostel only */}
-                      <div className="image-container-modal">
-                        {currentHostelId !== null &&
-                          data
-                            .filter((item) => item.id === currentHostelId)
-                            .map((item) =>
-                              item.modal_images?.map((image, index) => (
-                                <img
-                                  key={`${item.id}_${index}`}
-                                  className="modal_img"
-                                  src={image}
-                                  alt={`Image ${index}`}
-                                />
-                              ))
-                            )}
-                        {modalImages.map((imageUrl, index) => (
-                          <img
-                            key={index}
-                            className="modal_img"
-                            src={imageUrl}
-                            alt={`Image ${index}`}
-                          />
-                        ))}
-                      </div>
-                      {/* Conditional rendering of upload button text */}
-                      {uploading ? (
-                        <p className="custom-file-upload">Uploading...</p>
-                      ) : (
-                        <label
-                          htmlFor="file-input"
-                          className="custom-file-upload"
+                        <img
+                          className="media-img"
+                          src={item.contactImg}
+                          alt="contact"
+                        />
+                        <p
+                          className="external-data"
+                          style={{ color: "black " }}
                         >
-                          Upload Image
-                        </label>
-                      )}
-                      {/* Hide the input element */}
-                      <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleUpload}
-                        disabled={uploading}
-                        id="file-input"
-                        style={{ display: "none" }}
-                      />
-                      <button className="modal-btn" onClick={closeModal}>
-                        Close
-                      </button>
+                          Contact Us
+                        </p>
+                      </a>
                     </div>
-                  </Modal>
+                    <div className="media">
+                      <a
+                        href={item.map}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img
+                          className="media-img"
+                          src={item.addressImg}
+                          alt="address"
+                        />
+                        <p
+                          className="external-data"
+                          style={{ color: "black " }}
+                        >
+                          Address
+                        </p>
+                      </a>
+                    </div>
+                    <div className="media">
+                      <a onClick={() => handleCardClick(item.id)}>
+                        <img
+                          className="media-img"
+                          src={item.mediaImg}
+                          alt="media"
+                        />
+                        <p
+                          className="external-data"
+                          style={{ marginLeft: "7px", color: "black" }}
+                        >
+                          Media
+                        </p>
+                      </a>
+                    </div>
 
-                  <div className="media">
-                    <a href="#">
-                      <img
-                        className="media-img"
-                        src={item.reviewImg}
-                        alt="reviews"
-                      />
-                      <p className="external-data" style={{ color: "black " }}>
-                        Reviews
-                      </p>
-                    </a>
+                    <Modal
+                      isOpen={isModalOpen}
+                      onRequestClose={closeModal}
+                      contentLabel="Media Modal"
+                      className="boxmodal"
+                      style={{
+                        overlay: {
+                          backgroundColor: "rgba(0, 0, 0, 0.3)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        },
+                      }}
+                    >
+                      <div className="modal-content">
+                        <p className="modal-para">Check out Images</p>
+                        {/* Render modal images for the current hostel only */}
+                        <div className="image-container-modal">
+                          {currentHostelId !== null &&
+                            data
+                              .filter((item) => item.id === currentHostelId)
+                              .map((item) =>
+                                item.modal_images?.map((image, index) => (
+                                  <img
+                                    key={`${item.id}_${index}`}
+                                    className="modal_img"
+                                    src={image}
+                                    alt={`Image ${index}`}
+                                  />
+                                ))
+                              )}
+                          {modalImages.map((imageUrl, index) => (
+                            <img
+                              key={index}
+                              className="modal_img"
+                              src={imageUrl}
+                              alt={`Image ${index}`}
+                            />
+                          ))}
+                        </div>
+                        {/* Conditional rendering of upload button text */}
+                        {uploading ? (
+                          <p className="custom-file-upload">Uploading...</p>
+                        ) : (
+                          <label
+                            htmlFor="file-input"
+                            className="custom-file-upload"
+                          >
+                            Upload Image
+                          </label>
+                        )}
+                        {/* Hide the input element */}
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={handleUpload}
+                          disabled={uploading}
+                          id="file-input"
+                          style={{ display: "none" }}
+                        />
+                        <button className="modal-btn" onClick={closeModal}>
+                          Close
+                        </button>
+                      </div>
+                    </Modal>
+
+                    <div className="media">
+                      <a href="#">
+                        <img
+                          className="media-img"
+                          src={item.reviewImg}
+                          alt="reviews"
+                        />
+                        <p
+                          className="external-data"
+                          style={{ color: "black " }}
+                        >
+                          Reviews
+                        </p>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
         <div className="pagination" style={{ padding: "0px" }}>
           <button

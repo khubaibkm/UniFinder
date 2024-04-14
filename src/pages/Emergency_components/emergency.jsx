@@ -160,17 +160,17 @@ export default function Emergency() {
     return item.category.some((category) => category === selectedCategory);
   });
   // Searchbar
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filteredEmergency, setFilteredEmergency] = useState(MainData);
+  // const [searchQuery, setSearchQuery] = useState("");
+  // const [filteredEmergency, setFilteredEmergency] = useState(MainData);
 
-  const handleSearchChange = (event) => {
-    const query = event.target.value.toLowerCase();
-    setSearchQuery(query);
-    const filtered = MainData.filter((emergency) =>
-      emergency.emerPlace.toLowerCase().includes(query)
-    );
-    setFilteredEmergency(filtered);
-  };
+  // const handleSearchChange = (event) => {
+  //   const query = event.target.value.toLowerCase();
+  //   setSearchQuery(query);
+  //   const filtered = MainData.filter((emergency) =>
+  //     emergency.emerPlace.toLowerCase().includes(query)
+  //   );
+  //   setFilteredEmergency(filtered);
+  // };
   return (
     <>
       <div className="emergency">
@@ -218,10 +218,10 @@ export default function Emergency() {
             </div>
           </div>
         </div>
-        <SearchBar onChange={handleSearchChange} />
+        {/* <SearchBar onChange={handleSearchChange} /> */}
         {/* living-content */}
         <div className="living-content" style={{ height: livingPageHeight }}>
-          {filteredEmergency
+          {filteredData
             .slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage)
             .map((item) => (
               <div className="live_card" key={item.id}>

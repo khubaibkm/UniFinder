@@ -11,10 +11,6 @@ import { toast } from "react-toastify";
 import SearchBar from "../../components/SearchBar";
 
 export default function Food() {
-  const handleCategoryChange = () => {
-    setCurrentPage(1);
-    setActiveButton(1);
-  };
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(4);
@@ -23,7 +19,129 @@ export default function Food() {
   const [selectedFoodItemId, setSelectedFoodItemId] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [modalImages, setModalImages] = useState([]);
-  //pagination code
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredFood, setFilteredFood] = useState(MainData);
+
+  const handleCategoryChange = (category) => {
+    setCurrentPage(1);
+    setActiveButton(1);
+    setSelectedCategory(category);
+    handleSearchAndCategoryChange();
+  };
+
+  const handleSearchAndCategoryChange = () => {
+    const filteredByCategory =
+      selectedCategory === "All"
+        ? MainData
+        : MainData.filter((item) => item.category.includes(selectedCategory));
+
+    const filteredByName = filteredByCategory.filter((food) =>
+      food.foodPlace.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    setFilteredFood(filteredByName);
+  };
+
+  const handleSearchChange = (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+    handleSearchAndCategoryChange();
+  };
+
+  const getdata = () => {
+    setData(MainData);
+  };
+
+  useEffect(() => {
+    getdata();
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    if (selectedFoodItemId && isModalOpen) {
+      fetchModalImages(selectedFoodItemId);
+    }
+  }, [selectedFoodItemId, isModalOpen]);
+
+  const handleUpload = async (e) => {
+    const file = e.target.files[0];
+    setUploading(true);
+
+    try {
+      if (!selectedFoodItemId) {
+        throw new Error("No food item selected.");
+      }
+
+      const storageRef = ref(
+        storage,
+        `food_images/${selectedFoodItemId}/${file.name}`
+      );
+
+      await uploadBytes(storageRef, file);
+      const imageUrl = await getDownloadURL(storageRef);
+
+      setModalImages((prevImages) => [...prevImages, imageUrl]);
+      setUploading(false);
+      toast.success("Image uploaded successfully!");
+    } catch (error) {
+      console.error("Error uploading image: ", error);
+      setUploading(false);
+    }
+  };
+
+  const fetchModalImages = async (foodItemId) => {
+    try {
+      if (!foodItemId) {
+        throw new Error("No food item ID provided.");
+      }
+
+      const imagesRef = ref(storage, `food_images/${foodItemId}`);
+      const imageList = await listAll(imagesRef);
+      const urls = await Promise.all(
+        imageList.items.map((item) => getDownloadURL(item))
+      );
+      setModalImages(urls);
+    } catch (error) {
+      console.error("Error fetching modal images: ", error);
+    }
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    setActiveButton((prevButton) => Math.min(prevButton + 1, totalPages));
+    scrollToTop();
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+    setActiveButton((prevButton) => Math.max(prevButton - 1, 1));
+    scrollToTop();
+  };
+
+  const totalPages = Math.ceil(filteredFood.length / postsPerPage);
+
+  const handlePageClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    setActiveButton(pageNumber);
+    scrollToTop();
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const handleFoodItemClick = (foodItemId) => {
+    setSelectedFoodItemId(foodItemId);
+    openModal();
+  };
+
   const renderPageButtons = () => {
     const maxVisiblePages = 2;
     const buttons = [];
@@ -96,6 +214,7 @@ export default function Food() {
 
     return buttons;
   };
+
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -104,104 +223,14 @@ export default function Food() {
     setIsModalOpen(false);
   };
 
-  const getdata = () => {
-    setData(MainData);
-  };
-
-  useEffect(() => {
-    getdata();
-  }, []);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-  useEffect(() => {
-    if (selectedFoodItemId && isModalOpen) {
-      fetchModalImages(selectedFoodItemId);
-    }
-  }, [selectedFoodItemId, isModalOpen]);
-
-  const handleUpload = async (e) => {
-    const file = e.target.files[0];
-    setUploading(true);
-
-    try {
-      if (!selectedFoodItemId) {
-        throw new Error("No food item selected.");
-      }
-
-      const storageRef = ref(
-        storage,
-        `food_images/${selectedFoodItemId}/${file.name}`
-      );
-
-      await uploadBytes(storageRef, file);
-      const imageUrl = await getDownloadURL(storageRef);
-
-      setModalImages((prevImages) => [...prevImages, imageUrl]);
-      setUploading(false);
-      toast.success("Image uploaded successfully!");
-    } catch (error) {
-      console.error("Error uploading image: ", error);
-      setUploading(false);
-    }
-  };
-
-  // Function to fetch modal images from Firebase storage
-  const fetchModalImages = async (foodItemId) => {
-    try {
-      if (!foodItemId) {
-        throw new Error("No food item ID provided.");
-      }
-
-      const imagesRef = ref(storage, `food_images/${foodItemId}`);
-      const imageList = await listAll(imagesRef);
-      const urls = await Promise.all(
-        imageList.items.map((item) => getDownloadURL(item))
-      );
-      setModalImages(urls);
-    } catch (error) {
-      console.error("Error fetching modal images: ", error);
-    }
-  };
-
-  const handleNextPage = () => {
-    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
-    setActiveButton((prevButton) => Math.min(prevButton + 1, totalPages));
-    scrollToTop();
-  };
-  const handlePrevPage = () => {
-    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
-    setActiveButton((prevButton) => Math.max(prevButton - 1, 1));
-    scrollToTop();
-  };
-  const totalPages = Math.ceil(data.length / postsPerPage);
-  const handlePageClick = (pageNumber) => {
-    setCurrentPage(pageNumber);
-    setActiveButton(pageNumber);
-    scrollToTop();
-  };
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-  const handleFoodItemClick = (foodItemId) => {
-    setSelectedFoodItemId(foodItemId);
-    openModal();
-  };
-  const lastPostIndex = currentPage * postsPerPage;
-  const firstPostIndex = lastPostIndex - postsPerPage;
-
   // adjust living-content height
   let livingPageHeight;
-  if (data.length > 0 && data.length <= 3) {
-    livingPageHeight = `${data.length * 500}px`; // Adjust 500 as needed
+  if (filteredFood.length > 0 && filteredFood.length <= 3) {
+    livingPageHeight = `${filteredFood.length * 500}px`; // Adjust 500 as needed
   } else {
     livingPageHeight = "auto";
   }
 
-  // contact
   function showPhoneNumber(phoneNumber1, phoneNumber2) {
     let alertMessage = `Phone Number 1: ${phoneNumber1}`;
 
@@ -211,27 +240,6 @@ export default function Food() {
 
     alert(alertMessage);
   }
-
-  // Filteration
-  const [selectedCategory, setSelectedCategory] = useState("All"); // Default to show all categories
-  const filteredData = data.filter((item) => {
-    if (selectedCategory === "All") {
-      return true; // Show all categories
-    }
-    return item.category.includes(selectedCategory);
-  });
-  // searchbar
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filteredFood, setFilteredFood] = useState(MainData);
-
-  const handleSearchChange = (event) => {
-    const query = event.target.value.toLowerCase();
-    setSearchQuery(query);
-    const filtered = MainData.filter((food) =>
-      food.foodPlace.toLowerCase().includes(query)
-    );
-    setFilteredFood(filtered);
-  };
 
   return (
     <>
@@ -251,10 +259,7 @@ export default function Food() {
         <div className="living_Card">
           <div
             className="living-card-top"
-            onClick={() => {
-              setSelectedCategory("Restaurants");
-              handleCategoryChange();
-            }}
+            onClick={() => handleCategoryChange("Restaurants")}
           >
             <div className="living-card-top-white-circle">
               <img
@@ -269,10 +274,7 @@ export default function Food() {
           </div>
           <div
             className="living-card-top"
-            onClick={() => {
-              setSelectedCategory("Dhabas");
-              handleCategoryChange();
-            }}
+            onClick={() => handleCategoryChange("Dhabas")}
           >
             <div className="living-card-top-white-circle">
               <img
@@ -288,10 +290,7 @@ export default function Food() {
 
           <div
             className="living-card-top"
-            onClick={() => {
-              setSelectedCategory("Cafe");
-              handleCategoryChange();
-            }}
+            onClick={() => handleCategoryChange("Cafe")}
           >
             <div className="living-card-top-white-circle">
               <img
@@ -306,7 +305,6 @@ export default function Food() {
           </div>
         </div>
         <SearchBar onChange={handleSearchChange} />
-        {/* living-content */}
         <div className="living-content" style={{ height: livingPageHeight }}>
           {filteredFood
             .slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage)
@@ -318,7 +316,6 @@ export default function Food() {
                   <p style={{ paddingBottom: "10px" }} className="specs">
                     {item.specs}
                   </p>
-                  {/* Facility */}
                   <div className="facility">
                     <h5 style={{ fontSize: "17px" }}>Details:</h5>
                     <p>
@@ -332,14 +329,12 @@ export default function Food() {
                       <span>{item.serviceOptions}</span>
                     </p>
                   </div>
-                  {/*rent  */}
                   <div className="Rent">
                     <h5 style={{ fontSize: "17px" }}>Hours:</h5>
                     <p>
                       <span>{item.timings}</span>
                     </p>
                   </div>
-                  {/* Media */}
                   <div className="media-card">
                     <div className="media">
                       <a
@@ -410,10 +405,9 @@ export default function Food() {
                       }}
                     >
                       <div className="modal-content">
-                        {/* Modal content */}
                         <div className="image-container-modal">
                           {selectedFoodItemId !== null &&
-                            data
+                            filteredFood
                               .filter((item) => item.id === selectedFoodItemId)
                               .map((item) =>
                                 item.modal_images?.map((image, index) => (
@@ -425,7 +419,6 @@ export default function Food() {
                                   />
                                 ))
                               )}
-                          {/* Modal images */}
                           {modalImages.map((imageUrl, index) => (
                             <img
                               key={index}
@@ -435,7 +428,6 @@ export default function Food() {
                             />
                           ))}
                         </div>
-                        {/* Conditional rendering of upload button text */}
                         {uploading ? (
                           <p className="custom-file-upload">Uploading...</p>
                         ) : (
@@ -446,7 +438,6 @@ export default function Food() {
                             Upload Image
                           </label>
                         )}
-                        {/* Hide the input element */}
                         <input
                           type="file"
                           accept="image/*"
@@ -495,7 +486,9 @@ export default function Food() {
           <button
             onClick={handleNextPage}
             className="sidebtn"
-            disabled={data.slice(currentPage * postsPerPage).length === 0}
+            disabled={
+              filteredFood.slice(currentPage * postsPerPage).length === 0
+            }
           >
             <KeyboardArrowRight />
           </button>

@@ -159,17 +159,17 @@ export default function Shopping() {
     return item.category.some((category) => category === selectedCategory);
   });
   // Search Bar
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filteredShopping, setFilteredShopping] = useState(MainData);
+  // const [searchQuery, setSearchQuery] = useState("");
+  // const [filteredShopping, setFilteredShopping] = useState(MainData);
 
-  const handleSearchChange = (event) => {
-    const query = event.target.value.toLowerCase();
-    setSearchQuery(query);
-    const filtered = MainData.filter((shopping) =>
-      shopping.shopPlace.toLowerCase().includes(query)
-    );
-    setFilteredShopping(filtered);
-  };
+  // const handleSearchChange = (event) => {
+  //   const query = event.target.value.toLowerCase();
+  //   setSearchQuery(query);
+  //   const filtered = MainData.filter((shopping) =>
+  //     shopping.shopPlace.toLowerCase().includes(query)
+  //   );
+  //   setFilteredShopping(filtered);
+  // };
   return (
     <>
       <div className="shopping">
@@ -217,10 +217,10 @@ export default function Shopping() {
             </div>
           </div>
         </div>
-        <SearchBar onChange={handleSearchChange} />
+        {/* <SearchBar onChange={handleSearchChange} /> */}
         {/* living-content */}
         <div className="living-content" style={{ height: livingPageHeight }}>
-          {filteredShopping
+          {filteredData
             .slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage)
             .map((item) => (
               <div className="live_card" key={item.id}>
