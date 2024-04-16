@@ -11,7 +11,7 @@ import { storage } from "/src/firebase.js";
 import SearchBar from "../../components/SearchBar";
 
 export default function Living() {
-  const [sortOrder, setSortOrder] = useState("asc"); // "asc" or "desc"
+  const [sortOrder, setSortOrder] = useState("asc");
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(4);
@@ -88,7 +88,6 @@ export default function Living() {
   };
 
   const handleSort = (criteria) => {
-    // Toggle sort order if clicking on the same criteria
     setSortOrder((prevOrder) =>
       sortCriteria === criteria ? (prevOrder === "asc" ? "desc" : "asc") : "asc"
     );
@@ -173,11 +172,13 @@ export default function Living() {
   const handleSearchChange = (event) => {
     const query = event.target.value.toLowerCase();
     setSearchQuery(query);
-    const filtered = MainData.filter((hostel) =>
+    const filtered = data.filter((hostel) =>
       hostel.hostel.toLowerCase().includes(query)
     );
     setFilteredHostels(filtered);
+    setCurrentPage(1);
   };
+
   // Function to handle clicking on the card to open media
   const handleCardClick = (hostelId) => {
     setCurrentHostelId(hostelId);

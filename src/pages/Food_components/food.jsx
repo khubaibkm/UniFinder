@@ -46,6 +46,8 @@ export default function Food() {
   const handleSearchChange = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
+    setCurrentPage(1);
+
     handleSearchAndCategoryChange();
   };
 
