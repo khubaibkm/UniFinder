@@ -5,16 +5,29 @@ import Footer from "../../components/footer";
 import { MainData } from "./shopping_data";
 import Modal from "react-modal";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
-import SearchBar from "../../components/SearchBar";
+import { TextField } from "@mui/material";
 
 export default function Shopping() {
-  // const [sortOrder, setSortOrder] = useState("asc"); // "asc" or "desc"
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(4);
-  // const [sortCriteria, setSortCriteria] = useState("");
-  // const [dropdownVisible, setDropdownVisible] = useState(false);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+
+  const openReviewModal = () => {
+    setIsReviewModalOpen(true);
+  };
+  const closeReviewModal = () => {
+    setIsReviewModalOpen(false);
+  };
+
+  const handleSubmitReview = (e) => {
+    e.preventDefault();
+    const comment = e.target.elements.comment.value;
+
+    closeReviewModal();
+  };
   const renderPageButtons = () => {
     const maxVisiblePages = 2;
     const buttons = [];
@@ -126,7 +139,7 @@ export default function Shopping() {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth", // You can change this to "auto" for instant scrolling
+      behavior: "smooth",
     });
   };
   const lastPostIndex = currentPage * postsPerPage;
@@ -135,9 +148,9 @@ export default function Shopping() {
   // adjust living-content height
   let livingPageHeight;
   if (data.length > 0 && data.length <= 3) {
-    livingPageHeight = `${data.length * 500}px`; // Adjust 500 as needed
+    livingPageHeight = `${data.length * 500}px`;
   } else {
-    livingPageHeight = "auto"; // or set a default height as needed
+    livingPageHeight = "auto";
   }
 
   // contact
@@ -158,18 +171,7 @@ export default function Shopping() {
     }
     return item.category.some((category) => category === selectedCategory);
   });
-  // Search Bar
-  // const [searchQuery, setSearchQuery] = useState("");
-  // const [filteredShopping, setFilteredShopping] = useState(MainData);
 
-  // const handleSearchChange = (event) => {
-  //   const query = event.target.value.toLowerCase();
-  //   setSearchQuery(query);
-  //   const filtered = MainData.filter((shopping) =>
-  //     shopping.shopPlace.toLowerCase().includes(query)
-  //   );
-  //   setFilteredShopping(filtered);
-  // };
   return (
     <>
       <div className="shopping">
@@ -321,7 +323,7 @@ export default function Shopping() {
                     </Modal>
 
                     <div className="media">
-                      <a href="#">
+                      <a onClick={openReviewModal}>
                         <img
                           className="media-img"
                           src={item.reviewImg}
@@ -335,6 +337,55 @@ export default function Shopping() {
                         </p>
                       </a>
                     </div>
+                    <Modal
+                      isOpen={isReviewModalOpen}
+                      onRequestClose={closeReviewModal}
+                      contentLabel="Review Modal"
+                      className="boxmodal"
+                      style={{
+                        overlay: {
+                          backgroundColor: "rgba(0, 0, 0, 0.3)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        },
+                      }}
+                    >
+                      <div className="modal-content">
+                        <p className="modal-para">Check out Reviews</p>
+                        <form onSubmit={handleSubmitReview}>
+                          <TextField
+                            id="standard-basic"
+                            label="Review"
+                            variant="standard"
+                            style={{ width: "95%" }}
+                          />
+
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "flex-start",
+                              marginTop: "10px",
+                              marginLeft: "5px",
+                            }}
+                          >
+                            <button
+                              type="submit"
+                              className="modal-btn"
+                              style={{ marginRight: "10px" }}
+                            >
+                              Submit
+                            </button>
+                            <button
+                              className="modal-btn"
+                              onClick={closeReviewModal}
+                            >
+                              Close
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </Modal>
                   </div>
                 </div>
               </div>

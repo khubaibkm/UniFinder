@@ -9,6 +9,7 @@ import { ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage";
 import { storage } from "/src/firebase.js";
 import { toast } from "react-toastify";
 import SearchBar from "../../components/SearchBar";
+import { TextField } from "@mui/material";
 
 export default function Food() {
   const [data, setData] = useState([]);
@@ -22,7 +23,21 @@ export default function Food() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredFood, setFilteredFood] = useState(MainData);
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
 
+  const openReviewModal = () => {
+    setIsReviewModalOpen(true);
+  };
+  const closeReviewModal = () => {
+    setIsReviewModalOpen(false);
+  };
+
+  const handleSubmitReview = (e) => {
+    e.preventDefault();
+    const comment = e.target.elements.comment.value;
+
+    closeReviewModal();
+  };
   const handleCategoryChange = (category) => {
     setCurrentPage(1);
     setActiveButton(1);
@@ -455,7 +470,7 @@ export default function Food() {
                     </Modal>
 
                     <div className="media">
-                      <a href="#">
+                      <a onClick={openReviewModal}>
                         <img
                           className="media-img"
                           src={item.reviewImg}
@@ -469,6 +484,55 @@ export default function Food() {
                         </p>
                       </a>
                     </div>
+                    <Modal
+                      isOpen={isReviewModalOpen}
+                      onRequestClose={closeReviewModal}
+                      contentLabel="Review Modal"
+                      className="boxmodal"
+                      style={{
+                        overlay: {
+                          backgroundColor: "rgba(0, 0, 0, 0.3)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        },
+                      }}
+                    >
+                      <div className="modal-content">
+                        <p className="modal-para">Check out Reviews</p>
+                        <form onSubmit={handleSubmitReview}>
+                          <TextField
+                            id="standard-basic"
+                            label="Review"
+                            variant="standard"
+                            style={{ width: "95%" }}
+                          />
+
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "flex-start",
+                              marginTop: "10px",
+                              marginLeft: "5px",
+                            }}
+                          >
+                            <button
+                              type="submit"
+                              className="modal-btn"
+                              style={{ marginRight: "10px" }}
+                            >
+                              Submit
+                            </button>
+                            <button
+                              className="modal-btn"
+                              onClick={closeReviewModal}
+                            >
+                              Close
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </Modal>
                   </div>
                 </div>
               </div>

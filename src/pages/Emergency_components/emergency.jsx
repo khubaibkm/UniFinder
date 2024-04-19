@@ -5,16 +5,28 @@ import Footer from "../../components/footer";
 import { MainData } from "./emergency_data";
 import Modal from "react-modal";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
-import SearchBar from "../../components/SearchBar";
+import { TextField } from "@mui/material";
 
 export default function Emergency() {
-  const [sortOrder, setSortOrder] = useState("asc"); // "asc" or "desc"
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(4);
-  const [sortCriteria, setSortCriteria] = useState("");
-  const [dropdownVisible, setDropdownVisible] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+
+  const openReviewModal = () => {
+    setIsReviewModalOpen(true);
+  };
+  const closeReviewModal = () => {
+    setIsReviewModalOpen(false);
+  };
+
+  const handleSubmitReview = (e) => {
+    e.preventDefault();
+    const comment = e.target.elements.comment.value;
+
+    closeReviewModal();
+  };
   const renderPageButtons = () => {
     const maxVisiblePages = 2;
     const buttons = [];
@@ -152,25 +164,14 @@ export default function Emergency() {
     alert(alertMessage);
   }
   // Filteration
-  const [selectedCategory, setSelectedCategory] = useState("All"); // Default to show all categories
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const filteredData = data.filter((item) => {
     if (selectedCategory === "All") {
       return true; // Show all categories
     }
     return item.category.some((category) => category === selectedCategory);
   });
-  // Searchbar
-  // const [searchQuery, setSearchQuery] = useState("");
-  // const [filteredEmergency, setFilteredEmergency] = useState(MainData);
 
-  // const handleSearchChange = (event) => {
-  //   const query = event.target.value.toLowerCase();
-  //   setSearchQuery(query);
-  //   const filtered = MainData.filter((emergency) =>
-  //     emergency.emerPlace.toLowerCase().includes(query)
-  //   );
-  //   setFilteredEmergency(filtered);
-  // };
   return (
     <>
       <div className="emergency">
@@ -218,7 +219,6 @@ export default function Emergency() {
             </div>
           </div>
         </div>
-        {/* <SearchBar onChange={handleSearchChange} /> */}
         {/* living-content */}
         <div className="living-content" style={{ height: livingPageHeight }}>
           {filteredData
@@ -322,7 +322,7 @@ export default function Emergency() {
                     </Modal>
 
                     <div className="media">
-                      <a href="#">
+                      <a onClick={openReviewModal}>
                         <img
                           className="media-img"
                           src={item.reviewImg}
@@ -336,6 +336,55 @@ export default function Emergency() {
                         </p>
                       </a>
                     </div>
+                    <Modal
+                      isOpen={isReviewModalOpen}
+                      onRequestClose={closeReviewModal}
+                      contentLabel="Review Modal"
+                      className="boxmodal"
+                      style={{
+                        overlay: {
+                          backgroundColor: "rgba(0, 0, 0, 0.3)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        },
+                      }}
+                    >
+                      <div className="modal-content">
+                        <p className="modal-para">Check out Reviews</p>
+                        <form onSubmit={handleSubmitReview}>
+                          <TextField
+                            id="standard-basic"
+                            label="Review"
+                            variant="standard"
+                            style={{ width: "95%" }}
+                          />
+
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "flex-start",
+                              marginTop: "10px",
+                              marginLeft: "5px",
+                            }}
+                          >
+                            <button
+                              type="submit"
+                              className="modal-btn"
+                              style={{ marginRight: "10px" }}
+                            >
+                              Submit
+                            </button>
+                            <button
+                              className="modal-btn"
+                              onClick={closeReviewModal}
+                            >
+                              Close
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </Modal>
                   </div>
                 </div>
               </div>

@@ -263,7 +263,6 @@
   background-color: #3066be;
 }
 
-
 /* CSS to style the custom file upload button */
 .custom-file-upload {
   padding: 6px 12px;
@@ -279,7 +278,6 @@
 .custom-file-upload:hover {
   background-color: #0056b3;
 }
-
 
 @media (max-width: 1400px) {
   .boxmodal {
