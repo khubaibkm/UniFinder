@@ -18,8 +18,11 @@ import Protected from "./components/services/Protected";
 import HomeWithoutSigning from "./pages/HomeWithoutSigning";
 import IntroForm from "./components/introForm";
 import MyProfile from "./components/myProfile";
+import Modal from 'react-modal';
+
 
 function App() {
+  Modal.setAppElement("#root");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

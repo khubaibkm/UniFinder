@@ -170,6 +170,33 @@
   padding-bottom: 20px;
 }
 
+.review-list {
+  max-height: 255px;
+  padding: 0 12px;
+  overflow-y: auto;
+}
+
+/* Custom scrollbar */
+.review-list::-webkit-scrollbar {
+  display: block;
+  width: 6px;
+  background-color: white;
+}
+
+.review-list::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 8px;
+}
+
+.review-list::-webkit-scrollbar-thumb:hover {
+  background: #7a7a7a;
+  /* Hover state color */
+}
+
+
+
+
+
 .media-card {
   display: flex;
   align-items: center;
@@ -450,6 +477,22 @@
     width: 24rem;
     height: 35rem;
   }
+
+  .yourName {
+    margin-right: 0 !important;
+    width: calc(100%) !important;
+  }
+
+  .yourReview {
+    width: calc(100%) !important;
+  }
+
+  .review-form {
+    padding: 0 !important;
+    background-color: white !important;
+    margin-top: -1rem;
+  }
+
 }
 
 @media (max-width: 420px) {

@@ -3,13 +3,14 @@ import "./living.css";
 import DrawerAppBarCat from "../../components/navCat";
 import Footer from "../../components/footer";
 import { MainData } from "./living_data";
+import { TextField, Button, Typography } from "@mui/material";
 import Modal from "react-modal";
 import { toast } from "react-toastify";
-import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
+import { KeyboardArrowLeft, KeyboardArrowRight, Style } from "@mui/icons-material";
 import { ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage";
-import { storage } from "/src/firebase.js";
+import { db, storage, auth } from "/src/firebase.js";
+import { collection, addDoc, where, query, getDocs, orderBy } from "firebase/firestore";
 import SearchBar from "../../components/SearchBar";
-import { TextField } from "@mui/material";
 
 export default function Living() {
   const [sortOrder, setSortOrder] = useState("asc");
@@ -23,24 +24,84 @@ export default function Living() {
   const [uploading, setUploading] = useState(false);
   const [modalImages, setModalImages] = useState([]);
   const [activeButton, setActiveButton] = useState(1);
-  const [selectedHostelCategory, setSelectedHostelCategory] = useState("All"); // Default to show all categories
+  const [selectedHostelCategory, setSelectedHostelCategory] = useState("All"); 
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredHostels, setFilteredHostels] = useState(MainData);
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+  const [currentReviewHostelId, setCurrentReviewHostelId] = useState(null);
+  const [reviews, setReviews] = useState([]);
+  const [formData, setFormData] = useState({
+    name: "",
+    comment: "",
+  });
+  const [loading, setLoading] = useState(false);
 
-  const openReviewModal = () => {
-    setIsReviewModalOpen(true);
+
+  useEffect(() => {
+    if (currentReviewHostelId && isReviewModalOpen) {
+      fetchReviews(currentReviewHostelId);
+    }
+  }, [currentReviewHostelId, isReviewModalOpen]);
+  
+  const fetchReviews = async (hostelId) => {
+    try {
+      const reviewsCollectionRef = collection(db, "reviews");
+      const querySnapshot = await getDocs(
+        query(reviewsCollectionRef, where("hostelId", "==", hostelId), orderBy("timestamp", "desc"))
+      );
+      const reviewsData = [];
+      querySnapshot.forEach((doc) => {
+        reviewsData.push(doc.data());
+      });
+      setReviews(reviewsData);
+    } catch (error) {
+      console.error("Error fetching reviews:", error);
+    }
   };
-  const closeReviewModal = () => {
-    setIsReviewModalOpen(false);
+  
+  
+  
+  const handleSubmitReview = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    setLoading(true); // Set loading state to true while submitting
+  
+    try {
+      // Get the currently authenticated user
+      const currentUser = auth.currentUser;
+  
+      // Check if the user is authenticated
+      if (!currentUser) {
+        console.error("User not authenticated");
+        setLoading(false); // Set loading state to false
+        return;
+      }
+  
+      // Access the 'reviews' collection in Firestore
+      const reviewCollectionRef = collection(db, "reviews");
+  
+      // Add a new document to the 'reviews' collection with the review data
+      await addDoc(reviewCollectionRef, {
+        name: formData.name,
+        comment: formData.comment,
+        userId: currentUser.uid,
+        hostelId: currentReviewHostelId, // Include the hostel ID for the review
+        timestamp: new Date(), // Add a timestamp for the review
+      });
+  
+      // Reset form data and close the review modal
+      setLoading(false); // Set loading state to false
+      setFormData({ name: "", comment: "" }); // Reset form data
+      setIsReviewModalOpen(false); // Close the review modal
+  
+      // Fetch reviews again to update the displayed reviews for the current hostel
+      fetchReviews(currentReviewHostelId);
+    } catch (error) {
+      console.error("Error adding review: ", error);
+      setLoading(false); // Set loading state to false in case of error
+    }
   };
 
-  const handleSubmitReview = (e) => {
-    e.preventDefault();
-    const comment = e.target.elements.comment.value;
 
-    closeReviewModal();
-  };
   useEffect(() => {
     setData(MainData);
   }, []);
@@ -194,14 +255,34 @@ export default function Living() {
     setCurrentPage(1);
   };
 
-  // Function to handle clicking on the card to open media
+  useEffect(() => {
+    if (currentHostelId && (isModalOpen || !isModalOpen)) {
+      fetchModalImages(currentHostelId);
+    }
+  }, [currentHostelId, isModalOpen]);
+
+  useEffect(() => {
+    if (currentReviewHostelId && (isReviewModalOpen || !isReviewModalOpen)) {
+      fetchReviews(currentReviewHostelId);
+    }
+  }, [currentReviewHostelId, isReviewModalOpen]);
+
+  
   const handleCardClick = (hostelId) => {
     setCurrentHostelId(hostelId);
     openModal();
     fetchModalImages(hostelId);
   };
+  
+  const handleReviewModalClick = (hostelId) => {
+    setCurrentReviewHostelId(hostelId);
+    setIsReviewModalOpen(true);
+    fetchReviews(hostelId);
+  };
+  
+  
+  
 
-  // Function to display contact information
   const showPhoneNumber = (contactPerson, phoneNumber1, phoneNumber2) => {
     let alertMessage = `Contact Person: ${contactPerson}\nPhone Number 1: ${phoneNumber1}`;
 
@@ -211,7 +292,7 @@ export default function Living() {
 
     alert(alertMessage);
   };
-  // Render page buttons
+
   const renderPageButtons = () => {
     const maxVisiblePages = 2;
     const buttons = [];
@@ -509,69 +590,97 @@ export default function Living() {
                     </Modal>
 
                     <div className="media">
-                      <a onClick={openReviewModal}>
-                        <img
-                          className="media-img"
-                          src={item.reviewImg}
-                          alt="reviews"
-                        />
-                        <p
-                          className="external-data"
-                          style={{ color: "black " }}
-                        >
-                          Reviews
-                        </p>
-                      </a>
-                    </div>
-                    <Modal
-                      isOpen={isReviewModalOpen}
-                      onRequestClose={closeReviewModal}
-                      contentLabel="Review Modal"
-                      className="boxmodal"
-                      style={{
-                        overlay: {
-                          backgroundColor: "rgba(0, 0, 0, 0.3)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                        },
-                      }}
-                    >
-                      <div className="modal-content">
-                        <p className="modal-para">Check out Reviews</p>
-                        <form onSubmit={handleSubmitReview}>
-                          <TextField
-                            id="standard-basic"
-                            label="Review"
-                            variant="standard"
-                            style={{ width: "95%" }}
-                          />
+  <a onClick={() => handleReviewModalClick(item.id)}> {/* Pass the hostelId to the function */}
+    <img className="media-img" src={item.reviewImg} alt="reviews" />
+    <p className="external-data" style={{ color: "black " }}>
+      Reviews
+    </p>
+  </a>
+</div>
 
-                          <div
-                            style={{
-                              display: "flex",
-                              justifyContent: "flex-start",
-                              marginTop: "10px",
-                              marginLeft: "5px",
-                            }}
-                          >
-                            <button
-                              type="submit"
-                              className="modal-btn"
-                              style={{ marginRight: "10px" }}
-                            >
-                              Submit
-                            </button>
-                            <button
-                              className="modal-btn"
-                              onClick={closeReviewModal}
-                            >
-                              Close
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    </Modal>
+      {/* Review Modal */}
+      <Modal
+  contentLabel="Reviews Modal"
+  className="boxmodal"
+  style={{
+    overlay: {
+      backgroundColor: "rgba(0, 0, 0, 0.3)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+  }}
+  isOpen={isReviewModalOpen}
+  onRequestClose={() => setIsReviewModalOpen(false)}
+>
+  <div className="review-modal-content">
+    <div className="review-modal">
+      {/* Existing Reviews */}
+      <div className="existing-reviews">
+        <Typography style={{ margin: "auto", textAlign: "center" }} variant="h5">
+          Checkout Reviews
+        </Typography>
+        <br />
+        {/* Map over the reviews state to display each review */}
+        <div style={{marginBottom:"20px"}} className="review-list">
+          {reviews.map((review, index) => (
+            <div key={index} className="review-item">
+              <Typography variant="subtitle1" className="review-name">
+                {review.name}
+              </Typography>
+              <Typography variant="body2" className="review-comment">
+                {review.comment}
+              </Typography> <br />
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Form to submit a new review */}
+      <div style={{background: "rgb(243, 243, 243)", padding:"10px 50px 20px 50px", borderRadius:"5px"}} className="review-form"> 
+        <Typography style={{fontSize:"18px", marginTop:"10px"}} variant="h5">Leave your Review</Typography>
+        <form onSubmit={handleSubmitReview}>
+  <TextField
+    label="Your Name"
+    className="yourName"
+    value={formData.name}
+    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+    required
+    fullWidth
+    margin="dense"
+    style={{ marginRight:"10px", width: "calc(48%)" }} 
+  />
+  <TextField
+    label="Your Review"
+    className="yourReview"
+    value={formData.comment}
+    onChange={(e) => setFormData({ ...formData, comment: e.target.value })}
+    required
+    fullWidth
+    margin="dense"
+    style={{ width: "calc(48%)" }} 
+  />
+  <div style={{ display: "flex", justifyContent: "space-between", marginTop: "10px" }}>
+    <Button
+      type="submit"
+      variant="contained"
+      color="primary"
+      disabled={loading}
+    >
+      {loading ? "Submitting..." : "Submit"}
+    </Button>
+    <Button onClick={() => setIsReviewModalOpen(false)}>Close</Button>
+  </div>
+</form>
+
+      </div>
+    </div>
+  </div>
+</Modal>
+
+
+
+
+
                   </div>
                 </div>
               </div>

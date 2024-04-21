@@ -67,6 +67,7 @@ const MyProfile = () => {
     setImage(null);
   };
 
+  
   const handleUpdate = async () => {
     try {
       setLoading(true);
