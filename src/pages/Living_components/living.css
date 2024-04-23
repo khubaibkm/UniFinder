@@ -193,10 +193,6 @@
   /* Hover state color */
 }
 
-
-
-
-
 .media-card {
   display: flex;
   align-items: center;
@@ -492,7 +488,6 @@
     background-color: white !important;
     margin-top: -1rem;
   }
-
 }
 
 @media (max-width: 420px) {
@@ -552,4 +547,30 @@
   .image-container-modal {
     max-height: 320px;
   }
+}
+.searchbar-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.custom-searchbar {
+  margin-right: 20px;
+}
+
+.add-icon {
+  background-color: black;
+  margin-left: 30px;
+  margin-top: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+}
+
+.add-icon svg {
+  color: white;
 }
