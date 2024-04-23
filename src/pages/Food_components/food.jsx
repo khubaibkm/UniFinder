@@ -242,7 +242,9 @@ export default function Food() {
 
   // adjust living-content height
   let livingPageHeight;
-  if (filteredFood.length > 0 && filteredFood.length <= 3) {
+  if (filteredFood.length === 1) {
+    livingPageHeight = `calc(100% - 100px)`;
+  } else if (filteredFood.length > 0 && filteredFood.length <= 3) {
     livingPageHeight = `${filteredFood.length * 500}px`; // Adjust 500 as needed
   } else {
     livingPageHeight = "auto";

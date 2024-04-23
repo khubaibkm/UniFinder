@@ -18,7 +18,7 @@ const SearchBar = ({ onChange }) => {
         placeholder="Search..."
         onChange={onChange}
         style={{
-          width: isSmallScreen ? "280px" : "100%",
+          width: isSmallScreen ? "260px" : "100%",
           maxWidth: "350px",
           marginTop: "30px",
         }}
