@@ -121,7 +121,9 @@ export default function Living() {
 
       // Fetch reviews again to update the displayed reviews for the current hostel
       fetchReviews(currentReviewHostelId);
+      toast.success("Your review uploaded successfully!");
     } catch (error) {
+      toast.error("Error uploading reviews");
       console.error("Error adding review: ", error);
       setLoading(false); // Set loading state to false in case of error
     }

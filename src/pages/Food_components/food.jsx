@@ -4,12 +4,20 @@ import "./food.css";
 import Footer from "../../components/footer";
 import { MainData } from "./food_data";
 import Modal from "react-modal";
-import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
+import { TextField, Button, Typography} from "@mui/material";
 import { ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage";
-import { storage } from "/src/firebase.js";
+import { db, storage, auth } from "/src/firebase.js";
+import {
+  collection,
+  addDoc,
+  where,
+  query,
+  getDocs,
+  orderBy,
+} from "firebase/firestore";
+import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
 import { toast } from "react-toastify";
 import SearchBar from "../../components/SearchBar";
-import { TextField } from "@mui/material";
 
 export default function Food() {
   const [data, setData] = useState([]);
@@ -24,20 +32,84 @@ export default function Food() {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredFood, setFilteredFood] = useState(MainData);
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+  const [currentFoodReviewHostelId, setCurrentFoodReviewHostelId] = useState(null);
+  const [Foodreviews, setFoodReviews] = useState([]);
+  const [foodFormData, setFoodFormData] = useState({
+    name: "",
+    comment: "",
+  });
+  const [loading, setLoading] = useState(false);
 
-  const openReviewModal = () => {
-    setIsReviewModalOpen(true);
-  };
-  const closeReviewModal = () => {
-    setIsReviewModalOpen(false);
+
+  useEffect(() => {
+    if (currentFoodReviewHostelId && isReviewModalOpen) {
+      fetchFoodReviews(currentFoodReviewHostelId);
+    }
+  }, [currentFoodReviewHostelId, isReviewModalOpen]);
+
+  const fetchFoodReviews = async (foodId) => {
+    try {
+      const foodReviewsCollectionRef = collection(db, "food reviews");
+      const querySnapshot = await getDocs(
+        query(
+          foodReviewsCollectionRef,
+          where("foodId", "==", foodId),
+          orderBy("timestamp", "desc")
+        )
+      );
+      const foodReviewsData = [];
+      querySnapshot.forEach((doc) => {
+        foodReviewsData.push(doc.data());
+      });
+      setFoodReviews(foodReviewsData);
+    } catch (error) {
+      console.error("Error fetching reviews:", error);
+    }
   };
 
-  const handleSubmitReview = (e) => {
-    e.preventDefault();
-    const comment = e.target.elements.comment.value;
+  const handleSubmitReview = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    setLoading(true); // Set loading state to true while submitting
 
-    closeReviewModal();
+    try {
+      // Get the currently authenticated user
+      const currentUser = auth.currentUser;
+
+      // Check if the user is authenticated
+      if (!currentUser) {
+        console.error("User not authenticated");
+        setLoading(false); // Set loading state to false
+        return;
+      }
+
+      // Access the 'reviews' collection in Firestore
+      const reviewCollectionRef = collection(db, "food reviews");
+
+      // Add a new document to the 'reviews' collection with the review data
+      await addDoc(reviewCollectionRef, {
+        name: foodFormData.name,
+        comment: foodFormData.comment,
+        userId: currentUser.uid,
+        foodId: currentFoodReviewHostelId, // Include the hostel ID for the review
+        timestamp: new Date(), // Add a timestamp for the review
+      });
+
+      // Reset form data and close the review modal
+      setLoading(false); // Set loading state to false
+      setFoodFormData({ name: "", comment: "" }); // Reset form data
+      setIsReviewModalOpen(false); // Close the review modal
+
+      // Fetch reviews again to update the displayed reviews for the current hostel
+      fetchFoodReviews(currentFoodReviewHostelId);
+      toast.success("Your review uploaded successfully!");
+    } catch (error) {
+      toast.error("Error uploading reviews");
+      console.error("Error adding review: ", error);
+      setLoading(false); // Set loading state to false in case of error
+    }
   };
+
+
   const handleCategoryChange = (category) => {
     setCurrentPage(1);
     setActiveButton(1);
@@ -157,6 +229,11 @@ export default function Food() {
   const handleFoodItemClick = (foodItemId) => {
     setSelectedFoodItemId(foodItemId);
     openModal();
+  };
+  const handleFoodReviewModalClick = (foodId) => {
+    setCurrentFoodReviewHostelId(foodId);
+    setIsReviewModalOpen(true);
+    fetchFoodReviews(foodId);
   };
 
   const renderPageButtons = () => {
@@ -472,7 +549,7 @@ export default function Food() {
                     </Modal>
 
                     <div className="media">
-                      <a onClick={openReviewModal}>
+                    <a onClick={() => handleFoodReviewModalClick(item.id)}>
                         <img
                           className="media-img"
                           src={item.reviewImg}
@@ -488,7 +565,7 @@ export default function Food() {
                     </div>
                     <Modal
                       isOpen={isReviewModalOpen}
-                      onRequestClose={closeReviewModal}
+                      onRequestClose={() => setIsReviewModalOpen(false)}
                       contentLabel="Review Modal"
                       className="boxmodal"
                       style={{
@@ -500,39 +577,114 @@ export default function Food() {
                         },
                       }}
                     >
-                      <div className="modal-content">
-                        <p className="modal-para">Check out Reviews</p>
-                        <form onSubmit={handleSubmitReview}>
-                          <TextField
-                            id="standard-basic"
-                            label="Review"
-                            variant="standard"
-                            style={{ width: "95%" }}
-                          />
-
+                      <div className="review-modal-content">
+                        <div className="review-modal">
+                          {/* Existing Reviews */}
+                          <div className="existing-reviews">
+                            <Typography
+                              style={{ margin: "auto", textAlign: "center" }}
+                              variant="h5"
+                            >
+                              Checkout Reviews
+                            </Typography>
+                            <br />
+                            {/* Map over the reviews state to display each review */}
+                            <div
+                              style={{ marginBottom: "20px" }}
+                              className="review-list"
+                            >
+                              {Foodreviews.map((foodReview, index) => (
+                                <div key={index} className="review-item">
+                                  <Typography
+                                    variant="subtitle1"
+                                    className="review-name"
+                                  >
+                                    {foodReview.name}
+                                  </Typography>
+                                  <Typography
+                                    variant="body2"
+                                    className="review-comment"
+                                  >
+                                    {foodReview.comment}
+                                  </Typography>{" "}
+                                  <br />
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                          {/* Form to submit a new review */}
                           <div
                             style={{
-                              display: "flex",
-                              justifyContent: "flex-start",
-                              marginTop: "10px",
-                              marginLeft: "5px",
+                              background: "rgb(243, 243, 243)",
+                              padding: "10px 50px 20px 50px",
+                              borderRadius: "5px",
                             }}
+                            className="review-form"
                           >
-                            <button
-                              type="submit"
-                              className="modal-btn"
-                              style={{ marginRight: "10px" }}
+                            <Typography
+                              style={{ fontSize: "18px", marginTop: "10px" }}
+                              variant="h5"
                             >
-                              Submit
-                            </button>
-                            <button
-                              className="modal-btn"
-                              onClick={closeReviewModal}
-                            >
-                              Close
-                            </button>
+                              Leave your Review
+                            </Typography>
+                            <form onSubmit={handleSubmitReview}>
+                              <TextField
+                                label="Your Name"
+                                className="yourName"
+                                value={foodFormData.name}
+                                onChange={(e) =>
+                                  setFoodFormData({
+                                    ...foodFormData,
+                                    name: e.target.value,
+                                  })
+                                }
+                                required
+                                fullWidth
+                                margin="dense"
+                                style={{
+                                  marginRight: "10px",
+                                  width: "calc(48%)",
+                                }}
+                              />
+                              <TextField
+                                label="Your Review"
+                                className="yourReview"
+                                value={foodFormData.comment}
+                                onChange={(e) =>
+                                  setFoodFormData({
+                                    ...foodFormData,
+                                    comment: e.target.value,
+                                  })
+                                }
+                                required
+                                fullWidth
+                                margin="dense"
+                                style={{ width: "calc(48%)" }}
+                              />
+                              <div
+                                style={{
+                                  display: "flex",
+                                  justifyContent: "space-between",
+                                  marginTop: "10px",
+                                }}
+                              >
+                                <Button
+                                  type="submit"
+                                  variant="contained"
+                                  color="primary"
+                                  disabled={loading}
+                                >
+                                  {loading ? "Submitting..." : "Submit"}
+                                </Button>
+                                <Button
+                                  onClick={() => setIsReviewModalOpen(false)}
+                                >
+                                  Close
+                                </Button>
+                              </div>
+                            </form>
                           </div>
-                        </form>
+                        </div>
                       </div>
                     </Modal>
                   </div>
