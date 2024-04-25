@@ -14,7 +14,7 @@ export default function Shopping() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
-
+  const [modalImages, setModalImages] = useState([]);
   const openReviewModal = () => {
     setIsReviewModalOpen(true);
   };
@@ -99,7 +99,8 @@ export default function Shopping() {
 
     return buttons;
   };
-  const openModal = () => {
+  const openModal = (images) => {
+    setModalImages(images);
     setIsModalOpen(true);
   };
 
@@ -288,7 +289,7 @@ export default function Shopping() {
                       </a>
                     </div>
                     <div className="media">
-                      <a onClick={openModal}>
+                      <a onClick={() => openModal(item.modal_images)}>
                         <img
                           className="media-img"
                           src={item.mediaImg}
@@ -305,7 +306,7 @@ export default function Shopping() {
 
                     <Modal
                       isOpen={isModalOpen}
-                      onRequestClose={closeModal}
+                      onRequestClose={() => setIsModalOpen(false)}
                       contentLabel="Media Modal"
                       className="boxmodal"
                       style={{
@@ -317,9 +318,25 @@ export default function Shopping() {
                         },
                       }}
                     >
-                      {/* Your modal content goes here */}
-                      <p>This is the media modal content.</p>
-                      <button onClick={closeModal}>Close Modal</button>
+                      <div className="modal-content">
+                        <p className="modal-para">Check out Images</p>
+                        <div className="image-container-modal">
+                          {modalImages.map((image, index) => (
+                            <img
+                              className="modal_img"
+                              key={index}
+                              src={image}
+                              alt={`Image ${index}`}
+                            />
+                          ))}
+                        </div>
+                        <button
+                          className="modal-btn"
+                          onClick={() => setIsModalOpen(false)}
+                        >
+                          Close Modal
+                        </button>
+                      </div>
                     </Modal>
 
                     <div className="media">

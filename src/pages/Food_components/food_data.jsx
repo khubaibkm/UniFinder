@@ -24,6 +24,29 @@ export const MainData = [
   },
   {
     id: 2,
+    foodPlace: "Mehfil Khana",
+    specs: `The Test of Awadh`,
+    priceRange: "Rs. 50 - 500/person",
+    serviceOptions: "Dine-in/Dine-through",
+    timings: "10:00 am - 10:00 pm",
+    foodPlace_img: "/images/food/mehfil-main.jpg",
+    phone1: "+919455490776",
+    map: `https://www.google.com/maps/place/Marhaba+Restaurant+%26+Cafe/@26.9593947,80.9979903,17z/data=!3m1!4b1!4m6!3m5!1s0x399959716a9c7935:0xc32c1057279eab0a!8m2!3d26.9593947!4d81.0005652!16s%2Fg%2F11tsr1h2hs?entry=ttu
+    `,
+    contactImg: "/images/living/phone.png",
+    addressImg: "/images/living/location.png",
+    mediaImg: "/images/living/media.png",
+    reviewImg: "/images/living/satisfaction.png",
+    category: "Restaurants",
+    modal_images: [
+      "/images/food/mehfil1.jpg",
+      "/images/food/mehfil2.jpg",
+      "/images/food/mehfil3.jpg",
+      "/images/food/mehfil4.jpg",
+    ],
+  },
+  {
+    id: 3,
     foodPlace: "Pizza Room ",
     specs: `Fully Furnished dinings with an ambient look`,
     priceRange: "Rs. 150 - 500/person",
@@ -41,7 +64,7 @@ export const MainData = [
     modal_images: ["/images/food/pizza (2).png"],
   },
   {
-    id: 3,
+    id: 4,
     foodPlace: "LOC - Love Or Chai",
     specs: `Fully Furnished dinings with an ambient look`,
     priceRange: "Rs. 150 - 500/person",
@@ -64,7 +87,7 @@ export const MainData = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     foodPlace: "Swaad Ganj",
     specs: `Fully Furnished dinings with an ambient look`,
     priceRange: "Rs. 150 - 500/person",
@@ -85,7 +108,7 @@ export const MainData = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     foodPlace: "Garden Of Eat'n",
     specs: `Fully Furnished dinings with an ambient look`,
     priceRange: "Rs. 150 - 500/person",
@@ -108,7 +131,7 @@ export const MainData = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     foodPlace: "Dreamz Dhaba & Cafe",
     specs: `Dinings with Private curtains rooms and a village like feel`,
     priceRange: "Rs. 200 - 400/person",
@@ -130,7 +153,7 @@ export const MainData = [
   },
 
   {
-    id: 7,
+    id: 8,
     foodPlace: "Buraq Restaurant ",
     specs: `Fully Furnished dinings with an ambient look`,
     priceRange: "Rs. 150 - 500/person",
@@ -153,7 +176,7 @@ export const MainData = [
     ],
   },
   {
-    id: 8,
+    id: 9,
     foodPlace: "The Gilla Cafe",
     specs: `Fully Furnished dinings with an ambient look`,
     priceRange: "Rs. 150 - 500/person",
@@ -176,7 +199,7 @@ export const MainData = [
     ],
   },
   {
-    id: 9,
+    id: 10,
     foodPlace: "Al-Hayat",
     specs: `Fully Furnished dinings with an ambient look`,
     priceRange: "Rs. 150 - 500/person",
@@ -201,7 +224,7 @@ export const MainData = [
     ],
   },
   {
-    id: 10,
+    id: 11,
     foodPlace: "The Delhi Cafe",
     specs: `Fully Furnished dinings with an ambient look`,
     priceRange: "Rs. 150 - 500/person",
@@ -222,7 +245,7 @@ export const MainData = [
     ],
   },
   {
-    id: 11,
+    id: 12,
     foodPlace: "Kuduk Chicken",
     specs: `Fully Furnished dinings with an ambient look`,
     priceRange: "Rs. 150 - 500/person",

@@ -4,7 +4,7 @@ import "./food.css";
 import Footer from "../../components/footer";
 import { MainData } from "./food_data";
 import Modal from "react-modal";
-import { TextField, Button, Typography} from "@mui/material";
+import { TextField, Button, InputAdornment, Typography } from "@mui/material";
 import { ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage";
 import { db, storage, auth } from "/src/firebase.js";
 import {
@@ -15,7 +15,11 @@ import {
   getDocs,
   orderBy,
 } from "firebase/firestore";
-import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
+import {
+  Add,
+  KeyboardArrowLeft,
+  KeyboardArrowRight,
+} from "@mui/icons-material";
 import { toast } from "react-toastify";
 import SearchBar from "../../components/SearchBar";
 
@@ -32,15 +36,28 @@ export default function Food() {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredFood, setFilteredFood] = useState(MainData);
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
-  const [currentFoodReviewHostelId, setCurrentFoodReviewHostelId] = useState(null);
+  const [currentFoodReviewHostelId, setCurrentFoodReviewHostelId] =
+    useState(null);
   const [Foodreviews, setFoodReviews] = useState([]);
   const [foodFormData, setFoodFormData] = useState({
     name: "",
     comment: "",
   });
   const [loading, setLoading] = useState(false);
+  const [userFormOpen, setUserFormOpen] = useState(false);
+  // form
+  const openUserForm = () => {
+    setUserFormOpen(true);
+  };
 
+  const closeUserForm = () => {
+    setUserFormOpen(false);
+  };
 
+  const UserhandleSubmit = (event) => {
+    event.preventDefault();
+    closeUserForm();
+  };
   useEffect(() => {
     if (currentFoodReviewHostelId && isReviewModalOpen) {
       fetchFoodReviews(currentFoodReviewHostelId);
@@ -109,12 +126,11 @@ export default function Food() {
     }
   };
 
-
   const handleCategoryChange = (category) => {
-    setCurrentPage(1);
     setActiveButton(1);
     setSelectedCategory(category);
     handleSearchAndCategoryChange();
+    setCurrentPage(1);
   };
 
   const handleSearchAndCategoryChange = () => {
@@ -400,7 +416,80 @@ export default function Food() {
             </div>
           </div>
         </div>
-        <SearchBar onChange={handleSearchChange} />
+        <div className="searchbar-icon-container">
+          <SearchBar onChange={handleSearchChange} className="searchbar" />
+          <div className="add-icon" onClick={openUserForm}>
+            <Add />
+          </div>
+          <Modal
+            isOpen={userFormOpen}
+            onRequestClose={closeUserForm}
+            contentLabel="Media Modal"
+            className="boxmodal"
+            style={{
+              overlay: {
+                backgroundColor: "rgba(0, 0, 0, 0.3)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              },
+            }}
+          >
+            <div className="modal">
+              <p className="modal-para">Add Foods</p>
+              <form onSubmit={UserhandleSubmit}>
+                <TextField
+                  label="Restaurant Name"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                />
+                <TextField
+                  label="Description"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                />
+                <TextField
+                  label="Delivery"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                />
+                <TextField
+                  label="Contact"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">+91</InputAdornment>
+                    ),
+                    inputProps: {
+                      pattern: "[0-9]*",
+                    },
+                  }}
+                />
+                <Button
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  style={{ marginTop: "10px" }}
+                >
+                  Add
+                </Button>
+                <Button
+                  onClick={closeUserForm}
+                  variant="contained"
+                  color="primary"
+                  style={{ marginLeft: "20px", marginTop: "10px" }}
+                >
+                  Close
+                </Button>
+              </form>
+            </div>
+          </Modal>
+        </div>
         <div className="living-content" style={{ height: livingPageHeight }}>
           {filteredFood
             .slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage)
@@ -549,7 +638,7 @@ export default function Food() {
                     </Modal>
 
                     <div className="media">
-                    <a onClick={() => handleFoodReviewModalClick(item.id)}>
+                      <a onClick={() => handleFoodReviewModalClick(item.id)}>
                         <img
                           className="media-img"
                           src={item.reviewImg}

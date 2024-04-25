@@ -3,7 +3,13 @@ import "./living.css";
 import DrawerAppBarCat from "../../components/navCat";
 import Footer from "../../components/footer";
 import { MainData } from "./living_data";
-import { TextField, Button, Typography, InputAdornment } from "@mui/material";
+import {
+  TextField,
+  Button,
+  Typography,
+  InputAdornment,
+  MenuItem,
+} from "@mui/material";
 import Modal from "react-modal";
 import { toast } from "react-toastify";
 import {
@@ -22,7 +28,10 @@ import {
   orderBy,
 } from "firebase/firestore";
 import SearchBar from "../../components/SearchBar";
-
+const categoryOptions = [
+  { value: "boys", label: "Boys" },
+  { value: "girls", label: "Girls" },
+];
 export default function Living() {
   const [sortOrder, setSortOrder] = useState("asc");
   const [data, setData] = useState([]);
@@ -456,7 +465,7 @@ export default function Living() {
           </div>
         </div>
         <div className="searchbar-icon-container">
-          <SearchBar onChange={handleSearchChange} />
+          <SearchBar onChange={handleSearchChange} className="searchbar" />
           <div className="add-icon" onClick={openUserForm}>
             <Add />
           </div>
@@ -489,6 +498,20 @@ export default function Living() {
                   fullWidth
                   margin="normal"
                 />
+                <TextField
+                  select
+                  label="Category"
+                  variant="outlined"
+                  defaultValue="boys"
+                  fullWidth
+                  margin="normal"
+                >
+                  {categoryOptions.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </TextField>
                 <TextField
                   label="Rent"
                   variant="outlined"
