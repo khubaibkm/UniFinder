@@ -3,13 +3,7 @@ import "./living.css";
 import DrawerAppBarCat from "../../components/navCat";
 import Footer from "../../components/footer";
 import { MainData } from "./living_data";
-import {
-  TextField,
-  Button,
-  Typography,
-  InputAdornment,
-  MenuItem,
-} from "@mui/material";
+import { TextField, Button, Typography, InputAdornment } from "@mui/material";
 import Modal from "react-modal";
 import { toast } from "react-toastify";
 import {
@@ -28,10 +22,7 @@ import {
   orderBy,
 } from "firebase/firestore";
 import SearchBar from "../../components/SearchBar";
-const categoryOptions = [
-  { value: "boys", label: "Boys" },
-  { value: "girls", label: "Girls" },
-];
+
 export default function Living() {
   const [sortOrder, setSortOrder] = useState("asc");
   const [data, setData] = useState([]);
@@ -56,6 +47,12 @@ export default function Living() {
   });
   const [loading, setLoading] = useState(false);
 
+  const [formData1, setFormData1] = useState({
+     hostelName: "",
+     description: "",
+     rent: "",
+     contact: "",
+   });
   const [userFormOpen, setUserFormOpen] = useState(false);
   // form
   const openUserForm = () => {
@@ -66,10 +63,47 @@ export default function Living() {
     setUserFormOpen(false);
   };
 
-  const UserhandleSubmit = (event) => {
+
+  const UserhandleSubmit = async (event) => {
     event.preventDefault();
-    closeUserForm();
+    setLoading(true);
+
+    try {
+      // Add the form data to the "added hostels" collection in Firestore
+      const docRef = await addDoc(collection(db, "added hostels"), {
+        hostelName: formData1.hostelName,
+        description: formData1.description,
+        rent: formData1.rent,
+        contact: formData1.contact,
+      });
+
+      console.log("Document written with ID: ", docRef.id);
+
+      // Reset form data after submission
+      setFormData1({
+        hostelName: "",
+        description: "",
+        rent: "",
+        contact: "",
+      });
+      setLoading(false);
+      toast("Thanks for the contribution! Appreciate it.");
+      // Close the modal
+      closeUserForm();
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      toast.error("Failed to send the data.");
+    }
   };
+
+  // const handleInputChange = (e) => {
+  //   onChange={(e) =>
+  //     setFormData({
+  //       ...formData1,
+  //       name: e.target.value,
+  //     })
+  // };
+
   useEffect(() => {
     if (currentReviewHostelId && isReviewModalOpen) {
       fetchReviews(currentReviewHostelId);
@@ -465,7 +499,7 @@ export default function Living() {
           </div>
         </div>
         <div className="searchbar-icon-container">
-          <SearchBar onChange={handleSearchChange} className="searchbar" />
+          <SearchBar onChange={handleSearchChange} />
           <div className="add-icon" onClick={openUserForm}>
             <Add />
           </div>
@@ -491,33 +525,40 @@ export default function Living() {
                   variant="outlined"
                   fullWidth
                   margin="normal"
+                  value={formData1.hostelName}
+                  onChange={(e) =>
+                    setFormData1({
+                      ...formData1,
+                      hostelName: e.target.value,
+                    })
+                  }
                 />
                 <TextField
                   label="Description"
                   variant="outlined"
                   fullWidth
                   margin="normal"
+                  value={formData1.description}
+                  onChange={(e) =>
+                    setFormData1({
+                      ...formData1,
+                      description: e.target.value,
+                    })
+                  }
                 />
-                <TextField
-                  select
-                  label="Category"
-                  variant="outlined"
-                  defaultValue="boys"
-                  fullWidth
-                  margin="normal"
-                >
-                  {categoryOptions.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </TextField>
                 <TextField
                   label="Rent"
                   variant="outlined"
                   fullWidth
                   margin="normal"
                   type="number"
+                  value={formData1.rent}
+                  onChange={(e) =>
+                    setFormData1({
+                      ...formData1,
+                      rent: e.target.value,
+                    })
+                  }
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">Rs.</InputAdornment>
@@ -532,6 +573,13 @@ export default function Living() {
                   variant="outlined"
                   fullWidth
                   margin="normal"
+                  value={formData1.contact}
+                  onChange={(e) =>
+                    setFormData1({
+                      ...formData1,
+                      contact: e.target.value,
+                    })
+                  }
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">+91</InputAdornment>
@@ -545,9 +593,10 @@ export default function Living() {
                   variant="contained"
                   color="primary"
                   type="submit"
+                  disabled={loading}
                   style={{ marginTop: "10px" }}
                 >
-                  Add
+                  {loading ? "Adding..." : "Add"}
                 </Button>
                 <Button
                   onClick={closeUserForm}
