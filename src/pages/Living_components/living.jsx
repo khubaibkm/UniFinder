@@ -525,6 +525,7 @@ export default function Living() {
                   variant="outlined"
                   fullWidth
                   margin="normal"
+                  placeholder="for example: Paras Boys/Girls Hostel"
                   value={formData1.hostelName}
                   onChange={(e) =>
                     setFormData1({
@@ -538,6 +539,7 @@ export default function Living() {
                   variant="outlined"
                   fullWidth
                   margin="normal"
+                  placeholder="about rooms, facilities and environment"
                   value={formData1.description}
                   onChange={(e) =>
                     setFormData1({
@@ -551,7 +553,7 @@ export default function Living() {
                   variant="outlined"
                   fullWidth
                   margin="normal"
-                  type="number"
+                  placeholder="for example: 2000-4000/month"
                   value={formData1.rent}
                   onChange={(e) =>
                     setFormData1({
@@ -562,10 +564,7 @@ export default function Living() {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">Rs.</InputAdornment>
-                    ),
-                    inputProps: {
-                      pattern: "[0-9]*",
-                    },
+                    )
                   }}
                 />
                 <TextField

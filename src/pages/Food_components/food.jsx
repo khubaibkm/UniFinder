@@ -44,20 +44,54 @@ export default function Food() {
     comment: "",
   });
   const [loading, setLoading] = useState(false);
-  const [userFormOpen, setUserFormOpen] = useState(false);
-  // form
-  const openUserForm = () => {
-    setUserFormOpen(true);
-  };
+  const [formData1, setFormData1] = useState({
+    restaurantName: "",
+    description: "",
+    priceRange: "",
+    contact: "",
+  });
+ const [userFormOpen, setUserFormOpen] = useState(false);
+ // form
+ const openUserForm = () => {
+   setUserFormOpen(true);
+ };
 
-  const closeUserForm = () => {
-    setUserFormOpen(false);
-  };
+ const closeUserForm = () => {
+   setUserFormOpen(false);
+ };
 
-  const UserhandleSubmit = (event) => {
-    event.preventDefault();
-    closeUserForm();
-  };
+
+ const UserhandleSubmit = async (event) => {
+   event.preventDefault();
+   setLoading(true);
+
+   try {
+     // Add the form data to the "added hostels" collection in Firestore
+     const docRef = await addDoc(collection(db, "added restaurants"), {
+       hostelName: formData1.restaurantName,
+       description: formData1.description,
+       rent: formData1.priceRange,
+       contact: formData1.contact,
+     });
+
+     console.log("Document written with ID: ", docRef.id);
+
+     // Reset form data after submission
+     setFormData1({
+       restaurantName: "",
+       description: "",
+       priceRange: "",
+       contact: "",
+     });
+     setLoading(false);
+     toast("Thanks for the contribution! Appreciate it.");
+     // Close the modal
+     closeUserForm();
+   } catch (error) {
+     console.error("Error adding document: ", error);
+     toast.error("Failed to send the data.");
+   }
+ };
   useEffect(() => {
     if (currentFoodReviewHostelId && isReviewModalOpen) {
       fetchFoodReviews(currentFoodReviewHostelId);
@@ -436,31 +470,66 @@ export default function Food() {
             }}
           >
             <div className="modal">
-              <p className="modal-para">Add Foods</p>
+              <p className="modal-para">Add Restaurant</p>
               <form onSubmit={UserhandleSubmit}>
                 <TextField
                   label="Restaurant Name"
                   variant="outlined"
                   fullWidth
                   margin="normal"
+                  value={formData1.restaurantName}
+                  onChange={(e) =>
+                    setFormData1({
+                      ...formData1,
+                      restaurantName: e.target.value,
+                    })
+                  }
                 />
                 <TextField
                   label="Description"
                   variant="outlined"
                   fullWidth
+                  placeholder="about the place and environment"
                   margin="normal"
+                  value={formData1.description}
+                  onChange={(e) =>
+                    setFormData1({
+                      ...formData1,
+                      description: e.target.value,
+                    })
+                  }
                 />
                 <TextField
-                  label="Delivery"
+                  label="Price Range"
                   variant="outlined"
+                  placeholder="for example: 20-200/person"
                   fullWidth
                   margin="normal"
+                  value={formData1.priceRange}
+                  onChange={(e) =>
+                    setFormData1({
+                      ...formData1,
+                      priceRange: e.target.value,
+                    })
+                  }
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">Rs.</InputAdornment>
+                    ),
+                  }}
                 />
                 <TextField
                   label="Contact"
                   variant="outlined"
                   fullWidth
                   margin="normal"
+                  value={formData1.contact}
+                  onChange={(e) =>
+                    setFormData1({
+                      ...formData1,
+                      contact: e.target.value,
+                    })
+                  }
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">+91</InputAdornment>
@@ -474,9 +543,10 @@ export default function Food() {
                   variant="contained"
                   color="primary"
                   type="submit"
+                  disabled={loading}
                   style={{ marginTop: "10px" }}
                 >
-                  Add
+                  {loading ? "Adding..." : "Add"}
                 </Button>
                 <Button
                   onClick={closeUserForm}

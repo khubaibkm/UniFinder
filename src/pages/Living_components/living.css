@@ -302,6 +302,8 @@
   background-color: #0056b3;
 }
 
+
+
 @media (max-width: 1400px) {
   .boxmodal {
     height: 30rem;
@@ -548,6 +550,7 @@
     max-height: 320px;
   }
 }
+
 .searchbar-icon-container {
   display: flex;
   align-items: center;
@@ -569,7 +572,15 @@
   justify-content: center;
   width: 35px;
   height: 35px;
+  transition: transform 0.4s ease;
 }
+
+.add-icon:hover {
+  cursor: pointer;
+  transform: rotate(90deg) scale(1.2);
+}
+
+
 
 .add-icon svg {
   color: white;
