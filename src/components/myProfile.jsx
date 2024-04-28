@@ -1,11 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { db, auth, storage } from "/src/firebase.js";
-import { collection, query, where, updateDoc, doc, serverTimestamp, getDocs } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  updateDoc,
+  doc,
+  serverTimestamp,
+  getDocs,
+} from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { Avatar, Button, IconButton, TextField, Typography } from "@mui/material";
+import {
+  Avatar,
+  Button,
+  IconButton,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { FaPencilAlt, FaSignOutAlt } from "react-icons/fa";
 import { toast } from "react-toastify";
-import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import { useNavigate } from "react-router-dom"; // Import useNavigate hook
 import "./myProfile.css";
 
 const MyProfile = () => {
@@ -67,7 +81,6 @@ const MyProfile = () => {
     setImage(null);
   };
 
-  
   const handleUpdate = async () => {
     try {
       setLoading(true);
@@ -78,7 +91,10 @@ const MyProfile = () => {
         updatedData = { ...updatedData, profileImageUrl: null };
       } else if (image) {
         // Image uploaded
-        const storageRef = ref(storage, `profile_images/${auth.currentUser.email}`);
+        const storageRef = ref(
+          storage,
+          `profile_images/${auth.currentUser.email}`
+        );
         await uploadBytes(storageRef, image);
         const imageUrl = await getDownloadURL(storageRef);
         updatedData = { ...updatedData, profileImageUrl: imageUrl };
@@ -117,13 +133,23 @@ const MyProfile = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setImage(file);
+
+    // Display preview of the selected image
+    const reader = new FileReader();
+    reader.onload = () => {
+      setUpdatedFormData((prevData) => ({
+        ...prevData,
+        profileImageUrlPreview: reader.result,
+      }));
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleLogout = async () => {
     try {
       await auth.signOut();
       // Redirect to the sign-in page after logout
-      navigate('/signin');
+      navigate("/signin");
     } catch (error) {
       console.error("Error logging out:", error);
     }
@@ -143,74 +169,94 @@ const MyProfile = () => {
                 {/* <center><strong>Profile Picture:</strong></center> */}
               </Typography>
               <div className="profile-image-container">
-                {editingField === "profileImageUrl"
-                  ? (
-                    <div>
-                      <input type="file" onChange={handleImageChange}
+                {editingField === "profileImageUrl" ? (
+                  <div>
+                    <input
+                      type="file"
+                      onChange={handleImageChange}
                       accept="image/*"
+                    />
+                    {updatedFormData.profileImageUrlPreview && (
+                      <Avatar
+                        src={updatedFormData.profileImageUrlPreview}
+                        alt="Preview"
+                        className="profile-image-preview"
                       />
-                      {/* {image && (
-                        <Avatar src={URL.createObjectURL(image)} alt="Preview" />
-                      )} */}
-                    </div>
-                  ) : (
-                    <span>
-                      {userData.profileImageUrl && (
-                        <Avatar src={userData.profileImageUrl} alt="Profile" className="profile-image" />
-                      )}
-                    </span>
-                  )}
-                  <IconButton onClick={() => handleEditClick("profileImageUrl")} className="edit-icon">
-                    <FaPencilAlt />
-                  </IconButton>
-                </div>
-              </div>
-  
-              <div className="col-md-8">
-                <TextField
-                  label="Name"
-                  name="name"
-                  value={updatedFormData.name}
-                  onChange={handleChange}
-                  variant="outlined"
-                  fullWidth
-                  InputProps={{
-                    endAdornment: (
-                      <IconButton onClick={() => handleEditClick("name")}>
-                        <FaPencilAlt />
-                      </IconButton>
-                    ),
-                  }}
-                  disabled={editingField !== "name"}
-                  sx={{ mb: 3 }}
-                />
-  
-                <Button
-                  onClick={handleUpdate}
-                  variant="contained"
-                  color="primary"
-                  disabled={loading}
-                  className="button"
+                    )}
+                  </div>
+                ) : (
+                  <span>
+                    {userData.profileImageUrl && (
+                      <Avatar
+                        src={userData.profileImageUrl}
+                        alt="Profile"
+                        className="profile-image"
+                      />
+                    )}
+                  </span>
+                )}
+                <IconButton
+                  onClick={() => handleEditClick("profileImageUrl")}
+                  className="edit-icon"
                 >
-                  {loading ? "Updating..." : "Save Changes"}
-                </Button>
-                <Button onClick={handleCancelEdit} variant="outlined" className="button">
-                  Cancel
-                </Button>
-                {/* Logout button */}
-                <Button onClick={handleLogout} variant="outlined" className="button loggout" sx={{ mt: 2 }}>
-                  <FaSignOutAlt style={{ marginRight: "0.5rem" }} />
-                  Logout
-                </Button>
+                  <FaPencilAlt />
+                </IconButton>
               </div>
             </div>
-          ) : (
-            <Typography>Loading...</Typography>
-          )}
-        </div>
+
+            <div className="col-md-8">
+              <TextField
+                label="Name"
+                name="name"
+                value={updatedFormData.name}
+                onChange={handleChange}
+                variant="outlined"
+                fullWidth
+                InputProps={{
+                  endAdornment: (
+                    <IconButton onClick={() => handleEditClick("name")}>
+                      <FaPencilAlt />
+                    </IconButton>
+                  ),
+                }}
+                disabled={editingField !== "name"}
+                sx={{ mb: 3 }}
+              />
+
+              <Button
+                onClick={handleUpdate}
+                variant="contained"
+                color="primary"
+                disabled={loading}
+                className="button"
+              >
+                {loading ? "Updating..." : "Save Changes"}
+              </Button>
+              <Button
+                onClick={handleCancelEdit}
+                variant="outlined"
+                className="button"
+              >
+                Cancel
+              </Button>
+              {/* Logout button */}
+              <Button
+                onClick={handleLogout}
+                variant="outlined"
+                className="button loggout"
+                sx={{ mt: 2 }}
+              >
+                <FaSignOutAlt style={{ marginRight: "0.5rem" }} />
+                Logout
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <Typography>Loading...</Typography>
+        )}
       </div>
-    );
-  };
-  
-  export default MyProfile;
-  
+    </div>
+  );
+};
+
+export default MyProfile;
