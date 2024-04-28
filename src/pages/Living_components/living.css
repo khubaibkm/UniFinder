@@ -302,8 +302,6 @@
   background-color: #0056b3;
 }
 
-
-
 @media (max-width: 1400px) {
   .boxmodal {
     height: 30rem;
@@ -461,6 +459,7 @@
   .specs {
     white-space: pre-line;
     margin-bottom: 1rem;
+    margin-top: -25px;
   }
 
   .facility {
@@ -579,8 +578,6 @@
   cursor: pointer;
   transform: rotate(90deg) scale(1.2);
 }
-
-
 
 .add-icon svg {
   color: white;

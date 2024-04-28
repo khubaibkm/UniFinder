@@ -48,11 +48,11 @@ export default function Living() {
   const [loading, setLoading] = useState(false);
 
   const [formData1, setFormData1] = useState({
-     hostelName: "",
-     description: "",
-     rent: "",
-     contact: "",
-   });
+    hostelName: "",
+    description: "",
+    rent: "",
+    contact: "",
+  });
   const [userFormOpen, setUserFormOpen] = useState(false);
   // form
   const openUserForm = () => {
@@ -62,7 +62,6 @@ export default function Living() {
   const closeUserForm = () => {
     setUserFormOpen(false);
   };
-
 
   const UserhandleSubmit = async (event) => {
     event.preventDefault();
@@ -446,7 +445,20 @@ export default function Living() {
           </p>
         </div>
       </div>
-
+      <marquee
+        style={{
+          fontSize: "16px",
+          color: " #333",
+          padding: "10px",
+        }}
+      >
+        ⚫ Rent and contact details of hostels may be subject to change. Please
+        verify with the hostel management.
+        <span style={{ marginLeft: "40px" }} />⚫ Help us expand UNIFINDER! If
+        you know of any nearby hostels, restaurants, or other amenities not
+        listed here, please let us know. Together, we can make UNIFINDER a
+        helpful guide for future students.
+      </marquee>
       <div id="living_page">
         <div className="living_Card">
           <div
@@ -564,7 +576,7 @@ export default function Living() {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">Rs.</InputAdornment>
-                    )
+                    ),
                   }}
                 />
                 <TextField

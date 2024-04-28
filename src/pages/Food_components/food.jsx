@@ -50,48 +50,47 @@ export default function Food() {
     priceRange: "",
     contact: "",
   });
- const [userFormOpen, setUserFormOpen] = useState(false);
- // form
- const openUserForm = () => {
-   setUserFormOpen(true);
- };
+  const [userFormOpen, setUserFormOpen] = useState(false);
+  // form
+  const openUserForm = () => {
+    setUserFormOpen(true);
+  };
 
- const closeUserForm = () => {
-   setUserFormOpen(false);
- };
+  const closeUserForm = () => {
+    setUserFormOpen(false);
+  };
 
+  const UserhandleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
 
- const UserhandleSubmit = async (event) => {
-   event.preventDefault();
-   setLoading(true);
+    try {
+      // Add the form data to the "added hostels" collection in Firestore
+      const docRef = await addDoc(collection(db, "added restaurants"), {
+        hostelName: formData1.restaurantName,
+        description: formData1.description,
+        rent: formData1.priceRange,
+        contact: formData1.contact,
+      });
 
-   try {
-     // Add the form data to the "added hostels" collection in Firestore
-     const docRef = await addDoc(collection(db, "added restaurants"), {
-       hostelName: formData1.restaurantName,
-       description: formData1.description,
-       rent: formData1.priceRange,
-       contact: formData1.contact,
-     });
+      console.log("Document written with ID: ", docRef.id);
 
-     console.log("Document written with ID: ", docRef.id);
-
-     // Reset form data after submission
-     setFormData1({
-       restaurantName: "",
-       description: "",
-       priceRange: "",
-       contact: "",
-     });
-     setLoading(false);
-     toast("Thanks for the contribution! Appreciate it.");
-     // Close the modal
-     closeUserForm();
-   } catch (error) {
-     console.error("Error adding document: ", error);
-     toast.error("Failed to send the data.");
-   }
- };
+      // Reset form data after submission
+      setFormData1({
+        restaurantName: "",
+        description: "",
+        priceRange: "",
+        contact: "",
+      });
+      setLoading(false);
+      toast("Thanks for the contribution! Appreciate it.");
+      // Close the modal
+      closeUserForm();
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      toast.error("Failed to send the data.");
+    }
+  };
   useEffect(() => {
     if (currentFoodReviewHostelId && isReviewModalOpen) {
       fetchFoodReviews(currentFoodReviewHostelId);
@@ -401,6 +400,22 @@ export default function Food() {
           </p>
         </div>
       </div>
+      <marquee
+        style={{
+          fontSize: "16px",
+          color: " #333",
+          padding: "10px",
+        }}
+      >
+        ⚫ Service Options and contact details of restaurant may be subject to
+        change.please verify the details with the restaurant management to stay
+        up-to-date.
+        <span style={{ marginLeft: "40px" }} />⚫ Help us expand UNIFINDER! If
+        you know of any nearby hostels, restaurants, or other amenities not
+        listed here, please let us know. Together, we can make UNIFINDER a
+        helpful guide for future students.
+      </marquee>
+
       <div id="living_page">
         <div className="living_Card">
           <div
@@ -573,10 +588,10 @@ export default function Food() {
                   </p>
                   <div className="facility">
                     <h5 style={{ fontSize: "17px" }}>Details:</h5>
-                    <p>
+                    {/* <p>
                       <span style={{ fontWeight: "500" }}>Price range:</span>{" "}
                       <span>{item.priceRange}</span>
-                    </p>
+                    </p> */}
                     <p>
                       <span style={{ fontWeight: "500" }}>
                         Service options:

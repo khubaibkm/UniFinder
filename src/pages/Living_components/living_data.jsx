@@ -45,6 +45,7 @@ export const MainData = [
       "/images/living/shalimarn.png",
       "/images/living/shalimarn1.png",
       "/images/living/shaalimar (3).png",
+      "/images/living/shalimar-mess.jpg",
       "/images/living/shaalimar (5).png",
     ],
   },
@@ -141,7 +142,7 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Rent: "Rs. 2200-2700/month ",
     hostel_img: "/images/living/royal infront front.png",
     contactImg: "/images/living/phone.png",
-    phone1: "+919321072432",
+    phone1: "+917905870060",
     contactPerson: "Bunty",
     map: `
     https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+Pradesh/26.9595546,80.9978098/@26.9594089,80.9979806,98m/data=!3m1!1e3!4m9!4m8!1m5!1m1!1s0x399957d74f586c77:0x4b4082bb8f3bef03!2m2!1d80.9992311!2d26.958454!1m0!3e2?entry=ttu
@@ -232,6 +233,7 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     modal_images: [
       "/images/living/she rose (1).png",
       "/images/living/she rose (2).png",
+      "/images/living/sherose-new.jpg",
     ],
   },
   {
@@ -401,7 +403,9 @@ https://www.google.com/maps/dir/Integral+University,+Kursi+Road,+Lucknow,+Uttar+
     Rent: "Rs. NA/month",
     hostel_img: "/images/living/infinity front.png",
     contactImg: "/images/living/phone.png",
-    phone1: "NA",
+    phone1: "+917379656510",
+    phone2: "+918953082712",
+
     contactPerson: "Shah Alam",
     map: `
 https://www.google.com/maps/place/INFINITY+TOWER/@26.9598986,80.9983279,49m/data=!3m1!1e3!4m6!3m5!1s0x399959c6839208d5:0x1a3d3fc15b4e8cc3!8m2!3d26.9599853!4d80.9981917!16s%2Fg%2F11hymgkgqs?entry=ttu
@@ -915,46 +919,44 @@ https://www.google.com/maps/place/Fauji+Boys+Hostel/@26.9595236,80.9996464,98m/d
       "/images/living/new sanik  (3).png",
     ],
   },
-  {
-    id: 37,
-    hostel: "NA",
-    specs: ` Three Rooms with Furnished beds`,
-    Free: " cold water , Freeze",
-    Paid: " Mess.",
-    Rent: "Rs. NA/month",
-    hostel_img: "/images/under_construction.jpg",
-    contactImg: "/images/living/phone.png",
-    phone1: "NA",
-    contactPerson: "NA",
-    map: `
-  
+  //   {
+  //     id: 37,
+  //     hostel: "NA",
+  //     specs: ` Three Rooms with Furnished beds`,
+  //     Free: " cold water , Freeze",
+  //     Paid: " Mess.",
+  //     Rent: "Rs. NA/month",
+  //     hostel_img: "/images/under_construction.jpg",
+  //     contactImg: "/images/living/phone.png",
+  //     phone1: "NA",
+  //     contactPerson: "NA",
+  //     map: `
 
-    `,
-    addressImg: "/images/living/location.png",
-    mediaImg: "/images/living/media.png",
-    reviewImg: "/images/living/satisfaction.png",
-    category: ["Boy", "Apartment"],
-    modal_images: [],
-  },
-  {
-    id: 38,
-    hostel: "NA",
-    specs: ` Three Rooms with Furnished beds`,
-    Free: " cold water , Freeze",
-    Paid: " Mess.",
-    Rent: "Rs. NA/month",
-    hostel_img: "/images/under_construction.jpg",
-    contactImg: "/images/living/phone.png",
-    phone1: "NA",
-    contactPerson: "NA",
-    map: `
-  
+  //     `,
+  //     addressImg: "/images/living/location.png",
+  //     mediaImg: "/images/living/media.png",
+  //     reviewImg: "/images/living/satisfaction.png",
+  //     category: ["Boy", "Apartment"],
+  //     modal_images: [],
+  //   },
+  //   {
+  //     id: 38,
+  //     hostel: "NA",
+  //     specs: ` Three Rooms with Furnished beds`,
+  //     Free: " cold water , Freeze",
+  //     Paid: " Mess.",
+  //     Rent: "Rs. NA/month",
+  //     hostel_img: "/images/under_construction.jpg",
+  //     contactImg: "/images/living/phone.png",
+  //     phone1: "NA",
+  //     contactPerson: "NA",
+  //     map: `
 
-    `,
-    addressImg: "/images/living/location.png",
-    mediaImg: "/images/living/media.png",
-    reviewImg: "/images/living/satisfaction.png",
-    category: ["Boy", "Apartment"],
-    modal_images: [],
-  },
+  //     `,
+  //     addressImg: "/images/living/location.png",
+  //     mediaImg: "/images/living/media.png",
+  //     reviewImg: "/images/living/satisfaction.png",
+  //     category: ["Boy", "Apartment"],
+  //     modal_images: [],
+  //   },
 ];
