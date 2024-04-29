@@ -19,26 +19,12 @@ import HomeWithoutSigning from "./pages/HomeWithoutSigning";
 import IntroForm from "./components/introForm";
 import MyProfile from "./components/myProfile";
 import Modal from 'react-modal';
-import { messaging } from "./firebase";
-import {getToken} from "firebase/messaging";
+import Notifications from "./components/notifications";
 
 
 function App() {
   // Notification
-  async function requestPermission(){
-      const permission = await Notification.requestPermission();
-      if(permission==="granted"){
-        const token = await getToken(messaging, {vapidKey: "BK5NvsdDcjb-rYBqzlmsUt4cw5s4uqe5MjWMni6YTW6nmqU6Dq6JEWECZkHtQ1MGWxrw_cSefLlTcmLQoSFtab0"});
-        console.log("token generated", token);
-      }
-      else if(permission==="denied"){
-        alert("You denied the permissions, now you'll not get any notifications!")
-      }
-  }
-
-  useEffect(() =>{
-      requestPermission();
-  }, []);
+  
 
   Modal.setAppElement("#root");
   const [loading, setLoading] = useState(true);
@@ -86,6 +72,7 @@ function App() {
             </Routes>
           </Router>
         )}
+        <Notifications/>
       </div>
     </>
   );

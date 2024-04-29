@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-import { getMessaging } from "firebase/messaging";
+import { getMessaging, onMessage, getToken } from "firebase/messaging";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -18,9 +18,32 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const messaging = getMessaging(app);
+const messaging = getMessaging(app);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 export const db = getFirestore(app);
 export const storage = getStorage(app);
 export const githubProvider = new GithubAuthProvider();
+
+export const requestForToken = async () =>{
+  try {
+    const currentToken = await getToken(messaging, { vapidKey: "BK5NvsdDcjb-rYBqzlmsUt4cw5s4uqe5MjWMni6YTW6nmqU6Dq6JEWECZkHtQ1MGWxrw_cSefLlTcmLQoSFtab0" });
+    if (currentToken) {
+      console.log("Token: ", currentToken);
+    }
+    else {
+      console.log("no token available!!");
+    }
+  } catch (err) {
+    console.log("error in registring token", err);
+  }
+}
+
+export const onMessageListener = () =>{
+  return new Promise((resolve) =>{
+    onMessage(messaging, (payload) =>{
+      console.log("Onmessage payload", payload);
+      resolve(payload)
+    })
+  })
+}
