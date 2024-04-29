@@ -317,7 +317,7 @@ export const MainData = [
     // priceRange: "Rs. 60 - 500/person",
     serviceOptions: "Dine-in and Takeout",
     timings: "10:00 am - 10:00 pm",
-    foodPlace_img: "/images/under_construction.jpg",
+    foodPlace_img: "/images/food/jaiswal_front.jpeg",
     phone1: "",
     map: `
       `,
