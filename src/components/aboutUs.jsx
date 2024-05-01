@@ -32,11 +32,10 @@ const AboutUs = () => {
             comprehensive information about various amenities and services in
             the vicinity of a university campus. This project utilizes modern
             web development technologies, including HTML, CSS, Bootstrap,
-            Material UI, JavaScript, and React.js. The primary goal is to
-            simplify the process for university students, particularly
-            newcomers, to access essential information about local restaurants,
-            hostels, mess facilities, shops, and more within a single
-            user-friendly platform.
+            Material UI, React.js and Firebase. The primary goal is to simplify
+            the process for university students, particularly newcomers, to
+            access essential information about local restaurants, hostels, mess
+            facilities, shops, and more within a single user-friendly platform.
           </p>
           <br />
           <p>
@@ -52,17 +51,17 @@ const AboutUs = () => {
           </p>
           <br />
           <p>
-            <strong>Future Goal:</strong> UniFinder is evolving into a dynamic
-            platform, offering fully functional sections for food, shopping, and
-            emergency services. The goal is to simplify university life by
-            providing real-time, comprehensive information. Future plans include
-            introducing filter options for hostels and food based on price,
-            empowering users to make budget-conscious decisions. User sign-in
-            and sign-out options will enhance personalization, allowing students
-            to save preferences and access tailored information seamlessly.
-            UniFinder envisions becoming an indispensable tool for students by
-            providing a centralized platform that adapts to their evolving
-            needs.
+            <strong>Future Goal:</strong> we're not just thinking about today
+            but about the years to come. We want UniFinder to be more than just
+            an app; it's a community effort. We're passing the torch to the
+            students of Integral University, so they can keep it running
+            smoothly for years to come. We'll work together to make sure
+            UniFinder fits perfectly into university life, with updates and
+            improvements shaped by the students who use it every day. Our aim is
+            for UniFinder to become a part of Integral University, helping
+            students find what they need and making campus life easier. We're
+            here to support them every step of the way, ensuring UniFinder
+            leaves a lasting mark as a symbol of innovation and teamwork.
           </p>
         </div>
         <br />

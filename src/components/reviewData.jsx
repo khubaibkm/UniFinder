@@ -13,7 +13,7 @@ export const ReviewData = [
     name: "Adil Siddiqui",
     position: "Civil Engineer",
     about:
-      "Maha Chai is perfect place for a meal with friends , specializing in chai, mocktails, and other drinks. With a plethora of options to satisfy your appetite, my personal favorite is the authentic Vada Pav. Every dish is genuinely delightful, and the prices are incredibly reasonable. Highly recommended!",
+      "When my brother got admitted to Integral University, finding a hostel and a good mess nearby was quite the task. With UniFinder, I'm hopeful student life will become much simpler. Looking forward to seeing how it helps him out!",
     proImg: "adil.jpg",
   },
 
@@ -22,7 +22,7 @@ export const ReviewData = [
     name: "Tanzeer Riyaz",
     position: "Btech Student",
     about:
-      "Marhaba Cafe is a gem! The food is incredibly delicious, and visiting this place is absolutely worth it. The service is fast and excellent – lucky to have Marhaba Cafe in our city! The ambiance, menu variety, and hospitality they offer are simply fantastic. Highly recommend! 😊👌",
+      "UniFinder has been a game-changer for me as a freshman! It guided me to hidden gems around campus, and the student reviews were incredibly helpful in choosing places to eat and study. Highly recommend",
     proImg: "tanzer.jpg",
   },
 
@@ -31,7 +31,7 @@ export const ReviewData = [
     name: "Mohd.Farhan",
     position: "CSE Student",
     about:
-      " The Delhi Cafe is fantastic! The food is amazing, service is great, and the ambiance is awesome. Keep up the good work! 👍",
+      "  Dreamz Dhaba Food is delicious & siting area is amazing. Visiting on occasions will increases joy.Privacy for u with full friendly environment feeling is amazing, food are  delicious and tasty. I think taste is not describable. Give it a try, go with Family & Friends u will enjoy..",
     proImg: "farhan.jpg",
   },
   {
@@ -39,7 +39,7 @@ export const ReviewData = [
     name: "Seraj Khan",
     position: "BMLT Student",
     about:
-      " Dreamz Dhaba Food is delicious & siting area is amazing. Visiting on occasions will increases joy.Privacy for u with full friendly environment feeling is amazing, food are  delicious and tasty. I think taste is not describable. Give it a try, go with Family & Friends u will enjoy..",
+      "Coming to Integral University was a big step for me, but finding a hostel in an unfamiliar area was tough. UniFinder made it easy, helping me find the perfect place hassle-free. It's a real lifesaver for students like me",
     proImg: "serjpg.jpg",
   },
   {
@@ -63,7 +63,7 @@ export const ReviewData = [
     name: "Mohd Atif",
     position: "CSE Student",
     about:
-      "Swad Ganj Cafe is a fantastic vegetarian restaurant—good looking, with a diverse menu of delicious dishes. It's couple-friendly, and the hygiene standards are commendable.",
+      "UniFinder is a must-have for students! It's like having a personal guide to all the nearby amenities, saving tons of time. Highly recommended for anyone looking to make the most of their university experience!",
     proImg: "natif.jpg",
   },
   {
@@ -72,7 +72,7 @@ export const ReviewData = [
     position: "Medical Student",
     about:
       " Paradise Girls Hostel is a secure haven with beautifully designed interiors, creating a homely atmosphere for girls. Conveniently located near the university, it offers a safe and welcoming environment.",
-    proImg: "",
+    proImg: "girl.png",
   },
 
   {

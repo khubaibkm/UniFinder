@@ -161,6 +161,9 @@ h6 {
     font-weight: 500 !important;
     padding: 0 14px;
   }
+  .slick-dots {
+    bottom: -37px !important;
+  }
 }
 
 @media (max-width: 900px) {

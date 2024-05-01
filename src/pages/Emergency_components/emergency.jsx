@@ -186,6 +186,14 @@ export default function Emergency() {
           </p>
         </div>
       </div>
+
+      <marquee>
+        ⚫In emergencies, access late-night medical shop details and connect
+        with local drivers for rides. <span style={{ marginLeft: "40px" }} />
+        ⚫Help improve our emergency section! Share contact details of local
+        drivers offering late-night rides by emailing us. Your contribution
+        ensures everyone has access to safe transportation options.
+      </marquee>
       <div id="living_page">
         <div className="living_Card">
           <div

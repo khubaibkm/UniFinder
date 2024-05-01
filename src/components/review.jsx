@@ -129,8 +129,8 @@ export default function Review() {
                     Go through the highlights to get a better understanding of
                     the places and things around. <br /> <br />
                     Experience the reviews – embark on a profound exploration of
-                    customer experiences, comprehensive star ratings, and choose
-                    the place according to your relevance.
+                    customer experiences, comprehensive ratings, and choose the
+                    place according to your relevance.
                   </Typography>
                 </div>
               </Grid>

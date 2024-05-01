@@ -1,7 +1,7 @@
 export const MainData = [
   {
     id: 1,
-    emerPlace: "Vinod Medical Store",
+    emerPlace: "NA",
     specs: "Buy any medicine at any time",
     serviceOptions: "Medicines, cosmetics, medical equipments",
     timings: "9:00 am to 11:30 pm",
@@ -17,7 +17,7 @@ export const MainData = [
   },
   {
     id: 2,
-    emerPlace: "Vinod Medical Store",
+    emerPlace: "NA",
     specs: "Buy any medicine at any time",
     serviceOptions: "Medicines, cosmetics, medical equipments",
     timings: "9:00 am to 11:30 pm",
@@ -33,9 +33,9 @@ export const MainData = [
   },
   {
     id: 3,
-    emerPlace: "Ride",
-    specs: "Buy any medicine at any time",
-    serviceOptions: "Medicines, cosmetics, medical equipments",
+    emerPlace: "NA",
+    specs: "XYZ",
+    // serviceOptions: "Medicines, cosmetics, medical equipments",
     timings: "9:00 am to 11:30 pm",
     emerPlace_img: "/images/under_construction.jpg",
     phone1: "+917275807178",
@@ -49,7 +49,7 @@ export const MainData = [
   },
   {
     id: 4,
-    emerPlace: "Vinod Medical Store",
+    emerPlace: "NA",
     specs: "Buy any medicine at any time",
     serviceOptions: "Medicines, cosmetics, medical equipments",
     timings: "9:00 am to 11:30 pm",
@@ -65,9 +65,9 @@ export const MainData = [
   },
   {
     id: 5,
-    emerPlace: "Ride",
-    specs: "Buy any medicine at any time",
-    serviceOptions: "Medicines, cosmetics, medical equipments",
+    emerPlace: "NA",
+    specs: "XYZ",
+    // serviceOptions: "Medicines, cosmetics, medical equipments",
     timings: "9:00 am to 11:30 pm",
     emerPlace_img: "/images/under_construction.jpg",
     phone1: "+917275807178",
