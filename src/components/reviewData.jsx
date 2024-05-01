@@ -75,12 +75,12 @@ export const ReviewData = [
     proImg: "girl.png",
   },
 
-  {
-    id: 10,
-    name: "Sameer Khan",
-    position: "Anesthesia Student",
-    about:
-      "Arsh Tower, a boys' hostel near the university, cafe, and game zone, is not just well-located but is also run by an owner with a good heart.",
-    proImg: "sammer.jpg",
-  },
+  // {
+  //   id: 10,
+  //   name: "Sameer Khan",
+  //   position: "Anesthesia Student",
+  //   about:
+  //     "Arsh Tower, a boys' hostel near the university, cafe, and game zone, is not just well-located but is also run by an owner with a good heart.",
+  //   proImg: "sammer.jpg",
+  // },
 ];
