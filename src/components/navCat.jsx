@@ -26,7 +26,6 @@ const drawerWidth = 260;
 const navItems = [
   { text: 'HOME', link: '/home' },
   { text: 'CATEGORIES', link: '/home' },
-  { text: 'REVIEWS', link: '#reviews' },
   { text: 'ABOUT US', link: '/aboutus' },
 ];
 
