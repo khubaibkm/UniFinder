@@ -6,6 +6,8 @@ import { MainData } from "./living_data";
 import { TextField, Button, Typography, InputAdornment } from "@mui/material";
 import Modal from "react-modal";
 import { toast } from "react-toastify";
+import { driver } from "driver.js";
+import "driver.js/dist/driver.css";
 import {
   Add,
   KeyboardArrowLeft,
@@ -53,6 +55,7 @@ export default function Living() {
     rent: "",
     contact: "",
   });
+
   const [userFormOpen, setUserFormOpen] = useState(false);
   // form
   const openUserForm = () => {
@@ -62,6 +65,43 @@ export default function Living() {
   const closeUserForm = () => {
     setUserFormOpen(false);
   };
+  // driver tour
+  useEffect(() => {
+    const driverObj = driver({
+      popoverClass: "driverjs-theme",
+      showProgress: false,
+      steps: [
+        {
+          element: ".add-icon",
+          popover: {
+            title: "Add Hostel",
+            description: "Click this icon to add a hostel.",
+          },
+        },
+        {
+          element: "#img-media",
+          popover: {
+            title: "Media",
+            description: "This icon allows you to view and upload images.",
+          },
+        },
+        {
+          element: "#review-form",
+          popover: {
+            title: "Reviews",
+            description: "Here you can give and view reviews from other users.",
+          },
+        },
+      ],
+    });
+
+    driverObj.drive();
+
+    // Cleanup function
+    return () => {
+      // Cleanup logic if needed
+    };
+  }, []);
 
   const UserhandleSubmit = async (event) => {
     event.preventDefault();
@@ -695,7 +735,7 @@ export default function Living() {
                         </p>
                       </a>
                     </div>
-                    <div className="media">
+                    <div className="media" id="img-media">
                       <a onClick={() => handleCardClick(item.id)}>
                         <img
                           className="media-img"
@@ -777,7 +817,7 @@ export default function Living() {
                       </div>
                     </Modal>
 
-                    <div className="media">
+                    <div className="media" id="review-form">
                       <a onClick={() => handleReviewModalClick(item.id)}>
                         {" "}
                         {/* Pass the hostelId to the function */}

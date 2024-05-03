@@ -582,3 +582,19 @@
 .add-icon svg {
   color: white;
 }
+/* / */
+.driver-popover.driverjs-theme .driver-popover-title {
+  font-size: 25px;
+}
+
+.driver-popover.driverjs-theme button {
+  flex: 1;
+  text-align: center;
+  text-shadow: none;
+  font-size: 14px;
+  padding: 5px 8px;
+  border-radius: 6px;
+}
+.driver-popover.driverjs-theme .driver-popover-navigation-btns {
+  background-color: white;
+}

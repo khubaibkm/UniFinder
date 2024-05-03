@@ -7,6 +7,9 @@ import Modal from "react-modal";
 import { TextField, Button, InputAdornment, Typography } from "@mui/material";
 import { ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage";
 import { db, storage, auth } from "/src/firebase.js";
+import { driver } from "driver.js";
+import "driver.js/dist/driver.css";
+
 import {
   collection,
   addDoc,
@@ -59,7 +62,43 @@ export default function Food() {
   const closeUserForm = () => {
     setUserFormOpen(false);
   };
+  // driver tour
+  useEffect(() => {
+    const driverObj = driver({
+      popoverClass: "driverjs-theme",
+      showProgress: false,
+      steps: [
+        {
+          element: ".add-icon",
+          popover: {
+            title: "Add Restaurant",
+            description: "Click this icon to add a Restaurant.",
+          },
+        },
+        {
+          element: "#img-media",
+          popover: {
+            title: "Media",
+            description: "This icon allows you to view and upload images.",
+          },
+        },
+        {
+          element: "#review-form",
+          popover: {
+            title: "Reviews",
+            description: "Here you can give and view reviews from other users.",
+          },
+        },
+      ],
+    });
 
+    driverObj.drive();
+
+    // Cleanup function
+    return () => {
+      // Cleanup logic if needed
+    };
+  }, []);
   const UserhandleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
@@ -645,7 +684,7 @@ export default function Food() {
                         </p>
                       </a>
                     </div>
-                    <div className="media">
+                    <div className="media" id="img-media">
                       <a onClick={() => handleFoodItemClick(item.id)}>
                         <img
                           className="media-img"
@@ -722,7 +761,7 @@ export default function Food() {
                       </div>
                     </Modal>
 
-                    <div className="media">
+                    <div className="media" id="review-form">
                       <a onClick={() => handleFoodReviewModalClick(item.id)}>
                         <img
                           className="media-img"
