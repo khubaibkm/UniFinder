@@ -54,6 +54,7 @@ export default function Food() {
     contact: "",
   });
   const [userFormOpen, setUserFormOpen] = useState(false);
+  const [showTour, setShowTour] = useState(false);
   // form
   const openUserForm = () => {
     setUserFormOpen(true);
@@ -62,43 +63,54 @@ export default function Food() {
   const closeUserForm = () => {
     setUserFormOpen(false);
   };
+  // show Tour
+  useEffect(() => {
+    const hasVisitedBefore = localStorage.getItem("visitedBefore");
+    if (!hasVisitedBefore) {
+      setShowTour(true);
+      localStorage.setItem("visitedBefore", true);
+    }
+  }, []);
   // driver tour
   useEffect(() => {
-    const driverObj = driver({
-      popoverClass: "driverjs-theme",
-      showProgress: false,
-      steps: [
-        {
-          element: ".add-icon",
-          popover: {
-            title: "Add Restaurant",
-            description: "Click this icon to add a Restaurant.",
+    if (showTour) {
+      const driverObj = driver({
+        popoverClass: "driverjs-theme",
+        showProgress: false,
+        steps: [
+          {
+            element: ".add-icon",
+            popover: {
+              title: "Add Restaurant",
+              description: "Click this icon to add a Restaurant.",
+            },
           },
-        },
-        {
-          element: "#img-media",
-          popover: {
-            title: "Media",
-            description: "This icon allows you to view and upload images.",
+          {
+            element: "#img-media",
+            popover: {
+              title: "Media",
+              description: "This icon allows you to view and upload images.",
+            },
           },
-        },
-        {
-          element: "#review-form",
-          popover: {
-            title: "Reviews",
-            description: "Here you can give and view reviews from other users.",
+          {
+            element: "#review-form",
+            popover: {
+              title: "Reviews",
+              description:
+                "Here you can give and view reviews from other users.",
+            },
           },
-        },
-      ],
-    });
+        ],
+      });
 
-    driverObj.drive();
+      driverObj.drive();
 
-    // Cleanup function
-    return () => {
-      // Cleanup logic if needed
-    };
-  }, []);
+      // Cleanup function
+      return () => {
+        // Cleanup logic if needed
+      };
+    }
+  }, [showTour]);
   const UserhandleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
