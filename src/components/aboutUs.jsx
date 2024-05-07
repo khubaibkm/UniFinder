@@ -130,11 +130,11 @@ const AboutUs = () => {
                 Portfolio:{" "}
                 <a
                   style={{ color: "blue" }}
-                  href="https://khubaib.live/"
+                  href="https://khubaiblive.netlify.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  https://khubaib.live/
+                  khubaib.live
                 </a>
               </p>
             </div>
