@@ -914,9 +914,9 @@ https://www.google.com/maps/place/Fauji+Boys+Hostel/@26.9595236,80.9996464,98m/d
     reviewImg: "/images/living/satisfaction.png",
     category: ["Boy", "Apartment"],
     modal_images: [
-      "/images/living/new sanik  (1).png",
-      "/images/living/new sanik  (2).png",
-      "/images/living/new sanik  (3).png",
+      "/images/living/new sanik (1).png",
+      "/images/living/new sanik (2).png",
+      "/images/living/new sanik (3).png",
     ],
   },
   //   {

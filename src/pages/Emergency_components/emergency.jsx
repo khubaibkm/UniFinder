@@ -188,8 +188,12 @@ export default function Emergency() {
       </div>
 
       <marquee>
-        ⚫In emergencies, access late-night medical shop details and connect
-        with local drivers for rides. <span style={{ marginLeft: "40px" }} />
+        ⚫We want to clarify that we are not responsible for any problems that
+        may occur with the auto driver or the fare.{" "}
+        <span style={{ marginLeft: "40px" }} />
+        ⚫We recommend traveling in groups, especially when booking an auto at
+        night, to enhance safety.
+        <span style={{ marginLeft: "40px" }} />
         ⚫Help improve our emergency section! Share contact details of local
         drivers offering late-night rides by emailing us. Your contribution
         ensures everyone has access to safe transportation options.
@@ -325,8 +329,10 @@ export default function Emergency() {
                       }}
                     >
                       {/* Your modal content goes here */}
-                      <p>This is the media modal content.</p>
-                      <button onClick={closeModal}>Close Modal</button>
+                      <p>Currently Unavailable</p>
+                      <button className="modal-btn" onClick={closeModal}>
+                        Close Modal
+                      </button>
                     </Modal>
 
                     <div className="media">
@@ -417,6 +423,7 @@ export default function Emergency() {
             <KeyboardArrowRight />
           </button>
         </div>
+
         <div id="contact us">
           <Footer />
         </div>
