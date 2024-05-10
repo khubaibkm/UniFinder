@@ -45,7 +45,7 @@ export const MainData = [
       "/images/living/shalimarn.png",
       "/images/living/shalimarn1.png",
       "/images/living/shaalimar (3).png",
-      "/images/living/shalimar-mess.jpg",
+      // "/images/living/shalimar-mess.jpg",
       "/images/living/shaalimar (5).png",
     ],
   },
